@@ -13,3 +13,10 @@ config_version=5
 config/name="NetAware"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=1024
+window/size/resizable=false
+window/stretch/mode="viewport"

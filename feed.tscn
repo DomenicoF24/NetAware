@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dr6cpm16uti0a"]
+
+[node name="Feed" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" type="VBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Home" type="Button" parent="MainContainer/Sidebar"]
+layout_mode = 2
+
+[node name="Messaggi" type="Button" parent="MainContainer/Sidebar"]
+layout_mode = 2
+
+[node name="Notifiche" type="Button" parent="MainContainer/Sidebar"]
+layout_mode = 2
+
+[node name="Profilo" type="Button" parent="MainContainer/Sidebar"]
+layout_mode = 2
+
+[node name="Impostazioni" type="Button" parent="MainContainer/Sidebar"]
+layout_mode = 2
+
+[node name="FeedColumn" type="ScrollContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PostsContainer" type="VBoxContainer" parent="MainContainer/FeedColumn"]
+layout_mode = 2
+
+[node name="Indicators" type="VBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="SC" type="Label" parent="MainContainer/Indicators"]
+layout_mode = 2
+text = "Spirito Critico"
+
+[node name="P1" type="ProgressBar" parent="MainContainer/Indicators"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="EM" type="Label" parent="MainContainer/Indicators"]
+layout_mode = 2
+text = "Empatia"
+
+[node name="P2" type="ProgressBar" parent="MainContainer/Indicators"]
+layout_mode = 2
+
+[node name="PR" type="Label" parent="MainContainer/Indicators"]
+layout_mode = 2
+text = "Privacy"
+
+[node name="P3" type="ProgressBar" parent="MainContainer/Indicators"]
+layout_mode = 2
+
+[node name="DIP" type="Label" parent="MainContainer/Indicators"]
+layout_mode = 2
+text = "Dipendenza"
+
+[node name="P4" type="ProgressBar" parent="MainContainer/Indicators"]
+layout_mode = 2
+
+[node name="TIP" type="Label" parent="MainContainer/Indicators"]
+layout_mode = 2
+text = "Tip del giorno"
