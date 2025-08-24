@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=2 format=3 uid="uid://dr6cpm16uti0a"]
+
+[ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_e81db"]
 
 [node name="Feed" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e81db")
 
 [node name="MainContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -42,6 +45,9 @@ size_flags_horizontal = 3
 
 [node name="PostsContainer" type="VBoxContainer" parent="MainContainer/FeedColumn"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="Indicators" type="VBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(350, 0)

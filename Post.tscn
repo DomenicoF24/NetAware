@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3y2n3f1sxr2y"]
+
+[ext_resource type="Script" uid="uid://bdealcrus58dt" path="res://Scripts/Post.gd" id="1_vxnam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnvxj"]
+
+[node name="Post" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_vxnam")
+
+[node name="PostPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnvxj")
+
+[node name="PostLayout" type="VBoxContainer" parent="PostPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AuthorLabel" type="Label" parent="PostPanel/PostLayout"]
+layout_mode = 2
+text = "Utente123"
+
+[node name="ContentLabel" type="Label" parent="PostPanel/PostLayout"]
+layout_mode = 2
+text = "Post sospetto"
+
+[node name="ButtonsRow" type="HBoxContainer" parent="PostPanel/PostLayout"]
+layout_mode = 2
+
+[node name="Like" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+layout_mode = 2
+
+[node name="Commenta" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+layout_mode = 2
+
+[node name="Segnala" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+layout_mode = 2
+
+[node name="Condividi" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+layout_mode = 2

@@ -1,1 +1,6 @@
 res://feed.tscn
+res://Scripts/GameManager.gd
+res://TestGM.tscn
+res://Scripts/Feed.gd
+res://Post.tscn
+res://Scripts/Post.gd

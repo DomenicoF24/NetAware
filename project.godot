@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="NetAware"
+run/main_scene="uid://dr6cpm16uti0a"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/GameManager.gd"
 
 [display]
 
