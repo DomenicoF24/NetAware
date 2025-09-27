@@ -18,6 +18,7 @@ config/icon="res://images/icon.svg"
 [autoload]
 
 GameManager="*res://Scripts/GameManager.gd"
+EffectsManager="*res://effects_layer.gd"
 
 [display]
 

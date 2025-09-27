@@ -1,6 +1,8 @@
+CPUParticles2D
+Label
 TextureRect
 PopupPanel
-Label
+CanvasLayer
 TextureButton
 HBoxContainer
 ColorRect

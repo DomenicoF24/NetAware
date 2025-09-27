@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=58 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_e81db"]
 [ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="2_0eyb3"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_qj288"]
 [ext_resource type="Texture2D" uid="uid://b5c6kkihy1obt" path="res://images/lock64.png" id="9_w50hx"]
 [ext_resource type="Texture2D" uid="uid://cqmwglm3vm840" path="res://images/tempo64.png" id="10_ffoa4"]
+[ext_resource type="Script" uid="uid://wuikf1y7i3h2" path="res://effects_layer.gd" id="14_rj8w1"]
+[ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://achievement_popup.gd" id="15_u5vha"]
 
 [sub_resource type="FontVariation" id="FontVariation_lryug"]
 variation_embolden = 0.7
@@ -118,6 +120,9 @@ corner_detail = 1
 
 [sub_resource type="FontVariation" id="FontVariation_6b05h"]
 variation_embolden = 0.5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u5vha"]
+load_path = "res://.godot/imported/fireworks.png-4b25ed33383db03930ae88fbc4120681.ctex"
 
 [node name="Feed" type="Control"]
 layout_mode = 3
@@ -408,3 +413,37 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 169
 text_direction = 1
+
+[node name="EffectsLayer" type="CanvasLayer" parent="."]
+script = ExtResource("14_rj8w1")
+
+[node name="Fireworks" type="CPUParticles2D" parent="EffectsLayer"]
+position = Vector2(700, 0)
+emitting = false
+amount = 200
+texture = SubResource("CompressedTexture2D_u5vha")
+lifetime = 2.0
+speed_scale = 10.55
+explosiveness = 0.1
+randomness = 0.3
+lifetime_randomness = 0.2
+fixed_fps = 25
+local_coords = true
+spread = 130.0
+gravity = Vector2(0, 200)
+initial_velocity_max = 21.63
+angular_velocity_max = 43.64
+orbit_velocity_max = 80.81
+linear_accel_max = 12.12
+angle_max = 58.2
+
+[node name="AchievementPopup" type="PopupPanel" parent="."]
+script = ExtResource("15_u5vha")
+
+[node name="TextureRect" type="TextureRect" parent="AchievementPopup"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="AchievementPopup"]
+offset_right = 40.0
+offset_bottom = 23.0

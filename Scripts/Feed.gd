@@ -58,42 +58,55 @@ func spawn_random_posts(count: int = 20) -> void:
 		posts_container.add_child(p)           # fondamentale prima
 		p.set_post_data(template)
 
+var prof2 = preload("res://images/man1.png")
+var prof3 = preload("res://images/man2.png")
+
+var phSoldi = preload("res://images/soldi.jpg")
+var phCat = preload("res://images/cat.jpg")
+
 var post_templates = [
 	{
+		"pic": preload("res://images/man3.png"),
 		"author": "@Marco98",
-		"content": "Ho trovato questa notizia online... ma sarà vera?",
+		"content": "Ho trovato questa foto online di New York... ma sarà vera?",
 		"time": "2 ore fa",
-		"effects_like": {"sc": -5, "dep": +5},
+		"foto": preload("res://images/NY.jpg"),
+		"effects_like": {"sc": -10, "dep": +5},
 		"effects_report": {"sc": +10, "emp": +5},
 		"effects_share": {"sc": -10, "dep": +10},
 		"effects_comment": {"emp": +5}
 	},
 	{
+		"pic": preload("res://images/robot.png"),
 		"author": "@NewsBot",
 		"content": "Ricorda: non condividere le tue password con nessuno!",
 		"time": "5 ore fa",
-		"effects_like": {"sc": +5, "priv": +5},
-		"effects_report": {"sc": -5},
-		"effects_share": {"sc": +5, "emp": +5},
-		"effects_comment": {"emp": +2}
+		"foto": preload("res://images/lock.jpg"),
+		"effects_like": {"sc": 10, "priv": +10},
+		"effects_report": {"sc": -15},
+		"effects_share": {"sc": +15, "emp": +10},
+		"effects_comment": {"emp": +5}
 	},
 	{
-		
+		"pic": preload("res://images/man1.png"),
 		"author": "@InfluencerX",
 		"content": "Questo sito funziona al 100%, fidatevi! http://VrsMn.com",
 		"time": "30 minuti fa",
-		"effects_like": {"sc": -5, "dep": +5},
-		"effects_report": {"sc": +5},
-		"effects_share": {"sc": -5, "dep": +5},
-		"effects_comment": {"emp": +1}
+		"foto": preload("res://images/soldi.jpg"),
+		"effects_like": {"sc": -10, "dep": +5},
+		"effects_report": {"sc": +15},
+		"effects_share": {"sc": -10, "dep": +5},
+		"effects_comment": {"emp": -5}
 	},
 	{
-		"author": "@Amico123",
+		"pic": preload("res://images/man2.png"),
+		"author": "@Luc1a_",
 		"content": "Guardate che foto simpatica!",
 		"time": "23 ore fa",
-		"effects_like": {"sc": +2, "emp": +3},
-		"effects_report": {"sc": 0},
-		"effects_share": {"sc": +1, "dep": +1},
-		"effects_comment": {"emp": +2}
+		"foto": preload("res://images/cat.jpg"),
+		"effects_like": {"sc": +5, "emp": +5},
+		"effects_report": {"sc": -5},
+		"effects_share": {"sc": +0, "dep": +5},
+		"effects_comment": {"emp": +10}
 	}
 ]
