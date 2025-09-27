@@ -1,7 +1,10 @@
 extends Control
 
-@onready var author_label = $PostPanel/PostLayout/AuthorLabel
+@onready var author_label = $PostPanel/PostLayout/HBoxContainer/AuthorLabel
+@onready var profilePic = $PostPanel/PostLayout/HBoxContainer/ProfilePic
+@onready var foto = $PostPanel/PostLayout/foto
 @onready var content_label = $PostPanel/PostLayout/ContentLabel
+@onready var time_label = $PostPanel/PostLayout/HBoxContainer/TimeLabel
 @onready var btn_like = $PostPanel/PostLayout/ButtonsRow/Like
 @onready var btn_report = $PostPanel/PostLayout/ButtonsRow/Segnala
 @onready var btn_share = $PostPanel/PostLayout/ButtonsRow/Condividi
@@ -21,21 +24,36 @@ func _ready() -> void:
 func set_post_data(post_data: Dictionary) -> void:
 	# Inizializza il contenuto del post
 	data = post_data
+	profilePic = data.get("pic", null)
 	author_label.text = data.get("author", "Anonimo")
 	content_label.text = data.get("content", "Post vuoto")
+	time_label.text = data.get("time", "X ore fa")
+	foto = data.get("foto", null)
 
 func _on_like_pressed() -> void:
 	if data.has("effects_like"):
-		GameManager.apply_effect(data["effects_like"], "Like su post")
+		GameManager.apply_effect(
+			data["effects_like"],
+			"Hai messo Like al post di %s" % data.get("author", "utente")
+		)
 
 func _on_report_pressed() -> void:
 	if data.has("effects_report"):
-		GameManager.apply_effect(data["effects_report"], "Segnalazione post")
+		GameManager.apply_effect(
+			data["effects_report"],
+			"Hai segnalato un post sospetto, ottima scelta!"
+		)
 
 func _on_share_pressed() -> void:
 	if data.has("effects_share"):
-		GameManager.apply_effect(data["effects_share"], "Condivisione post")
-		
+		GameManager.apply_effect(
+			data["effects_share"],
+			"Hai condiviso un contenuto: rifletti sempre sulle conseguenze."
+		)
+
 func _on_comment_pressed() -> void:
 	if data.has("effects_comment"):
-		GameManager.apply_effect(data["effects_comment"], "Commenta post")
+		GameManager.apply_effect(
+			data["effects_comment"],
+			"Hai commentato in modo costruttivo: ottimo per l'empatia!"
+		)

@@ -1,6 +1,10 @@
 res://feed.tscn
-res://Scripts/GameManager.gd
 res://TestGM.tscn
-res://Scripts/Feed.gd
 res://Post.tscn
+res://Scripts/Feed.gd
+res://main_container.gd
+res://sidebar.gd
+res://indicators.gd
 res://Scripts/Post.gd
+res://foto.gd
+res://Scripts/foto.gd

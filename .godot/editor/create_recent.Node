@@ -1,8 +1,13 @@
-Button
-HBoxContainer
+TextureRect
+PopupPanel
 Label
-VBoxContainer
+TextureButton
+HBoxContainer
+ColorRect
 Panel
+Sprite2D
+Button
+VBoxContainer
 Node
 ProgressBar
 ScrollContainer

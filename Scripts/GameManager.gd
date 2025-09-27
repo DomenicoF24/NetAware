@@ -24,15 +24,25 @@ func _ready() -> void:
 
 # Applica effetti agli indicatori. Esempio: {"sc": +5, "dep": -3}
 func apply_effect(effect: Dictionary, reason: String = "") -> void:
-	if effect.has("sc"):   spirito_critico = clamp(spirito_critico + int(effect["sc"]), 0, 100)
-	if effect.has("emp"):  empatia         = clamp(empatia         + int(effect["emp"]), 0, 100)
-	if effect.has("priv"): privacy         = clamp(privacy         + int(effect["priv"]), 0, 100)
-	if effect.has("dep"):  dipendenza      = clamp(dipendenza      + int(effect["dep"]), 0, 100)
+	if effect.has("sc"):
+		spirito_critico = clamp(spirito_critico + int(effect["sc"]), 0, 100)
+	if effect.has("emp"):
+		empatia = clamp(empatia + int(effect["emp"]), 0, 100)
+	if effect.has("priv"):
+		privacy = clamp(privacy + int(effect["priv"]), 0, 100)
+	if effect.has("dep"):
+		dipendenza = clamp(dipendenza + int(effect["dep"]), 0, 100)
 
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+
+	# 👇 se c'è una motivazione, la usiamo come feedback
 	if reason != "":
 		emit_signal("event_logged", reason)
+	else:
+		# 👇 se non c'è, mostriamo un tip educativo random
+		emit_signal("event_logged", get_random_tip())
 
 func get_random_tip() -> String:
-	if tips.is_empty(): return ""
+	if tips.is_empty():
+		return ""
 	return tips[randi() % tips.size()]

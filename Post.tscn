@@ -1,49 +1,136 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3y2n3f1sxr2y"]
+[gd_scene load_steps=12 format=3 uid="uid://c3y2n3f1sxr2y"]
 
 [ext_resource type="Script" uid="uid://bdealcrus58dt" path="res://Scripts/Post.gd" id="1_vxnam"]
+[ext_resource type="Texture2D" uid="uid://rgg58mdo5a5h" path="res://images/cuore.png" id="2_bduko"]
+[ext_resource type="Texture2D" uid="uid://dilet6t2ut71i" path="res://images/pic.png" id="2_lfniu"]
+[ext_resource type="Texture2D" uid="uid://0o7ethcg40f1" path="res://images/soldi.jpg" id="3_26l8o"]
+[ext_resource type="Script" uid="uid://blycc4g8cghe" path="res://Scripts/like.gd" id="3_bduko"]
+[ext_resource type="Texture2D" uid="uid://cu5n2wpyxwgfg" path="res://images/commenta.png" id="3_sjdhe"]
+[ext_resource type="Texture2D" uid="uid://c7omdgcgx4w7n" path="res://images/segnala.png" id="4_bduko"]
+[ext_resource type="Texture2D" uid="uid://c0jxpp4rrr3lt" path="res://images/condividi.png" id="5_lfniu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnvxj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxnam"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0.762404, 0.762404, 0.762404, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="FontVariation" id="FontVariation_nnvxj"]
+variation_embolden = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_lfniu"]
+variation_embolden = 0.5
 
 [node name="Post" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
+size_flags_vertical = 4
 script = ExtResource("1_vxnam")
 
 [node name="PostPanel" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nnvxj")
+clip_contents = true
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxnam")
 
 [node name="PostLayout" type="VBoxContainer" parent="PostPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(550, 400)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.83, 0.83)
 
-[node name="AuthorLabel" type="Label" parent="PostPanel/PostLayout"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PostPanel/PostLayout"]
 layout_mode = 2
-text = "Utente123"
+theme_override_constants/separation = 15
+
+[node name="ProfilePic" type="TextureButton" parent="PostPanel/PostLayout/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_lfniu")
+stretch_mode = 3
+
+[node name="AuthorLabel" type="Label" parent="PostPanel/PostLayout/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_nnvxj")
+theme_override_font_sizes/font_size = 30
+text = "@Utente123"
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="PostPanel/PostLayout/HBoxContainer"]
+layout_mode = 2
+text = "X ore fa"
+
+[node name="foto" type="TextureRect" parent="PostPanel/PostLayout"]
+clip_contents = true
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_26l8o")
+expand_mode = 1
 
 [node name="ContentLabel" type="Label" parent="PostPanel/PostLayout"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_lfniu")
+theme_override_font_sizes/font_size = 20
 text = "Post sospetto"
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ButtonsRow" type="HBoxContainer" parent="PostPanel/PostLayout"]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Like" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Like" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_bduko")
+stretch_mode = 5
+script = ExtResource("3_bduko")
 
-[node name="Commenta" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Commenta" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
 layout_mode = 2
+texture_normal = ExtResource("3_sjdhe")
+script = ExtResource("3_bduko")
 
-[node name="Segnala" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Segnala" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
 layout_mode = 2
+texture_normal = ExtResource("4_bduko")
+script = ExtResource("3_bduko")
 
-[node name="Condividi" type="Button" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Condividi" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
 layout_mode = 2
+texture_normal = ExtResource("5_lfniu")
+script = ExtResource("3_bduko")

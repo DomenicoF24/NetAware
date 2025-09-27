@@ -1,6 +1,123 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=55 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_e81db"]
+[ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="2_0eyb3"]
+[ext_resource type="Script" uid="uid://l7wm8fiybg30" path="res://Scripts/main_container.gd" id="2_w50hx"]
+[ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="3_8bbnt"]
+[ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="3_ffoa4"]
+[ext_resource type="Texture2D" uid="uid://8gbgabwnt1u1" path="res://images/notification.png" id="4_ogxe3"]
+[ext_resource type="Texture2D" uid="uid://c5b45hge43bd5" path="res://images/user.png" id="5_fqlfk"]
+[ext_resource type="Texture2D" uid="uid://c71ntu4v1208n" path="res://images/settings.png" id="6_tlspd"]
+[ext_resource type="Texture2D" uid="uid://22bavs02n1so" path="res://images/brain64.png" id="7_tlspd"]
+[ext_resource type="Texture2D" uid="uid://j3wfr646cnhq" path="res://images/cuori64.png" id="8_ogxe3"]
+[ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_qj288"]
+[ext_resource type="Texture2D" uid="uid://b5c6kkihy1obt" path="res://images/lock64.png" id="9_w50hx"]
+[ext_resource type="Texture2D" uid="uid://cqmwglm3vm840" path="res://images/tempo64.png" id="10_ffoa4"]
+
+[sub_resource type="FontVariation" id="FontVariation_lryug"]
+variation_embolden = 0.7
+
+[sub_resource type="LabelSettings" id="LabelSettings_0eyb3"]
+font = SubResource("FontVariation_lryug")
+font_size = 35
+font_color = Color(0.137255, 0.372549, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_qj288"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj288"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rj8w1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5vha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6u5n"]
+
+[sub_resource type="FontVariation" id="FontVariation_rj8w1"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lryug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoqp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tka1p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0vxv"]
+
+[sub_resource type="FontVariation" id="FontVariation_u5vha"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxfre"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_535ex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6b05h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovler"]
+
+[sub_resource type="FontVariation" id="FontVariation_g6u5n"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3unk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2u3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idamg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igd52"]
+
+[sub_resource type="FontVariation" id="FontVariation_ouxst"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evp1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0enty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iqlf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p333c"]
+
+[sub_resource type="FontVariation" id="FontVariation_xoqp3"]
+variation_embolden = 0.5
+
+[sub_resource type="FontVariation" id="FontVariation_tka1p"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouxst"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0eyb3"]
+bg_color = Color(0.137255, 0.372549, 1, 1)
+corner_detail = 1
+
+[sub_resource type="FontVariation" id="FontVariation_p0vxv"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og6dy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bbnt"]
+bg_color = Color(0.199296, 0.600865, 0.291864, 1)
+corner_detail = 1
+
+[sub_resource type="FontVariation" id="FontVariation_pxfre"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50xdo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogxe3"]
+bg_color = Color(0.520935, 0.295865, 0.813684, 1)
+corner_detail = 1
+
+[sub_resource type="FontVariation" id="FontVariation_535ex"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l57vo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqlfk"]
+bg_color = Color(0.909804, 0.184314, 0.211765, 1)
+corner_detail = 1
+
+[sub_resource type="FontVariation" id="FontVariation_6b05h"]
+variation_embolden = 0.5
 
 [node name="Feed" type="Control"]
 layout_mode = 3
@@ -18,70 +135,276 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_w50hx")
 
 [node name="Sidebar" type="VBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 80
+script = ExtResource("3_ffoa4")
+
+[node name="Title" type="Label" parent="MainContainer/Sidebar"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "NetAware"
+label_settings = SubResource("LabelSettings_0eyb3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Home" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_qj288")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qj288")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rj8w1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u5vha")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g6u5n")
+text = "HOME"
+icon = ExtResource("2_0eyb3")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Messaggi" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_rj8w1")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lryug")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xoqp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tka1p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p0vxv")
+text = "MESSAGGI"
+icon = ExtResource("3_8bbnt")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Notifiche" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_u5vha")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pxfre")
+theme_override_styles/hover = SubResource("StyleBoxFlat_535ex")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6b05h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ovler")
+text = "NOTIFICHE"
+icon = ExtResource("4_ogxe3")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Profilo" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_g6u5n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_w3unk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q2u3o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_idamg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_igd52")
+text = "PROFILO"
+icon = ExtResource("5_fqlfk")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Impostazioni" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_ouxst")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_evp1m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0enty")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3iqlf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p333c")
+text = "IMPOSTAZIONI"
+icon = ExtResource("6_tlspd")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="FeedColumn" type="ScrollContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 900)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+scroll_deadzone = 100
 
 [node name="PostsContainer" type="VBoxContainer" parent="MainContainer/FeedColumn"]
+custom_minimum_size = Vector2(600, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 10
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 500
 
 [node name="Indicators" type="VBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("9_qj288")
 
-[node name="SC" type="Label" parent="MainContainer/Indicators"]
+[node name="INDC" type="Label" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_xoqp3")
+theme_override_font_sizes/font_size = 25
+text = "indicatori di consapevolezza"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/Indicators"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MainContainer/Indicators/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("7_tlspd")
+stretch_mode = 3
+
+[node name="SC" type="Label" parent="MainContainer/Indicators/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_tka1p")
+theme_override_font_sizes/font_size = 25
 text = "Spirito Critico"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
 
 [node name="P1" type="ProgressBar" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_ouxst")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0eyb3")
 
-[node name="EM" type="Label" parent="MainContainer/Indicators"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/Indicators"]
 layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MainContainer/Indicators/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("8_ogxe3")
+stretch_mode = 3
+
+[node name="EM" type="Label" parent="MainContainer/Indicators/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_p0vxv")
+theme_override_font_sizes/font_size = 25
 text = "Empatia"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
 
 [node name="P2" type="ProgressBar" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_og6dy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8bbnt")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainContainer/Indicators"]
 layout_mode = 2
 
-[node name="PR" type="Label" parent="MainContainer/Indicators"]
+[node name="TextureButton" type="TextureButton" parent="MainContainer/Indicators/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+disabled = true
+texture_normal = ExtResource("9_w50hx")
+stretch_mode = 3
+
+[node name="PR" type="Label" parent="MainContainer/Indicators/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_pxfre")
+theme_override_font_sizes/font_size = 25
 text = "Privacy"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
 
 [node name="P3" type="ProgressBar" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_50xdo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ogxe3")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MainContainer/Indicators"]
 layout_mode = 2
 
-[node name="DIP" type="Label" parent="MainContainer/Indicators"]
+[node name="TextureButton" type="TextureButton" parent="MainContainer/Indicators/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+disabled = true
+texture_normal = ExtResource("10_ffoa4")
+stretch_mode = 3
+
+[node name="DIP" type="Label" parent="MainContainer/Indicators/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_535ex")
+theme_override_font_sizes/font_size = 25
 text = "Dipendenza"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
 
 [node name="P4" type="ProgressBar" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_l57vo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fqlfk")
 
-[node name="TIP" type="Label" parent="MainContainer/Indicators"]
+[node name="FeedbackLabel" type="Label" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(220, 200)
 layout_mode = 2
-text = "Tip del giorno"
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_6b05h")
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 169
+text_direction = 1
