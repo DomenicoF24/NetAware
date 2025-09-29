@@ -1,8 +1,7 @@
-res://Post.tscn
-res://Scripts/Feed.gd
 res://feed.tscn
 res://TestGM.tscn
-res://Scripts/Post.gd
-res://effects_layer.gd
-res://achievement_popup.gd
+res://Post.tscn
+res://Scripts/Feed.gd
 res://Scripts/GameManager.gd
+res://Scripts/Post.gd
+res://feedback_label.gd

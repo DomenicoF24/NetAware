@@ -66,7 +66,10 @@ grow_vertical = 2
 scale = Vector2(0.83, 0.83)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PostPanel/PostLayout"]
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 15
 
 [node name="ProfilePic" type="TextureButton" parent="PostPanel/PostLayout/HBoxContainer"]
@@ -89,7 +92,7 @@ text = "X ore fa"
 
 [node name="foto" type="TextureRect" parent="PostPanel/PostLayout"]
 clip_contents = true
-custom_minimum_size = Vector2(400, 300)
+custom_minimum_size = Vector2(550, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -97,8 +100,9 @@ texture = ExtResource("3_26l8o")
 expand_mode = 1
 
 [node name="ContentLabel" type="Label" parent="PostPanel/PostLayout"]
-custom_minimum_size = Vector2(10, 0)
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_lfniu")
 theme_override_font_sizes/font_size = 20

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=62 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_e81db"]
 [ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="2_0eyb3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_qj288"]
 [ext_resource type="Texture2D" uid="uid://b5c6kkihy1obt" path="res://images/lock64.png" id="9_w50hx"]
 [ext_resource type="Texture2D" uid="uid://cqmwglm3vm840" path="res://images/tempo64.png" id="10_ffoa4"]
+[ext_resource type="Texture2D" uid="uid://fib6tdno3vwt" path="res://images/idea64.png" id="14_g6u5n"]
 [ext_resource type="Script" uid="uid://wuikf1y7i3h2" path="res://effects_layer.gd" id="14_rj8w1"]
 [ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://achievement_popup.gd" id="15_u5vha"]
 
@@ -123,6 +124,18 @@ variation_embolden = 0.5
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u5vha"]
 load_path = "res://.godot/imported/fireworks.png-4b25ed33383db03930ae88fbc4120681.ctex"
+
+[sub_resource type="Gradient" id="Gradient_u5vha"]
+offsets = PackedFloat32Array(0, 0.530864, 1)
+colors = PackedColorArray(1, 0.921912, 0.292332, 1, 1, 0.435294, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_ovler"]
+variation_embolden = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5vha"]
+font = SubResource("FontVariation_ovler")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
 
 [node name="Feed" type="Control"]
 layout_mode = 3
@@ -401,8 +414,20 @@ size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_l57vo")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fqlfk")
 
-[node name="FeedbackLabel" type="Label" parent="MainContainer/Indicators"]
-custom_minimum_size = Vector2(220, 200)
+[node name="HBoxContainer5" type="HBoxContainer" parent="MainContainer/Indicators"]
+layout_mode = 2
+alignment = 1
+
+[node name="IdeaButton" type="TextureButton" parent="MainContainer/Indicators/HBoxContainer5"]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("14_g6u5n")
+stretch_mode = 3
+
+[node name="FeedbackLabel" type="Label" parent="MainContainer/Indicators/HBoxContainer5"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -420,30 +445,49 @@ script = ExtResource("14_rj8w1")
 [node name="Fireworks" type="CPUParticles2D" parent="EffectsLayer"]
 position = Vector2(700, 0)
 emitting = false
-amount = 200
+amount = 250
 texture = SubResource("CompressedTexture2D_u5vha")
-lifetime = 2.0
-speed_scale = 10.55
-explosiveness = 0.1
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
 randomness = 0.3
-lifetime_randomness = 0.2
-fixed_fps = 25
 local_coords = true
-spread = 130.0
+direction = Vector2(0, 0)
+spread = 180.0
 gravity = Vector2(0, 200)
-initial_velocity_max = 21.63
-angular_velocity_max = 43.64
-orbit_velocity_max = 80.81
-linear_accel_max = 12.12
-angle_max = 58.2
+initial_velocity_min = 250.0
+initial_velocity_max = 400.0
+damping_max = 5.0
+scale_amount_min = 0.5
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_u5vha")
 
 [node name="AchievementPopup" type="PopupPanel" parent="."]
 script = ExtResource("15_u5vha")
 
 [node name="TextureRect" type="TextureRect" parent="AchievementPopup"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Label" type="Label" parent="AchievementPopup"]
-offset_right = 40.0
-offset_bottom = 23.0
+custom_minimum_size = Vector2(100, 20)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 96.0
+label_settings = SubResource("LabelSettings_u5vha")
+horizontal_alignment = 1
+autowrap_mode = 2
