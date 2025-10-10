@@ -1,7 +1,6 @@
+res://MainMenu.tscn
 res://feed.tscn
 res://TestGM.tscn
 res://Post.tscn
-res://Scripts/Feed.gd
-res://Scripts/GameManager.gd
-res://Scripts/Post.gd
-res://feedback_label.gd
+res://main_menu.gd
+res://Scripts/sidebar.gd

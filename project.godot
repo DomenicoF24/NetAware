@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NetAware"
-run/main_scene="uid://dr6cpm16uti0a"
+run/main_scene="uid://bhononsjqtd5s"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://images/icon.svg"
 
