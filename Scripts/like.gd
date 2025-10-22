@@ -1,6 +1,6 @@
 extends TextureButton
 
-var hover_scale := 1.2
+var hover_scale := 1.1
 var normal_scale := Vector2.ONE
 
 func _ready():

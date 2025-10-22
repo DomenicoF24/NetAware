@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0pck0kdcxsw"
-path="res://.godot/imported/fulcronday3-012-1-1020x1024.jpg-df85e0bfa4e6512ee7dda0b033ed6286.ctex"
+uid="uid://d2k8iwwfyorgt"
+path="res://.godot/imported/clean.jpg-1806aab5220449045d2888376beb3959.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/fulcronday3-012-1-1020x1024.jpg"
-dest_files=["res://.godot/imported/fulcronday3-012-1-1020x1024.jpg-df85e0bfa4e6512ee7dda0b033ed6286.ctex"]
+source_file="res://images/clean.jpg"
+dest_files=["res://.godot/imported/clean.jpg-1806aab5220449045d2888376beb3959.ctex"]
 
 [params]
 

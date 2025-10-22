@@ -8,7 +8,7 @@ signal event_logged(text)
 var spirito_critico := 50
 var empatia := 50
 var privacy := 50
-var dipendenza := 50
+var dipendenza := 0
 
 # Piccoli suggerimenti educativi
 var tips_by_category := {
@@ -48,9 +48,25 @@ var tips_by_category := {
 	]
 }
 
+var dep_timer: Timer  # timer per incremento automatico
+
 func _ready() -> void:
 	print("[GameManager] ready")
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+
+# ✅ Timer automatico che aumenta la dipendenza ogni 10s
+	dep_timer = Timer.new()
+	dep_timer.wait_time = 8.0
+	dep_timer.autostart = true
+	dep_timer.one_shot = false
+	add_child(dep_timer)
+	dep_timer.timeout.connect(_on_dep_timer_timeout)
+
+
+func _on_dep_timer_timeout() -> void:
+	if dipendenza < 100:
+		dipendenza = clamp(dipendenza + 1, 0, 100)
+		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 
 # Applica effetti agli indicatori. Esempio: {"sc": +5, "dep": -3}
 func apply_effect(effect: Dictionary, reason: String = "") -> void:

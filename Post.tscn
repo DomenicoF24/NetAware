@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3y2n3f1sxr2y"]
+[gd_scene load_steps=15 format=3 uid="uid://c3y2n3f1sxr2y"]
 
 [ext_resource type="Script" uid="uid://bdealcrus58dt" path="res://Scripts/Post.gd" id="1_vxnam"]
 [ext_resource type="Texture2D" uid="uid://rgg58mdo5a5h" path="res://images/cuore.png" id="2_bduko"]
 [ext_resource type="Texture2D" uid="uid://dilet6t2ut71i" path="res://images/pic.png" id="2_lfniu"]
-[ext_resource type="Texture2D" uid="uid://0o7ethcg40f1" path="res://images/soldi.jpg" id="3_26l8o"]
 [ext_resource type="Script" uid="uid://blycc4g8cghe" path="res://Scripts/like.gd" id="3_bduko"]
+[ext_resource type="Texture2D" uid="uid://c5f3eqkwv3r3e" path="res://images/verificato.png" id="3_c1vor"]
 [ext_resource type="Texture2D" uid="uid://cu5n2wpyxwgfg" path="res://images/commenta.png" id="3_sjdhe"]
 [ext_resource type="Texture2D" uid="uid://c7omdgcgx4w7n" path="res://images/segnala.png" id="4_bduko"]
+[ext_resource type="Texture2D" uid="uid://ci80cl8n825ca" path="res://images/soldi.png" id="4_c1vor"]
 [ext_resource type="Texture2D" uid="uid://c0jxpp4rrr3lt" path="res://images/condividi.png" id="5_lfniu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxnam"]
@@ -14,7 +15,7 @@ content_margin_left = 50.0
 content_margin_top = 50.0
 content_margin_right = 50.0
 content_margin_bottom = 50.0
-bg_color = Color(0.762404, 0.762404, 0.762404, 1)
+bg_color = Color(0.760784, 0.760784, 0.760784, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -22,10 +23,24 @@ corner_radius_bottom_left = 10
 corner_detail = 20
 
 [sub_resource type="FontVariation" id="FontVariation_nnvxj"]
-variation_embolden = 1.0
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1vor"]
+bg_color = Color(0, 0, 0, 0.0980392)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 3
 
 [sub_resource type="FontVariation" id="FontVariation_lfniu"]
-variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26l8o"]
+bg_color = Color(0, 0, 0, 0.0980392)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Post" type="Control"]
 layout_mode = 3
@@ -39,7 +54,7 @@ script = ExtResource("1_vxnam")
 
 [node name="PostPanel" type="Panel" parent="."]
 clip_contents = true
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -70,7 +85,7 @@ custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 15
+theme_override_constants/separation = 10
 
 [node name="ProfilePic" type="TextureButton" parent="PostPanel/PostLayout/HBoxContainer"]
 layout_mode = 2
@@ -86,37 +101,68 @@ theme_override_font_sizes/font_size = 30
 text = "@Utente123"
 vertical_alignment = 1
 
+[node name="Verifiedimg" type="TextureButton" parent="PostPanel/PostLayout/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("3_c1vor")
+stretch_mode = 3
+
 [node name="TimeLabel" type="Label" parent="PostPanel/PostLayout/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.196078)
 text = "X ore fa"
 
 [node name="foto" type="TextureRect" parent="PostPanel/PostLayout"]
 clip_contents = true
-custom_minimum_size = Vector2(550, 300)
+custom_minimum_size = Vector2(550, 309)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_26l8o")
+texture = ExtResource("4_c1vor")
 expand_mode = 1
 
-[node name="ContentLabel" type="Label" parent="PostPanel/PostLayout"]
-custom_minimum_size = Vector2(550, 0)
+[node name="TextBox" type="Panel" parent="PostPanel/PostLayout"]
+custom_minimum_size = Vector2(550, 75)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1vor")
+
+[node name="ContentLabel" type="Label" parent="PostPanel/PostLayout/TextBox"]
+custom_minimum_size = Vector2(525, 75)
+layout_mode = 2
+offset_left = 14.759
+offset_top = -1.48191
+offset_right = 539.759
+offset_bottom = 73.5181
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_lfniu")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Post sospetto"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ButtonsRow" type="HBoxContainer" parent="PostPanel/PostLayout"]
-custom_minimum_size = Vector2(600, 0)
+[node name="ButtonBg" type="Panel" parent="PostPanel/PostLayout"]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_26l8o")
+
+[node name="ButtonsRow" type="HBoxContainer" parent="PostPanel/PostLayout/ButtonBg"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_top = 4.0
+offset_right = 200.0
+offset_bottom = 36.0
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Like" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Like" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -124,17 +170,17 @@ texture_normal = ExtResource("2_bduko")
 stretch_mode = 5
 script = ExtResource("3_bduko")
 
-[node name="Commenta" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Commenta" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
 texture_normal = ExtResource("3_sjdhe")
 script = ExtResource("3_bduko")
 
-[node name="Segnala" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Segnala" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
 texture_normal = ExtResource("4_bduko")
 script = ExtResource("3_bduko")
 
-[node name="Condividi" type="TextureButton" parent="PostPanel/PostLayout/ButtonsRow"]
+[node name="Condividi" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
 texture_normal = ExtResource("5_lfniu")
 script = ExtResource("3_bduko")

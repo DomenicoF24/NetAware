@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drgq1nnfhpaly"
-path="res://.godot/imported/privacy-policy-psb-consulting-gdpr-nuovo-regolamento-europeo.jpeg-2d32d4d0adb48ff3d4c15e9c2fb59c23.ctex"
+uid="uid://c5f3eqkwv3r3e"
+path="res://.godot/imported/verificato.png-f9137cf2e1f38c3d50b99a752f47adc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/privacy-policy-psb-consulting-gdpr-nuovo-regolamento-europeo.jpeg"
-dest_files=["res://.godot/imported/privacy-policy-psb-consulting-gdpr-nuovo-regolamento-europeo.jpeg-2d32d4d0adb48ff3d4c15e9c2fb59c23.ctex"]
+source_file="res://images/verificato.png"
+dest_files=["res://.godot/imported/verificato.png-f9137cf2e1f38c3d50b99a752f47adc4.ctex"]
 
 [params]
 

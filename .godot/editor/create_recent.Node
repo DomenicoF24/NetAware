@@ -1,4 +1,8 @@
+Panel
+TextureButton
 Label
+PanelContainer
+CanvasLayer
 TextureRect
 TextureProgressBar
 ConfirmationDialog
@@ -8,7 +12,3 @@ Button
 CenterContainer
 Control
 HBoxContainer
-CPUParticles2D
-PopupPanel
-CanvasLayer
-TextureButton

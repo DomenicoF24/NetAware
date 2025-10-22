@@ -1,8 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=63 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_e81db"]
 [ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="2_0eyb3"]
-[ext_resource type="Script" uid="uid://l7wm8fiybg30" path="res://Scripts/main_container.gd" id="2_w50hx"]
 [ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="3_8bbnt"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="3_ffoa4"]
 [ext_resource type="Texture2D" uid="uid://8gbgabwnt1u1" path="res://images/notification.png" id="4_ogxe3"]
@@ -16,6 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://fib6tdno3vwt" path="res://images/idea64.png" id="14_g6u5n"]
 [ext_resource type="Script" uid="uid://wuikf1y7i3h2" path="res://effects_layer.gd" id="14_rj8w1"]
 [ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://achievement_popup.gd" id="15_u5vha"]
+
+[sub_resource type="Gradient" id="Gradient_eiy7p"]
+offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
+colors = PackedColorArray(0.960784, 0.521569, 0.160784, 1, 0.866667, 0.164706, 0.482353, 1, 0.505882, 0.203922, 0.686275, 1, 0.317647, 0.356863, 0.831373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u5vha"]
+gradient = SubResource("Gradient_eiy7p")
 
 [sub_resource type="FontVariation" id="FontVariation_lryug"]
 variation_embolden = 0.7
@@ -35,6 +41,7 @@ variation_embolden = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5vha"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6u5n"]
+bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="FontVariation" id="FontVariation_rj8w1"]
 variation_embolden = 0.5
@@ -46,6 +53,7 @@ variation_embolden = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tka1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0vxv"]
+bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="FontVariation" id="FontVariation_u5vha"]
 variation_embolden = 0.5
@@ -57,6 +65,7 @@ variation_embolden = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6b05h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovler"]
+bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="FontVariation" id="FontVariation_g6u5n"]
 variation_embolden = 0.5
@@ -68,6 +77,7 @@ variation_embolden = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idamg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igd52"]
+bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="FontVariation" id="FontVariation_ouxst"]
 variation_embolden = 0.5
@@ -79,6 +89,7 @@ variation_embolden = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iqlf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p333c"]
+bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="FontVariation" id="FontVariation_xoqp3"]
 variation_embolden = 0.5
@@ -146,6 +157,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e81db")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_u5vha")
+stretch_mode = 6
+
 [node name="MainContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -153,13 +174,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_w50hx")
 
 [node name="Sidebar" type="VBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 80
 script = ExtResource("3_ffoa4")
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Title" type="Label" parent="MainContainer/Sidebar"]
 layout_mode = 2
@@ -280,6 +301,7 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("9_qj288")
+bg_color = Color(1, 1, 1, 1)
 
 [node name="INDC" type="Label" parent="MainContainer/Indicators"]
 custom_minimum_size = Vector2(100, 50)

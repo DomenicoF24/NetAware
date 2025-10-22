@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://b88mhr0rt7ssv" path="res://cuoreUI.gd" id="1_i26rj"]
 [ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_eiy7p"]
 
-[sub_resource type="Gradient" id="Gradient_eiy7p"]
+[sub_resource type="Gradient" id="Gradient_h7a2f"]
 offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
 colors = PackedColorArray(0.960784, 0.521569, 0.160784, 1, 0.866667, 0.164706, 0.482353, 1, 0.505882, 0.203922, 0.686275, 1, 0.317647, 0.356863, 0.831373, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h7a2f"]
-gradient = SubResource("Gradient_eiy7p")
+gradient = SubResource("Gradient_h7a2f")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7a2f"]
 bg_color = Color(0.309804, 0.619608, 1, 1)
@@ -125,6 +125,7 @@ custom_minimum_size = Vector2(380, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_eiy7p")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/hover = SubResource("StyleBoxFlat_h7a2f")

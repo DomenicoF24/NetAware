@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx6lxk7i8eqr1"
-path="res://.godot/imported/apple-iphone-14-pro-max-256gb-gold-europa.jpg-461bfceadc6c5bc036a9a0375d7d4568.ctex"
+uid="uid://drakndnoesiuf"
+path="res://.godot/imported/commenta2.png-47d973674d55ff8392b6491f27c049cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/apple-iphone-14-pro-max-256gb-gold-europa.jpg"
-dest_files=["res://.godot/imported/apple-iphone-14-pro-max-256gb-gold-europa.jpg-461bfceadc6c5bc036a9a0375d7d4568.ctex"]
+source_file="res://images/commenta2.png"
+dest_files=["res://.godot/imported/commenta2.png-47d973674d55ff8392b6491f27c049cb.ctex"]
 
 [params]
 
