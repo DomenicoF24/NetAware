@@ -5,6 +5,8 @@ extends Control
 @onready var btn_objectives = $Center/MenuVBox/SmallButtons/Obiettivi
 @onready var btn_options = $Center/MenuVBox/SmallButtons/Impostazioni
 @onready var btn_quit = $Center/MenuVbox/SmallButtons/Esci
+@onready var btn_profile = $ProfileButton
+@onready var profile_popup = $ProfilePopup
 #@onready var click_sound = $UI_Audio
 
 func _ready() -> void:
@@ -14,6 +16,7 @@ func _ready() -> void:
 	# Connessioni
 	_connect_button(play_btn, "_on_play_pressed")
 	_connect_button(btn_quit, "_on_quit_pressed")
+	_connect_button(btn_profile, "_on_profile_pressed")
 	$ConfermaUscita.confirmed.connect(Callable(self, "_on_exit_confirmed"))
 	#_connect_button(btn_tutorial, "_on_tutorial_pressed")
 	#_connect_button(btn_objectives, "_on_objectives_pressed")

@@ -1,8 +1,8 @@
+res://MainMenu.tscn
 res://feed.tscn
 res://TestGM.tscn
 res://Post.tscn
-res://MainMenu.tscn
-res://Scripts/GameManager.gd
-res://Scripts/main_container.gd
-res://Scripts/Post.gd
-res://Scripts/Feed.gd
+res://main_menu.gd
+res://ProfilePopup.gd
+res://ProfilePopup.tscn
+res://PPControl.gd
