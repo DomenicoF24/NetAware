@@ -6,7 +6,6 @@ extends Control
 @onready var btn_options = $Center/MenuVBox/SmallButtons/Impostazioni
 @onready var btn_quit = $Center/MenuVbox/SmallButtons/Esci
 @onready var btn_profile = $ProfileButton
-@onready var profile_popup = $ProfilePopup
 #@onready var click_sound = $UI_Audio
 
 func _ready() -> void:
@@ -55,6 +54,11 @@ func _on_play_pressed() -> void:
 func _on_quit_pressed() -> void:
 	#click_sound.play()
 	$ConfermaUscita.popup_centered()
+
+func _on_profile_pressed() -> void:
+	#click_sound.play()
+	# carica la scena del gioco (Feed o MainScene)
+	get_tree().change_scene_to_file("res://ProfilePage.tscn")
 
 func _on_exit_confirmed():
 	get_tree().quit()

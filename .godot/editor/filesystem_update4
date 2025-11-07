@@ -1,8 +1,6 @@
+res://ProfilePage.tscn
 res://MainMenu.tscn
+res://main_menu.gd
 res://feed.tscn
 res://TestGM.tscn
 res://Post.tscn
-res://main_menu.gd
-res://ProfilePopup.gd
-res://ProfilePopup.tscn
-res://PPControl.gd
