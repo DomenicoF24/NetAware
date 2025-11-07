@@ -4,3 +4,5 @@ res://main_menu.gd
 res://feed.tscn
 res://TestGM.tscn
 res://Post.tscn
+res://profile_page.gd
+res://Scripts/GameManager.gd

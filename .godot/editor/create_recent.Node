@@ -1,13 +1,13 @@
+Button
+TextureButton
 Label
 LineEdit
 TextureRect
 VBoxContainer
 TextEdit
-TextureButton
 HBoxContainer
 GridContainer
 PopupPanel
-Button
 Panel
 PanelContainer
 CanvasLayer

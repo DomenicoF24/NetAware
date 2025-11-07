@@ -20,6 +20,9 @@ func _ready() -> void:
 	#_connect_button(btn_tutorial, "_on_tutorial_pressed")
 	#_connect_button(btn_objectives, "_on_objectives_pressed")
 	#_connect_button(btn_options, "_on_options_pressed")
+	btn_profile.text = GameManager.player_name
+	if not GameManager.player_name_changed.is_connected(_on_player_name_changed):
+		GameManager.player_name_changed.connect(_on_player_name_changed)
 	
 	
 	# opzionale: riproduci musica di sottofondo se impostata
@@ -62,3 +65,6 @@ func _on_profile_pressed() -> void:
 
 func _on_exit_confirmed():
 	get_tree().quit()
+
+func _on_player_name_changed(new_name: String):
+	btn_profile.text = new_name

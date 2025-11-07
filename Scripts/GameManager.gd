@@ -3,12 +3,14 @@ extends Node
 # Segnali
 signal indicators_changed(sc, emp, priv, dep)
 signal event_logged(text)
+signal player_name_changed(new_name)
 
 # Valori iniziali
 var spirito_critico := 50
 var empatia := 50
 var privacy := 50
 var dipendenza := 0
+var player_name: String = "Profilo"
 
 # Piccoli suggerimenti educativi
 var tips_by_category := {
@@ -53,6 +55,7 @@ var dep_timer: Timer  # timer per incremento automatico
 func _ready() -> void:
 	print("[GameManager] ready")
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+	load_profile()
 
 # ✅ Timer automatico che aumenta la dipendenza ogni 10s
 	dep_timer = Timer.new()
@@ -128,3 +131,18 @@ func get_tip(category: String) -> String:
 	else:
 		var tips = tips_by_category["default"]
 		return tips[randi() % tips.size()]
+
+func set_player_name(new_name: String):
+	player_name = new_name
+	save_profile()
+	player_name_changed.emit(new_name)
+
+func save_profile():
+	var cfg := ConfigFile.new()
+	cfg.set_value("profile", "name", player_name)
+	cfg.save("user://profile.cfg")
+
+func load_profile():
+	var cfg := ConfigFile.new()
+	if cfg.load("user://profile.cfg") == OK:
+		player_name = cfg.get_value("profile", "name", "Player")

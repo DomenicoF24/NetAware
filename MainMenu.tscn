@@ -263,7 +263,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_afec1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qoqlk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_31qfy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_iwfq2")
-text = "Obiettivi
+text = "Achievements
 "
 
 [node name="Impostazioni" type="Button" parent="Center/MenuVbox/SmallButtons"]
@@ -296,7 +296,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_iwfq2")
 text = "Esci"
 
 [node name="ProfileButton" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
