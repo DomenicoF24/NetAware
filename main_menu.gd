@@ -9,8 +9,6 @@ extends Control
 #@onready var click_sound = $UI_Audio
 
 func _ready() -> void:
-	# Focus iniziale sul Play
-	play_btn.grab_focus()
 	
 	# Connessioni
 	_connect_button(play_btn, "_on_play_pressed")
@@ -47,8 +45,8 @@ func _apply_avatar(tex: Texture2D):
 	if not tex: return
 	if btn_profile is TextureRect:
 		btn_profile.texture = tex
-	elif btn_profile is TextureButton:
-		btn_profile.texture_normal = tex
+	elif btn_profile is Button:
+		btn_profile.icon = tex
 #func _on_tutorial_pressed() -> void:
 #	click_sound.play()
 #	# apri una scena tutorial o mostra popup

@@ -17,6 +17,7 @@ var avatar_id: String = "default"
 #Array di avatar
 var avatars:= {
 	"default": {"thumb": "res://images/profilo.png", "full": "res://images/profilo96.png", "unlocked": true},
+	"girl1": {"thumb": "res://images/avatar/picGirl1-32.png", "full": "res://images//avatar96/picGirl1-96.png", "unlocked": true}
 }
 
 #suggerimenti educativi

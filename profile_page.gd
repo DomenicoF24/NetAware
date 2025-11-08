@@ -2,36 +2,52 @@ extends Control
 
 @onready var back = $Button
 @onready var userName = $VBoxContainer/HBoxContainer/VBoxContainer/LineEdit
-@onready var avatar_button:= $VBoxContainer/HBoxContainer/TextureButton
-@onready var picker:= preload("res://AvatarPicker.tscn").instantiate()
+@onready var avatar_button: Button = $VBoxContainer/HBoxContainer/Button
+@onready var picker: Window = preload("res://AvatarPicker.tscn").instantiate()
 
 func _ready() -> void:
+	if not avatar_button.pressed.is_connected(_on_avatar_Button_pressed):
+		avatar_button.pressed.connect(_on_avatar_Button_pressed)
 	userName.text = GameManager.player_name
 	userName.text_submitted.connect(_on_name_submitted)
 	_connect_button(back, "_on_back_pressed")
 	
-	add_child(picker)
-	picker.hide()
-	picker.avatar_selected.connect(_on_avatar_selected)
+# NON aggiungere il root Control (evita overlay che mangia i click)
+# add_child(picker_root)  # <-- rimuovi/commneta
+
+# Aggiungi solo la Window sopra a tutto
+	get_tree().root.add_child(picker)
+	picker.visible = false
+	
+	if picker.has_signal("avatar_selected") and not picker.avatar_selected.is_connected(_on_avatar_selected):
+		picker.avatar_selected.connect(_on_avatar_selected)
+	if picker.has_method("build_grid"):
+		picker.build_grid()
 	var full_tex = GameManager.get_avatar_texture_full()
-	if full_tex: avatar_button.texture_normal = full_tex
+	if full_tex: 
+		avatar_button.icon = full_tex
+		avatar_button.text = ""
 
 func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
 	
 
 func _on_back_pressed() -> void:
-	
 	get_tree().change_scene_to_file("res://MainMenu.tscn")
 
 func _on_name_submitted(new_text: String):
 	GameManager.set_player_name(new_text)
 	
-func _on_avatar_TextureButton_pressed():
-	picker.popup_centered_ratio(0.6)
+#non funziona
+func _on_avatar_Button_pressed():
+	if picker.has_method("build_grid"):
+		picker.build_grid()
+	picker.popup_centered()
+	picker.move_to_foreground()
 
 func _on_avatar_selected(id: String):
 	GameManager.set_avatar(id)
 	var full_tex = GameManager.get_avatar_texture_full()
 	if full_tex:
-		avatar_button.texture_normal = full_tex
+		avatar_button.icon= full_tex
+	picker.hide()
