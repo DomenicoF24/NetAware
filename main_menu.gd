@@ -24,7 +24,9 @@ func _ready() -> void:
 	if not GameManager.player_name_changed.is_connected(_on_player_name_changed):
 		GameManager.player_name_changed.connect(_on_player_name_changed)
 	
-	
+	_apply_avatar(GameManager.get_avatar_texture_thumb())
+	if not GameManager.avatar_changed.is_connected(_on_avatar_changed):
+		GameManager.avatar_changed.connect(_on_avatar_changed)
 	# opzionale: riproduci musica di sottofondo se impostata
 	# $BackgroundMusic.play()
 
@@ -38,6 +40,15 @@ func _on_play_pressed() -> void:
 	# carica la scena del gioco (Feed o MainScene)
 	get_tree().change_scene_to_file("res://feed.tscn")
 
+func _on_avatar_changed(tex: Texture2D, _id: String):
+	_apply_avatar(tex)
+
+func _apply_avatar(tex: Texture2D):
+	if not tex: return
+	if btn_profile is TextureRect:
+		btn_profile.texture = tex
+	elif btn_profile is TextureButton:
+		btn_profile.texture_normal = tex
 #func _on_tutorial_pressed() -> void:
 #	click_sound.play()
 #	# apri una scena tutorial o mostra popup

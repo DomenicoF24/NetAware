@@ -1,18 +1,25 @@
 extends Node
 
-# Segnali
+#Segnali
 signal indicators_changed(sc, emp, priv, dep)
 signal event_logged(text)
 signal player_name_changed(new_name)
+signal avatar_changed(tex_full: Texture2D, id: String)
 
-# Valori iniziali
+#Valori iniziali
 var spirito_critico := 50
 var empatia := 50
 var privacy := 50
 var dipendenza := 0
 var player_name: String = "Profilo"
+var avatar_id: String = "default"
 
-# Piccoli suggerimenti educativi
+#Array di avatar
+var avatars:= {
+	"default": {"thumb": "res://images/profilo.png", "full": "res://images/profilo96.png", "unlocked": true},
+}
+
+#suggerimenti educativi
 var tips_by_category := {
 	"fake_news": [
 		"Verifica sempre la fonte originale.",
@@ -57,7 +64,7 @@ func _ready() -> void:
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 	load_profile()
 
-# ✅ Timer automatico che aumenta la dipendenza ogni 10s
+# Timer automatico che aumenta la dipendenza ogni 10s
 	dep_timer = Timer.new()
 	dep_timer.wait_time = 8.0
 	dep_timer.autostart = true
@@ -122,6 +129,38 @@ func _show_achievement(text: String, tex: Texture2D) -> void:
 	var popup = get_tree().root.get_node("Feed/AchievementPopup")
 	popup.show_achievement(text, tex)
 	
+func _load_tex(path: String) -> Texture2D:
+	return load(path) if path != "" and ResourceLoader.exists(path) else null
+	
+func get_avatar_texture_full(id := avatar_id) -> Texture2D:
+	var info: Dictionary = avatars.get(id)
+	if info:
+		var tex: Texture2D = _load_tex(info.get("full", ""))
+		if tex:
+			return tex
+		return _load_tex(info.get("thumb", ""))
+	return null
+
+func get_avatar_texture_thumb(id := avatar_id) -> Texture2D:
+	var info: Dictionary = avatars.get(id)
+	if info:
+		var tex: Texture2D = _load_tex(info.get("thumb", ""))
+		if tex:
+			return tex
+		return _load_tex(info.get("full", ""))
+	return null
+
+func set_avatar(id: String) -> void:
+	if not avatars.has(id): return
+	if not avatars[id].unlocked: return
+	avatar_id = id
+	save_profile()
+	avatar_changed.emit(get_avatar_texture_full(), id)
+
+func unlock_avatar(id: String) -> void:
+	if avatars.has(id):
+		avatars[id].unlocked = true
+		save_profile()
 
 
 func get_tip(category: String) -> String:
@@ -137,12 +176,23 @@ func set_player_name(new_name: String):
 	save_profile()
 	player_name_changed.emit(new_name)
 
+#salva il profilo
 func save_profile():
 	var cfg := ConfigFile.new()
 	cfg.set_value("profile", "name", player_name)
+	cfg.set_value("profile", "avatar_id", avatar_id)
+	var unlocked_ids := []
+	for k in avatars.keys():
+		if avatars[k].unlocked:
+			unlocked_ids.append(k)
+	cfg.set_value("profile", "unlocked_avatars", unlocked_ids)
 	cfg.save("user://profile.cfg")
-
+#carica il profilo
 func load_profile():
 	var cfg := ConfigFile.new()
 	if cfg.load("user://profile.cfg") == OK:
-		player_name = cfg.get_value("profile", "name", "Player")
+		player_name = cfg.get_value("profile", "name", player_name)
+		avatar_id = cfg.get_value("profile", "avatar_id", avatar_id)
+		var unlocked_ids: Array =cfg.get_value("Profile", "unlocked_avatars", [])
+		for k in avatars.keys():
+			avatars[k].unlocked = k in unlocked_ids or avatars[k]. unlocked
