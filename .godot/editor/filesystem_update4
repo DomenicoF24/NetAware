@@ -1,11 +1,7 @@
-res://ProfilePage.tscn
-res://Scripts/GameManager.gd
-res://AvatarPicker.tscn
-res://avatarWindow.gd
-res://profile_page.gd
 res://MainMenu.tscn
-res://main_menu.gd
+res://Scripts/GameManager.gd
 res://feed.tscn
 res://TestGM.tscn
 res://Post.tscn
-res://avatar_picker.gd
+res://ProfilePage.tscn
+res://AvatarPicker.tscn

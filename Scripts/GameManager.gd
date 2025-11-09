@@ -17,7 +17,24 @@ var avatar_id: String = "default"
 #Array di avatar
 var avatars:= {
 	"default": {"thumb": "res://images/profilo.png", "full": "res://images/profilo96.png", "unlocked": true},
-	"girl1": {"thumb": "res://images/avatar/picGirl1-32.png", "full": "res://images//avatar96/picGirl1-96.png", "unlocked": true}
+	"girl1": {"thumb": "res://images/avatar/picGirl1-32.png", "full": "res://images//avatar96/picGirl1-96.png", "unlocked": true},
+	"girl2": {"thumb": "res://images/avatar/picGirl2-32.png", "full": "res://images//avatar96/picGirl2-96.png", "unlocked": true},
+	"girl3": {"thumb": "res://images/avatar/picGirl3-32.png", "full": "res://images//avatar96/picGirl3-96.png", "unlocked": true},
+	"girl4": {"thumb": "res://images/avatar/picGirl4-32.png", "full": "res://images//avatar96/picGirl4-96.png", "unlocked": true},
+	"girl5": {"thumb": "res://images/avatar/picGirl5-32.png", "full": "res://images//avatar96/picGirl5-96.png", "unlocked": true},
+	"girl6": {"thumb": "res://images/avatar/picGirl6-32.png", "full": "res://images//avatar96/picGirl6-96.png", "unlocked": true},
+	"girl7": {"thumb": "res://images/avatar/picGirl7-32.png", "full": "res://images//avatar96/picGirl7-96.png", "unlocked": true},
+	"girl8": {"thumb": "res://images/avatar/picGirl8-32.png", "full": "res://images//avatar96/picGirl8-96.png", "unlocked": true},
+	"girl9": {"thumb": "res://images/avatar/picGirl9-32.png", "full": "res://images//avatar96/picGirl9-96.png", "unlocked": true},
+	"girl10": {"thumb": "res://images/avatar/picGirl10-32.png", "full": "res://images//avatar96/picGirl10-96.png", "unlocked": true},
+	"girl11": {"thumb": "res://images/avatar/picGirl11-32.png", "full": "res://images//avatar96/picGirl11-96.png", "unlocked": true},
+	"boy1": {"thumb": "res://images/avatar/picBoy1-32.png", "full": "res://images//avatar96/picBoy1-96.png", "unlocked": true},
+	"boy2": {"thumb": "res://images/avatar/picBoy2-32.png", "full": "res://images//avatar96/picBoy2-96.png", "unlocked": true},
+	"boy3": {"thumb": "res://images/avatar/picBoy3-32.png", "full": "res://images//avatar96/picBoy3-96.png", "unlocked": true},
+	"boy4": {"thumb": "res://images/avatar/picBoy4-32.png", "full": "res://images//avatar96/picBoy4-96.png", "unlocked": true},
+	"boy5": {"thumb": "res://images/avatar/picBoy5-32.png", "full": "res://images//avatar96/picBoy5-96.png", "unlocked": true},
+	"boy6": {"thumb": "res://images/avatar/picBoy6-32.png", "full": "res://images//avatar96/picBoy6-96.png", "unlocked": true},
+	"boy7": {"thumb": "res://images/avatar/picBoy7-32.png", "full": "res://images//avatar96/picBoy7-96.png", "unlocked": true},
 }
 
 #suggerimenti educativi
