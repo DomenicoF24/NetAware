@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://csvubo4pytktv" path="res://images/back_arrow32.png" id="4_qjidb"]
 
 [sub_resource type="Gradient" id="Gradient_h7a2f"]
-offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
-colors = PackedColorArray(0.960784, 0.521569, 0.160784, 1, 0.866667, 0.164706, 0.482353, 1, 0.505882, 0.203922, 0.686275, 1, 0.317647, 0.356863, 0.831373, 1)
+colors = PackedColorArray(0.196078, 0.737255, 0.462745, 1, 0.258628, 0.559869, 0.786749, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qjidb"]
 gradient = SubResource("Gradient_h7a2f")
+fill = 1
+repeat = 2
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -73,7 +74,14 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
 theme_override_fonts/font = ExtResource("2_ylj54")
-text = "Ore di gioco"
+text = "Tempo di gioco"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
+theme_override_fonts/font = ExtResource("2_ylj54")
+text = "00.00.00"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

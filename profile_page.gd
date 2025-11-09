@@ -4,6 +4,7 @@ extends Control
 @onready var userName = $VBoxContainer/HBoxContainer/VBoxContainer/LineEdit
 @onready var avatar_button: Button = $VBoxContainer/HBoxContainer/Button
 @onready var picker: Window = preload("res://AvatarPicker.tscn").instantiate()
+@onready var time_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/Label2
 
 func _ready() -> void:
 	if not avatar_button.pressed.is_connected(_on_avatar_Button_pressed):
@@ -11,10 +12,10 @@ func _ready() -> void:
 	userName.text = GameManager.player_name
 	userName.text_submitted.connect(_on_name_submitted)
 	_connect_button(back, "_on_back_pressed")
-	
-# NON aggiungere il root Control (evita overlay che mangia i click)
-# add_child(picker_root)  # <-- rimuovi/commneta
 
+#timer per tempo di gioco
+	time_label.text = GameTime.format_time_hhmmss(GameTime.total_seconds)
+	GameTime.total_time_changed.connect(_on_total_time_changed)
 # Aggiungi solo la Window sopra a tutto
 	get_tree().root.add_child(picker)
 	picker.visible = false
@@ -51,3 +52,5 @@ func _on_avatar_selected(id: String):
 	if full_tex:
 		avatar_button.icon= full_tex
 	picker.hide()
+func _on_total_time_changed(new_total: int) -> void:
+	time_label.text = GameTime.format_time_hhmmss(new_total)

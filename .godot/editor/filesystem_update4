@@ -5,3 +5,5 @@ res://TestGM.tscn
 res://Post.tscn
 res://ProfilePage.tscn
 res://AvatarPicker.tscn
+res://GameTime.gd
+res://profile_page.gd
