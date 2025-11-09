@@ -35,6 +35,7 @@ var avatars:= {
 	"boy5": {"thumb": "res://images/avatar/picBoy5-32.png", "full": "res://images//avatar96/picBoy5-96.png", "unlocked": true},
 	"boy6": {"thumb": "res://images/avatar/picBoy6-32.png", "full": "res://images//avatar96/picBoy6-96.png", "unlocked": true},
 	"boy7": {"thumb": "res://images/avatar/picBoy7-32.png", "full": "res://images//avatar96/picBoy7-96.png", "unlocked": true},
+	"SC100": {"thumb": "res://images/avatar/picSC100-32.png", "full": "res://images//avatar96/picSC100-96.png", "unlocked": false},
 }
 
 #suggerimenti educativi
@@ -117,12 +118,16 @@ func apply_effect(effect: Dictionary, reason: String = "") -> void:
 
 	if spirito_critico == 100:
 		_show_achievement("Hai guadagnato la medaglia 'PENSATORE CRITICO'", preload("res://images/medal.png"))
+		Achievement.unlock("100SP")
 	if empatia == 100:
 		_show_achievement("Hai guadagnato la medaglia 'EMPATICO DIGITALE'", preload("res://images/medal.png"))
+		Achievement.unlock("100E")
 	if privacy == 100:
 		_show_achievement("Hai guadagnato la medaglia 'GUARDIANO DELLA PRIVACY'", preload("res://images/medal.png"))
+		Achievement.unlock("100P")
 	if dipendenza == 100:
 		_show_achievement("Hai guadagnato la medaglia 'MAESTRO DELL’EQUILIBRIO'", preload("res://images/medal.png"))
+		Achievement.unlock("100D")
 	if spirito_critico == 100 and empatia == 100 and privacy == 100 and dipendenza == 100:
 		_show_final_achievement("Hai guadagnato la medaglia 'ESPERTO SOCIAL'", preload("res://images/trophy.png"))
 

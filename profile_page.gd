@@ -5,6 +5,8 @@ extends Control
 @onready var avatar_button: Button = $VBoxContainer/HBoxContainer/Button
 @onready var picker: Window = preload("res://AvatarPicker.tscn").instantiate()
 @onready var time_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/Label2
+@onready var grid: GridContainer = $VBoxContainer/MarginContainer/ScrollContainer/GridContainer
+var _card_by_id: Dictionary = {}
 
 func _ready() -> void:
 	if not avatar_button.pressed.is_connected(_on_avatar_Button_pressed):
@@ -28,6 +30,10 @@ func _ready() -> void:
 	if full_tex: 
 		avatar_button.icon = full_tex
 		avatar_button.text = ""
+	#popolare la grid
+	_populate_achievements()
+	if not Achievement.achievement_unlocked.is_connected(_on_achievement_unlocked):
+		Achievement.achievement_unlocked.connect(_on_achievement_unlocked)
 
 func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
@@ -54,3 +60,22 @@ func _on_avatar_selected(id: String):
 	picker.hide()
 func _on_total_time_changed(new_total: int) -> void:
 	time_label.text = GameTime.format_time_hhmmss(new_total)
+	
+func _populate_achievements() -> void:
+	for child in grid.get_children():
+		child.queue_free()
+	_card_by_id.clear()
+	
+	for id in Achievement.all():
+		var data := Achievement.get_data(id)
+		var unlocked := Achievement.is_unlocked(id)
+		
+		var card := load("res://AchievementCard.tscn").instantiate() as AchievementCard
+		grid.add_child(card)
+		card.setup_from_data(id, data, unlocked)
+		_card_by_id[id] = card
+		
+func _on_achievement_unlocked(id: String) -> void:
+	if _card_by_id.has(id):
+		var card: AchievementCard = _card_by_id[id]
+		card.set_unlocked(true)

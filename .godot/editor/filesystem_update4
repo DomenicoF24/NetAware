@@ -7,3 +7,6 @@ res://ProfilePage.tscn
 res://AvatarPicker.tscn
 res://GameTime.gd
 res://profile_page.gd
+res://Achievement.gd
+res://AchievementCard.tscn
+res://achievement_card.gd

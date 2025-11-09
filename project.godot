@@ -21,6 +21,7 @@ GameManager="*res://Scripts/GameManager.gd"
 EffectsManager="*res://effects_layer.gd"
 PopupMessaggio="*res://popup_messaggio.gd"
 GameTime="*res://GameTime.gd"
+Achievement="*res://Achievement.gd"
 
 [display]
 
