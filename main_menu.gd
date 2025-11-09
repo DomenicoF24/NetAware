@@ -2,7 +2,6 @@ extends Control
 
 @onready var play_btn = $Center/MenuVbox/Play
 @onready var btn_tutorial = $Center/MenuVBox/SmallButtons/Tutorial
-@onready var btn_objectives = $Center/MenuVBox/SmallButtons/Obiettivi
 @onready var btn_options = $Center/MenuVBox/SmallButtons/Impostazioni
 @onready var btn_quit = $Center/MenuVbox/SmallButtons/Esci
 @onready var btn_profile = $ProfileButton
@@ -51,12 +50,6 @@ func _apply_avatar(tex: Texture2D):
 #	click_sound.play()
 #	# apri una scena tutorial o mostra popup
 #	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn") # se hai creato
-
-#func _on_objectives_pressed() -> void:
-#	click_sound.play()
-	# mostra popup con obiettivi (o change_scene)
-	# Example: mostra un ConfirmationDialog o Popup con testo
-	# $ObjectivesPopup.show()
 
 #func _on_options_pressed() -> void:
 #	click_sound.play()

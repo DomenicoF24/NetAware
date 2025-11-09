@@ -7,12 +7,10 @@ class_name AchievementCard
 @onready var _title: Label = $VBoxContainer/Title
 @onready var _lock: ColorRect = $ColorRect
 
-var _unlocked: bool = false
-
 func setup_from_data(id: String, data: Dictionary, unlocked: bool) -> void:
 	achievement_id = id
 	_title.text = String(data.get("name", id))
-	_unlocked = unlocked
+	var _unlocked := Achievement.is_unlocked(id)
 	_lock.visible = not _unlocked
 	
 	var how := String (data.get("how", ""))
@@ -28,6 +26,6 @@ func setup_from_data(id: String, data: Dictionary, unlocked: bool) -> void:
 	modulate = Color(1,1,1,1) if _unlocked else Color (0.8,0.8,0.8,1)
 	
 func set_unlocked(value: bool) -> void:
-	_unlocked = value
+	var _unlocked = value
 	_lock.visible = not _unlocked
 	modulate = Color(1,1,1,1) if _unlocked else Color (0.8,0.8,0.8,1)

@@ -36,6 +36,8 @@ var avatars:= {
 	"boy6": {"thumb": "res://images/avatar/picBoy6-32.png", "full": "res://images//avatar96/picBoy6-96.png", "unlocked": true},
 	"boy7": {"thumb": "res://images/avatar/picBoy7-32.png", "full": "res://images//avatar96/picBoy7-96.png", "unlocked": true},
 	"SC100": {"thumb": "res://images/avatar/picSC100-32.png", "full": "res://images//avatar96/picSC100-96.png", "unlocked": false},
+	"P100": {"thumb": "res://images/avatar/picP100-32.png", "full": "res://images//avatar96/picP100-96.png", "unlocked": false},
+	"D100": {"thumb": "res://images/avatar/picD100-32.png", "full": "res://images//avatar96/picD100-96.png", "unlocked": false},
 }
 
 #suggerimenti educativi

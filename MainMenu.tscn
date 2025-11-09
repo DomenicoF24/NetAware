@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhononsjqtd5s"]
+[gd_scene load_steps=23 format=3 uid="uid://bhononsjqtd5s"]
 
 [ext_resource type="Script" uid="uid://dw218r8dmlrqq" path="res://main_menu.gd" id="1_h7a2f"]
 [ext_resource type="Script" uid="uid://b88mhr0rt7ssv" path="res://cuoreUI.gd" id="1_i26rj"]
@@ -63,20 +63,6 @@ corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwfq2"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afec1"]
-bg_color = Color(0.819608, 0.898039, 1, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31qfy"]
-bg_color = Color(0.819608, 0.898039, 1, 1)
 corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
@@ -250,21 +236,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qoqlk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7cqb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_iwfq2")
 text = "Tutorial"
-
-[node name="Obiettivi" type="Button" parent="Center/MenuVbox/SmallButtons"]
-custom_minimum_size = Vector2(220, 44)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.309804, 0.321569, 1, 1)
-theme_override_fonts/font = ExtResource("2_eiy7p")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_afec1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qoqlk")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_31qfy")
-theme_override_styles/normal = SubResource("StyleBoxFlat_iwfq2")
-text = "Achievements
-"
 
 [node name="Impostazioni" type="Button" parent="Center/MenuVbox/SmallButtons"]
 custom_minimum_size = Vector2(220, 44)
