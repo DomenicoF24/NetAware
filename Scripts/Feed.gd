@@ -7,6 +7,7 @@ extends Control
 @onready var posts_container = $MainContainer/FeedColumn/PostsContainer
 @onready var ideaButton = $MainContainer/Indicators/HBoxContainer5/IdeaButton 
 @onready var feedback_label = $MainContainer/Indicators/HBoxContainer5/FeedbackLabel  # 👈 aggiunta Label
+@onready var profile = $MainContainer/Sidebar/ProfileButton
 
 var post_scene = preload("res://Post.tscn")
 
@@ -25,6 +26,37 @@ func _ready() -> void:
 
 	# Genera 5 post casuali
 	spawn_random_posts(15)
+	_connect_button(profile, "_on_profile_pressed")
+	profile.text = GameManager.player_name
+	if not GameManager.player_name_changed.is_connected(_on_player_name_changed):
+		GameManager.player_name_changed.connect(_on_player_name_changed)
+	
+	_apply_avatar(GameManager.get_avatar_texture_thumb())
+	if not GameManager.avatar_changed.is_connected(_on_avatar_changed):
+		GameManager.avatar_changed.connect(_on_avatar_changed)
+func _connect_button(btn: Button, pressed_callback_name: String) -> void:
+	btn.pressed.connect(Callable(self, pressed_callback_name))
+
+func _on_profile_pressed():
+	var profile_scene = preload("res://ProfilePage.tscn")
+	var profile2 = profile_scene.instantiate()
+	profile2.return_to = 1
+
+	var tree = get_tree()
+	var old = tree.current_scene
+	tree.root.add_child(profile2)
+	tree.current_scene = profile2
+	if old:
+		old.queue_free()
+
+func _apply_avatar(tex: Texture2D):
+	if not tex: return
+	if profile is TextureRect:
+		profile.texture = tex
+	elif profile is Button:
+		profile.icon = tex
+func _on_player_name_changed(new_name: String):
+	profile.text = new_name
 
 func _on_indicators_changed(sc: int, emp: int, priv: int, dep: int) -> void:
 	animate_progressbar(pb_sc, sc)
@@ -87,6 +119,9 @@ func spawn_random_posts(count: int = 5) -> void:
 		
 		# Rimuovo il template appena usato per evitare duplicati
 		available_posts.remove_at(index)
+		
+func _on_avatar_changed(tex: Texture2D, _id: String):
+	_apply_avatar(tex)
 
 
 var post_templates = [

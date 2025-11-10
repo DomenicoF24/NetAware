@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="3_8bbnt"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="3_ffoa4"]
 [ext_resource type="Texture2D" uid="uid://8gbgabwnt1u1" path="res://images/notification.png" id="4_ogxe3"]
-[ext_resource type="Texture2D" uid="uid://c5b45hge43bd5" path="res://images/user.png" id="5_fqlfk"]
 [ext_resource type="Texture2D" uid="uid://c71ntu4v1208n" path="res://images/settings.png" id="6_tlspd"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="7_g6u5n"]
 [ext_resource type="Texture2D" uid="uid://22bavs02n1so" path="res://images/brain64.png" id="7_tlspd"]
+[ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="8_lryug"]
 [ext_resource type="Texture2D" uid="uid://j3wfr646cnhq" path="res://images/cuori64.png" id="8_ogxe3"]
 [ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_qj288"]
 [ext_resource type="Texture2D" uid="uid://b5c6kkihy1obt" path="res://images/lock64.png" id="9_w50hx"]
@@ -67,18 +68,6 @@ variation_embolden = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovler"]
 bg_color = Color(0, 0, 0, 0.0980392)
 
-[sub_resource type="FontVariation" id="FontVariation_g6u5n"]
-variation_embolden = 0.5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3unk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2u3o"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idamg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igd52"]
-bg_color = Color(0, 0, 0, 0.0980392)
-
 [sub_resource type="FontVariation" id="FontVariation_ouxst"]
 variation_embolden = 0.5
 
@@ -90,6 +79,34 @@ variation_embolden = 0.5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p333c"]
 bg_color = Color(0, 0, 0, 0.0980392)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3unk"]
+bg_color = Color(0.819608, 0.898039, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2u3o"]
+bg_color = Color(0.819608, 0.898039, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idamg"]
+bg_color = Color(0.819608, 0.898039, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igd52"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="FontVariation" id="FontVariation_xoqp3"]
 variation_embolden = 0.5
@@ -244,24 +261,6 @@ icon = ExtResource("4_ogxe3")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="Profilo" type="Button" parent="MainContainer/Sidebar"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = SubResource("FontVariation_g6u5n")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/disabled = SubResource("StyleBoxFlat_w3unk")
-theme_override_styles/hover = SubResource("StyleBoxFlat_q2u3o")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_idamg")
-theme_override_styles/normal = SubResource("StyleBoxFlat_igd52")
-text = "PROFILO"
-icon = ExtResource("5_fqlfk")
-icon_alignment = 1
-vertical_icon_alignment = 0
-
 [node name="Impostazioni" type="Button" parent="MainContainer/Sidebar"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -279,6 +278,23 @@ text = "IMPOSTAZIONI"
 icon = ExtResource("6_tlspd")
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[node name="ProfileButton" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_pressed_color = Color(0.819608, 0.898039, 1, 1)
+theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
+theme_override_colors/font_color = Color(0.309804, 0.321569, 1, 1)
+theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_w3unk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q2u3o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_idamg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_igd52")
+text = "Profilo"
+icon = ExtResource("8_lryug")
+flat = true
 
 [node name="FeedColumn" type="ScrollContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 900)

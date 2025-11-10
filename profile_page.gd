@@ -6,6 +6,7 @@ extends Control
 @onready var picker: Window = preload("res://AvatarPicker.tscn").instantiate()
 @onready var time_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/Label2
 @onready var grid: GridContainer = $VBoxContainer/MarginContainer/ScrollContainer/GridContainer
+@export var return_to: int = 0
 var _card_by_id: Dictionary = {}
 
 func _ready() -> void:
@@ -39,8 +40,11 @@ func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
 	
 
-func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+func _on_back_pressed():
+	if return_to == 0:
+		get_tree().change_scene_to_file("res://MainMenu.tscn")
+	else:
+		get_tree().change_scene_to_file("res://feed.tscn")
 
 func _on_name_submitted(new_text: String):
 	GameManager.set_player_name(new_text)

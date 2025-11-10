@@ -60,10 +60,17 @@ func _on_quit_pressed() -> void:
 	#click_sound.play()
 	$ConfermaUscita.popup_centered()
 
-func _on_profile_pressed() -> void:
-	#click_sound.play()
-	# carica la scena del gioco (Feed o MainScene)
-	get_tree().change_scene_to_file("res://ProfilePage.tscn")
+func _on_profile_pressed():
+	var profile_scene = preload("res://ProfilePage.tscn")
+	var profile = profile_scene.instantiate()
+	profile.return_to = 0
+
+	var tree = get_tree()
+	var old = tree.current_scene
+	tree.root.add_child(profile)
+	tree.current_scene = profile
+	if old:
+		old.queue_free()
 
 func _on_exit_confirmed():
 	get_tree().quit()

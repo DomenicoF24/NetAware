@@ -1,13 +1,11 @@
-res://MainMenu.tscn
-res://Scripts/GameManager.gd
 res://feed.tscn
 res://TestGM.tscn
 res://Post.tscn
+res://MainMenu.tscn
 res://ProfilePage.tscn
 res://AvatarPicker.tscn
-res://GameTime.gd
-res://profile_page.gd
-res://Achievement.gd
 res://AchievementCard.tscn
-res://achievement_card.gd
+res://Scripts/sidebar.gd
+res://Scripts/Feed.gd
+res://profile_page.gd
 res://main_menu.gd
