@@ -6,6 +6,7 @@ extends Control
 @onready var picker: Window = preload("res://AvatarPicker.tscn").instantiate()
 @onready var time_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/Label2
 @onready var grid: GridContainer = $VBoxContainer/MarginContainer/ScrollContainer/GridContainer
+@onready var XP:= $VBoxContainer/HBoxContainer/VBoxContainer/XPBar
 @export var return_to: int = 0
 var _card_by_id: Dictionary = {}
 
@@ -16,23 +17,27 @@ func _ready() -> void:
 	userName.text_submitted.connect(_on_name_submitted)
 	_connect_button(back, "_on_back_pressed")
 
-#timer per tempo di gioco
 	time_label.text = GameTime.format_time_hhmmss(GameTime.total_seconds)
 	GameTime.total_time_changed.connect(_on_total_time_changed)
-# Aggiungi solo la Window sopra a tutto
-	get_tree().root.add_child(picker)
+
+	# Avatar picker
+	if not is_instance_valid(picker):
+		picker = preload("res://AvatarPicker.tscn").instantiate()
+	if picker.get_parent() == null:
+		get_tree().root.add_child(picker)
 	picker.visible = false
-	
 	if picker.has_signal("avatar_selected") and not picker.avatar_selected.is_connected(_on_avatar_selected):
 		picker.avatar_selected.connect(_on_avatar_selected)
 	if picker.has_method("build_grid"):
 		picker.build_grid()
 	var full_tex = GameManager.get_avatar_texture_full()
-	if full_tex: 
+	if full_tex:
 		avatar_button.icon = full_tex
 		avatar_button.text = ""
-	#popolare la grid
+
+	# Niente load_state: persistenza gestita da AchievementsStore autoload
 	_populate_achievements()
+
 	if not Achievement.achievement_unlocked.is_connected(_on_achievement_unlocked):
 		Achievement.achievement_unlocked.connect(_on_achievement_unlocked)
 
@@ -69,17 +74,21 @@ func _populate_achievements() -> void:
 	for child in grid.get_children():
 		child.queue_free()
 	_card_by_id.clear()
-	
+
+	var scene := preload("res://AchievementCard.tscn")
 	for id in Achievement.all():
-		var data := Achievement.get_data(id)
-		var unlocked := Achievement.is_unlocked(id)
-		
-		var card := load("res://AchievementCard.tscn").instantiate() as AchievementCard
-		grid.add_child(card)
-		card.setup_from_data(id, data, unlocked)
+		var data: Dictionary = Achievement.get_data(id)
+		var unlocked: bool = Achievement.is_unlocked(id)
+
+		var card := scene.instantiate() as AchievementCard
+		grid.add_child(card)                      # 1) aggiungi prima
+		card.setup_from_data(id, data, unlocked)  # 2) poi setup
 		_card_by_id[id] = card
-		
+
 func _on_achievement_unlocked(id: String) -> void:
 	if _card_by_id.has(id):
 		var card: AchievementCard = _card_by_id[id]
 		card.set_unlocked(true)
+	else:
+		# se la card non è presente, ricostruisci la griglia
+		_populate_achievements()

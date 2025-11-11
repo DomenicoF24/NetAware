@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btmp5ovdpogo6"
-path="res://.godot/imported/AchieveSC100.png-e97e95ffb883bf2d82a3174795383e53.ctex"
+uid="uid://b2qvmcwbbar6q"
+path="res://.godot/imported/trofeo128.png-211e5f275f8bd9720866bfa4799260e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/AchieveSC100.png"
-dest_files=["res://.godot/imported/AchieveSC100.png-e97e95ffb883bf2d82a3174795383e53.ctex"]
+source_file="res://images/trofeo128.png"
+dest_files=["res://.godot/imported/trofeo128.png-211e5f275f8bd9720866bfa4799260e5.ctex"]
 
 [params]
 

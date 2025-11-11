@@ -34,6 +34,10 @@ func _ready() -> void:
 	_apply_avatar(GameManager.get_avatar_texture_thumb())
 	if not GameManager.avatar_changed.is_connected(_on_avatar_changed):
 		GameManager.avatar_changed.connect(_on_avatar_changed)
+
+	if not Achievement.achievement_unlocked.is_connected(_on_achievement_unlocked):
+		Achievement.achievement_unlocked.connect(_on_achievement_unlocked)
+
 func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
 
@@ -122,6 +126,24 @@ func spawn_random_posts(count: int = 5) -> void:
 		
 func _on_avatar_changed(tex: Texture2D, _id: String):
 	_apply_avatar(tex)
+
+func _on_achievement_unlocked(id: String) -> void:
+	var data := Achievement.get_data(id)
+	if data.is_empty():
+		return
+
+	var name := String(data.get("name", id))
+	var icon_path := String(data.get("icon", ""))
+	var tex: Texture2D = null
+	if icon_path != "" and ResourceLoader.exists(icon_path):
+		tex = load(icon_path)
+
+	var popup := get_tree().get_first_node_in_group("achievement_popup")
+	if popup:
+		if popup.has_method("show_achievement_id"):
+			popup.show_achievement_id(id, name, tex)
+		elif popup.has_method("show_achievement"):
+			popup.show_achievement("Hai sbloccato: %s" % name, tex)
 
 
 var post_templates = [

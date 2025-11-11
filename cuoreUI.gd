@@ -2,12 +2,12 @@ extends TextureRect
 
 @export var image_paths: Array[String] = [
 	"res://images/cuoreUI.png",
-	"res://images/bellUI.png",
+	"res://images/warningUI.png",
 	"res://images/hashtagUI.png",
 	"res://images/chatUI.png"
 ]
 
-@export var spawn_interval: float = 1.0 # ogni quanti secondi spawna una nuova immagine
+@export var spawn_interval: float = 0.5 # ogni quanti secondi spawna una nuova immagine
 @export var upward_speed_range := Vector2(40, 100)
 @export var amplitude_range := Vector2(20, 60)
 @export var frequency_range := Vector2(1.0, 2.5)

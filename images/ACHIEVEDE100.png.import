@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doxk0luci4jon"
-path="res://.godot/imported/bellUI.png-f1295887bd7bc18ea86929ccf7b4eaa3.ctex"
+uid="uid://dh0citwcc8c4g"
+path="res://.godot/imported/ACHIEVEDE100.png-2ce11ecda533ed0557b5c0aab663c89c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/bellUI.png"
-dest_files=["res://.godot/imported/bellUI.png-f1295887bd7bc18ea86929ccf7b4eaa3.ctex"]
+source_file="res://images/ACHIEVEDE100.png"
+dest_files=["res://.godot/imported/ACHIEVEDE100.png-2ce11ecda533ed0557b5c0aab663c89c.ctex"]
 
 [params]
 

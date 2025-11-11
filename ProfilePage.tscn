@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmfe6st03r855"]
+[gd_scene load_steps=9 format=3 uid="uid://cmfe6st03r855"]
 
 [ext_resource type="Texture2D" uid="uid://otlk355jovcm" path="res://images/profilo96.png" id="1_1a4lb"]
 [ext_resource type="Script" uid="uid://b0e14pnpchc26" path="res://profile_page.gd" id="1_qjidb"]
@@ -12,6 +12,13 @@ colors = PackedColorArray(0.196078, 0.737255, 0.462745, 1, 0.258628, 0.559869, 0
 gradient = SubResource("Gradient_h7a2f")
 fill = 1
 repeat = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjidb"]
+bg_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2tbl"]
+bg_color = Color(0.2, 0.85098, 0.290196, 1)
+corner_detail = 1
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -82,6 +89,16 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
 theme_override_fonts/font = ExtResource("2_ylj54")
 text = "00.00.00"
+
+[node name="XPBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+tooltip_text = "XP"
+theme_override_styles/background = SubResource("StyleBoxFlat_qjidb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y2tbl")
+show_percentage = false
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

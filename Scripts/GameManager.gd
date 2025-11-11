@@ -118,42 +118,61 @@ func apply_effect(effect: Dictionary, reason: String = "") -> void:
 		# Mostra un tip legato alla categoria
 		emit_signal("event_logged", get_tip("category"))
 
-	if spirito_critico == 100:
-		_show_achievement("Hai guadagnato la medaglia 'PENSATORE CRITICO'", preload("res://images/medal.png"))
-		Achievement.unlock("100SP")
-	if empatia == 100:
-		_show_achievement("Hai guadagnato la medaglia 'EMPATICO DIGITALE'", preload("res://images/medal.png"))
-		Achievement.unlock("100E")
-	if privacy == 100:
-		_show_achievement("Hai guadagnato la medaglia 'GUARDIANO DELLA PRIVACY'", preload("res://images/medal.png"))
-		Achievement.unlock("100P")
-	if dipendenza == 100:
-		_show_achievement("Hai guadagnato la medaglia 'MAESTRO DELL’EQUILIBRIO'", preload("res://images/medal.png"))
-		Achievement.unlock("100D")
-	if spirito_critico == 100 and empatia == 100 and privacy == 100 and dipendenza == 100:
-		_show_final_achievement("Hai guadagnato la medaglia 'ESPERTO SOCIAL'", preload("res://images/trophy.png"))
+	if spirito_critico >= 100 and not Achievement.is_unlocked("100PC"):
+		_unlock_and_notify("100PC")
+	if empatia >= 100 and not Achievement.is_unlocked("100E"):
+		_unlock_and_notify("100E")
+	if privacy >= 100 and not Achievement.is_unlocked("100P"):
+		_unlock_and_notify("100P")
+	if dipendenza >= 100 and not Achievement.is_unlocked("100D"):
+		_unlock_and_notify("100D")
 
 #DA FIXARE
-func _show_final_achievement(title: String, tex: Texture2D) -> void:
-	var popup = get_tree().root.get_node("Feed/AchievementPopup")
-	popup.show_achievement(title, tex)
+#func _show_final_achievement(title: String, tex: Texture2D) -> void:
+	#var popup = get_tree().root.get_node("Feed/AchievementPopup")
+	#popup.show_achievement(title, tex)
 	
 	# Effetti visivi
-	var fireworks = get_tree().root.get_node("Feed/EffectsLayer/Fireworks")
-	fireworks.emitting = true
+	#var fireworks = get_tree().root.get_node("Feed/EffectsLayer/Fireworks")
+	#fireworks.emitting = true
 	# Aspetta la durata del popup + effetti
-	await get_tree().create_timer(5.0).timeout
+	#await get_tree().create_timer(5.0).timeout
 	# Stop effetti
-	fireworks.emitting = false
+	#fireworks.emitting = false
 	# Torna alla schermata principale
 	# get_tree().change_scene("res://Scenes/MainMenu.tscn")
 
 
 
-func _show_achievement(text: String, tex: Texture2D) -> void:
-	var popup = get_tree().root.get_node("Feed/AchievementPopup")
-	popup.show_achievement(text, tex)
-	
+func _unlock_and_notify(id: String) -> void:
+	Achievement.unlock(id)
+	_notify_popup(id)
+
+func _notify_popup(id: String) -> void:
+	var data := Achievement.get_data(id)
+	if data.is_empty():
+		return
+	var name := String(data.get("name", id))
+	var icon_path := String(data.get("icon", ""))
+	var tex: Texture2D = null
+	if icon_path != "" and ResourceLoader.exists(icon_path):
+		tex = load(icon_path)
+
+	var popup := _get_achievement_popup()
+	if popup == null:
+		return
+	if popup.has_method("show_achievement_id"):
+		popup.show_achievement_id(id, name, tex)
+	elif popup.has_method("show_achievement"):
+		popup.show_achievement("Hai sbloccato: %s" % name, tex)
+
+func _get_achievement_popup() -> Node:
+	if has_node("AchievementPopup"):
+		return $AchievementPopup
+	var n := get_tree().root.get_node_or_null("Feed/AchievementPopup")
+	if n: return n
+	return get_tree().get_first_node_in_group("achievement_popup")
+
 func _load_tex(path: String) -> Texture2D:
 	return load(path) if path != "" and ResourceLoader.exists(path) else null
 	

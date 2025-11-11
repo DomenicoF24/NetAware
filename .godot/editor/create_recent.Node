@@ -1,5 +1,5 @@
-ColorRect
 Label
+ColorRect
 TextureRect
 VBoxContainer
 PanelContainer
@@ -12,4 +12,3 @@ TextureButton
 LineEdit
 TextEdit
 HBoxContainer
-PopupPanel

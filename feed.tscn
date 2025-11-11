@@ -500,7 +500,7 @@ scale_amount_min = 0.5
 scale_amount_max = 1.2
 color_ramp = SubResource("Gradient_u5vha")
 
-[node name="AchievementPopup" type="PopupPanel" parent="."]
+[node name="AchievementPopup" type="PopupPanel" parent="." groups=["achievement_popup"]]
 script = ExtResource("15_u5vha")
 
 [node name="TextureRect" type="TextureRect" parent="AchievementPopup"]
