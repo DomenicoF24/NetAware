@@ -110,8 +110,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -120,7 +122,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 10
+columns = 7
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(32, 32)

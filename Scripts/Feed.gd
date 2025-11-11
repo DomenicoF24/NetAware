@@ -10,6 +10,7 @@ extends Control
 @onready var profile = $MainContainer/Sidebar/ProfileButton
 
 var post_scene = preload("res://Post.tscn")
+var tip_timer: Timer
 
 func _ready() -> void:
 	# Connessione agli indicatori
@@ -20,6 +21,16 @@ func _ready() -> void:
 		GameManager.privacy,
 		GameManager.dipendenza
 	)
+	feedback_label.visible = true
+	feedback_label.modulate.a = 1.0
+	feedback_label.text = GameManager.get_tip("default")
+	
+	tip_timer = Timer.new()
+	tip_timer.wait_time = 5.0
+	tip_timer.one_shot = false
+	tip_timer.autostart = true
+	add_child(tip_timer)
+	tip_timer.timeout.connect(_on_tip_timer_timeout)
 
 	# 👇 Connessione al segnale educativo
 	GameManager.connect("event_logged", _on_event_logged)
@@ -73,36 +84,22 @@ func animate_progressbar(pb: ProgressBar, new_value: int) -> void:
 	tween.tween_property(pb, "value", new_value, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 var tip_queue: Array[String] = []
-var showing := false
+
 
 func _on_event_logged(text: String) -> void:
-	# Mettiamo il tip in coda
 	tip_queue.append(text)
-	# Se non stiamo mostrando nulla, partiamo subito
-	if not showing:
-		_show_next_tip()
 
-func _show_next_tip() -> void:
-	if tip_queue.is_empty():
-		showing = false
-		ideaButton.visible = false
-		return
-	
-	showing = true
-	var current_text = tip_queue.pop_front()
-	feedback_label.text = current_text
-	ideaButton.visible = true
+func _on_tip_timer_timeout() -> void:
+	var next_text: String
+	if tip_queue.size() > 0:
+		next_text = tip_queue.pop_front()
+	else:
+		# nessun evento recente: mostra un suggerimento casuale
+		next_text = GameManager.get_tip("default")
+
+	feedback_label.text = next_text
 	feedback_label.modulate.a = 1.0
-	
-	# Mostra per 5 secondi
-	await get_tree().create_timer(3.5).timeout
-	
-	# Cancella il testo
-	feedback_label.text = ""
-	feedback_label.modulate.a = 1.0
-	
-	# Passa al prossimo tip in coda (se c’è)
-	_show_next_tip()
+
 
 func spawn_random_posts(count: int = 5) -> void:
 	# Creiamo una copia dei template disponibili
@@ -153,6 +150,7 @@ var post_templates = [
 		"content": "Ho trovato questa foto online di New York... ma sarà vera?",
 		"time": "2 ore fa",
 		"foto": preload("res://images/NY.jpg"),
+		"likes": "Piace a 12 persone",
 		"effects_like": {"sc": -10},
 		"effects_report": {"sc": +10},
 		"effects_share": {"sc": -10, "dep": +10},
@@ -167,6 +165,7 @@ var post_templates = [
 		"content": "Ricorda: non condividere le tue password con nessuno!",
 		"time": "5 ore fa",
 		"foto": preload("res://images/lock.jpg"),
+		"likes": "Piace a 3mila persone",
 		"effects_like": {"sc": 5, "priv": +10},
 		"effects_report": {"sc": -15},
 		"effects_share": {"sc": +15, "dep": +5},
@@ -181,6 +180,7 @@ var post_templates = [
 		"content": "Questo sito funziona al 100%, fidatevi! http://VrsMn.com",
 		"time": "30 minuti fa",
 		"foto": preload("res://images/soldi.png"),
+		"likes": "Piace a 100 persone",
 		"effects_like": {"sc": -10},
 		"effects_report": {"sc": +15},
 		"effects_share": {"sc": -10, "dep": +5},
@@ -195,6 +195,7 @@ var post_templates = [
 		"content": "Guardate che foto simpatica!",
 		"time": "23 ore fa",
 		"foto": preload("res://images/cat.jpg"),
+		"likes": "Piace a 142 persone",
 		"effects_like": {"emp": +5},
 		"effects_report": {"sc": -10},
 		"effects_share": {"dep": +5},
@@ -209,6 +210,7 @@ var post_templates = [
 		"content": "Se ti stai divertendo lascia un like al post",
 		"time": "10 ore fa",
 		"foto": preload("res://images/Netw.jpg"),
+		"likes": "Piace a 13mila persone",
 		"effects_like": {"emp": +20},
 		"effects_report": {"sc": -10},
 		"effects_share": {"dep": +5},
@@ -223,6 +225,7 @@ var post_templates = [
 		"content": "Ultim'ora! L'AI si impossessa dei giornali!",
 		"time": "2 minuti fa",
 		"foto": preload("res://images/news.jpg"),
+		"likes": "Piace a 80 persone",
 		"effects_like": {"emp": +5},
 		"effects_report": {"sc": -5},
 		"effects_share": {"dep": +5},
@@ -238,6 +241,7 @@ var post_templates = [
 		"content": "Finisce 1-0 la partita di oggi!",
 		"time": "5 minuti fa",
 		"foto": preload("res://images/calcio.jpeg"),
+		"likes": "Piace a 4mila persone",
 		"effects_like": {"emp": +10},
 		"effects_report": {"sc": -10},
 		"effects_share": {"dep": +5},
@@ -253,6 +257,7 @@ var post_templates = [
 		"content": "Iscriviti alla nostra palestra, chiama subito!",
 		"time": "20 ore fa",
 		"foto": preload("res://images/gym.jpg"),
+		"likes": "Piace a 250 persone",
 		"effects_like": {"emp": +5},
 		"effects_report": {"sc": -10},
 		"effects_share": {"dep": +5},
@@ -267,6 +272,7 @@ var post_templates = [
 		"content": "Scarica subito il nostro NUOVISSIMO gioco! https://Vrs.Ga",
 		"time": "12 ore fa",
 		"foto": preload("res://images/game.jpg"),
+		"likes": "Piace a 64 persone",
 		"effects_like": {},
 		"effects_report": {"sc": +15},
 		"effects_share": {"dep": +5, "sc": -10},
@@ -281,6 +287,7 @@ var post_templates = [
 		"content": "Verifica sempre le fonti dei post",
 		"time": "51 minuti fa",
 		"foto": preload("res://images/bot2.jpg"),
+		"likes": "Piace a 700 persone",
 		"effects_like": {"emp": +5, "priv": +10},
 		"effects_report": {"sc": -15},
 		"effects_share": {"dep": +5, "sc": +5},
@@ -295,6 +302,7 @@ var post_templates = [
 		"content": "Proteste di oggi per il diritto allo studio",
 		"time": "2 minuti fa",
 		"foto": preload("res://images/proteste.jpeg"),
+		"likes": "Piace a 300 persone",
 		"effects_like": {"emp": +5},
 		"effects_report": {"sc": +10},
 		"effects_share": {"dep": +5, "sc": -15},
@@ -309,6 +317,7 @@ var post_templates = [
 		"content": "Condividi la tua password con un amico fidato? Meglio di no!",
 		"time": "1 ora fa",
 		"foto": preload("res://images/password.jpg"),
+		"likes": "Piace a 200 persone",
 		"effects_like": {"sc": +5, "priv": +5},
 		"effects_report": {"sc": -5},
 		"effects_share": {"sc": +5, "emp": +5},
@@ -323,6 +332,7 @@ var post_templates = [
 		"content": "Hai vinto un iPhone gratis! Clicca qui subito!",
 		"time": "30 min fa",
 		"foto": preload("res://images/iphone.jpg"),
+		"likes": "Piace a 3 persone",
 		"effects_like": {"sc": -15, "dep": +5},
 		"effects_report": {"sc": +15},
 		"effects_share": {"sc": -20, "dep": +10},
@@ -337,6 +347,7 @@ var post_templates = [
 		"content": "Ecco 5 modi per proteggere la tua privacy online.",
 		"time": "5 ore fa",
 		"foto": preload("res://images/privacy.jpg"),
+		"likes": "Piace a 311 persone",
 		"effects_like": {"sc": +5, "priv": +10},
 		"effects_report": {"sc": 0},
 		"effects_share": {"sc": +2, "emp": +2},
@@ -351,6 +362,7 @@ var post_templates = [
 		"content": "Questo prodotto funziona al 100%! Fidatevi!",
 		"time": "20 min fa",
 		"foto": preload("res://images/clean.jpg"),
+		"likes": "Piace a 40 persone",
 		"effects_like": {"sc": -5, "dep": +5},
 		"effects_report": {"sc": +5},
 		"effects_share": {"sc": -5, "dep": +5},
@@ -365,6 +377,7 @@ var post_templates = [
 		"content": "Non cliccare su link sospetti ricevuti in chat, potresti essere truffato!",
 		"time": "10 min fa",
 		"foto": preload("res://images/click.jpg"),
+		"likes": "Piace a 209 persone",
 		"effects_like": {"sc": +5, "priv": +5},
 		"effects_report": {"sc": +10},
 		"effects_share": {"sc": -5},

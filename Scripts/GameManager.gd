@@ -2,7 +2,7 @@ extends Node
 
 #Segnali
 signal indicators_changed(sc, emp, priv, dep)
-signal event_logged(text)
+signal event_logged(text: String)
 signal player_name_changed(new_name)
 signal avatar_changed(tex_full: Texture2D, id: String)
 
@@ -100,7 +100,7 @@ func _on_dep_timer_timeout() -> void:
 		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 
 # Applica effetti agli indicatori. Esempio: {"sc": +5, "dep": -3}
-func apply_effect(effect: Dictionary, reason: String = "") -> void:
+func apply_effect(effect: Dictionary) -> void:
 	if effect.has("sc"):
 		spirito_critico = clamp(spirito_critico + int(effect["sc"]), 0, 100)
 	if effect.has("emp"):
@@ -112,11 +112,8 @@ func apply_effect(effect: Dictionary, reason: String = "") -> void:
 
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 	
-	if reason != "":
-		emit_signal("event_logged", reason)
-	else:
-		# Mostra un tip legato alla categoria
-		emit_signal("event_logged", get_tip("category"))
+	var cat: String = effect.get("category", "default")
+	emit_signal("event_logged", get_tip(cat))
 
 	if spirito_critico >= 100 and not Achievement.is_unlocked("100PC"):
 		_unlock_and_notify("100PC")
@@ -207,13 +204,9 @@ func unlock_avatar(id: String) -> void:
 		save_profile()
 
 
-func get_tip(category: String) -> String:
-	if tips_by_category.has(category):
-		var tips = tips_by_category[category]
-		return tips[randi() % tips.size()]
-	else:
-		var tips = tips_by_category["default"]
-		return tips[randi() % tips.size()]
+func get_tip(category: String = "default") -> String:
+	var list: Array = tips_by_category.get(category, tips_by_category["default"])
+	return list[randi() % list.size()]
 
 func set_player_name(new_name: String):
 	player_name = new_name

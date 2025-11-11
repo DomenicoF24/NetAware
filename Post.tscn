@@ -73,9 +73,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
-offset_top = 4.0
+offset_top = 6.0
 offset_right = 101.0
-offset_bottom = 75.0
+offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.83, 0.83)
@@ -123,6 +123,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_c1vor")
 expand_mode = 1
+
+[node name="MiPiace" type="Label" parent="PostPanel/PostLayout"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 0.196078)
+text = "Piace a 20mila persone"
+vertical_alignment = 1
 
 [node name="TextBox" type="Panel" parent="PostPanel/PostLayout"]
 custom_minimum_size = Vector2(550, 75)

@@ -5,6 +5,7 @@ extends Control
 @onready var foto = $PostPanel/PostLayout/foto
 @onready var content_label = $PostPanel/PostLayout/TextBox/ContentLabel
 @onready var time_label = $PostPanel/PostLayout/HBoxContainer/TimeLabel
+@onready var likes = $PostPanel/PostLayout/MiPiace
 @onready var btn_like = $PostPanel/PostLayout/ButtonBg/ButtonsRow/Like
 @onready var btn_report = $PostPanel/PostLayout/ButtonBg/ButtonsRow/Segnala
 @onready var btn_share = $PostPanel/PostLayout/ButtonBg/ButtonsRow/Condividi
@@ -30,6 +31,7 @@ func set_post_data(post_data: Dictionary) -> void:
 	author_label.text = data.get("author", "Anonimo")
 	content_label.text = data.get("content", "Post vuoto")
 	time_label.text = data.get("time", "X ore fa")
+	likes.text = data.get("likes", "Piace a 20mila persone")
 	foto.texture = data.get("foto", null)
 	# Controllo se mostrare il badge verificato
 	if data.has("verified") and verified != null:
@@ -43,15 +45,10 @@ func _on_like_pressed() -> void:
 		return
 	if data.has("effects_like"):
 		GameManager.apply_effect(
-			data["effects_like"],
-			"Hai messo Like al post di %s" % data.get("author", "utente"))
+			data["effects_like"])
 		pressed_buttons["like"] = true
 		btn_like.texture_normal = preload("res://images/cuore2.png")
 		btn_like.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		if data.has("category"):
-			var tip = GameManager.get_tip(data["category"])
-			GameManager.emit_signal("event_logged", tip)
 			
 		EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
@@ -90,15 +87,10 @@ func _on_report_pressed() -> void:
 		
 	if data.has("effects_report"):
 		GameManager.apply_effect(
-			data["effects_report"],
-			"Hai segnalato il post di %s" % data.get("author", "utente"))
+			data["effects_report"])
 		pressed_buttons["report"] = true
 		btn_report.texture_normal = preload("res://images/segnala2.png")
 		btn_report.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		if data.has("category"):
-			var tip = GameManager.get_tip(data["category"])
-			GameManager.emit_signal("event_logged", tip)
 			
 		EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
@@ -137,16 +129,11 @@ func _on_share_pressed() -> void:
 		
 	if data.has("effects_share"):
 		GameManager.apply_effect(
-			data["effects_share"],
-			"Hai condiviso un contenuto: rifletti sempre sulle conseguenze.")
+			data["effects_share"])
 			
 		pressed_buttons["share"] = true
 		btn_share.texture_normal = preload("res://images/condividi3.png")
 		btn_share.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		if data.has("category"):
-			var tip = GameManager.get_tip(data["category"])
-			GameManager.emit_signal("event_logged", tip)
 			
 		EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
@@ -185,16 +172,11 @@ func _on_comment_pressed() -> void:
 		
 	if data.has("effects_comment"):
 		GameManager.apply_effect(
-			data["effects_comment"],
-			"Hai commentato il post: ottimo per l'empatia!")
+			data["effects_comment"])
 			
 		pressed_buttons["comment"] = true
 		btn_comment.texture_normal = preload("res://images/commenta2.png")
 		btn_comment.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		if data.has("category"):
-			var tip = GameManager.get_tip(data["category"])
-			GameManager.emit_signal("event_logged", tip)
 			
 		EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
