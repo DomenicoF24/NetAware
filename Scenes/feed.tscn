@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=53 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_vlf4v"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="2_bdj8h"]
+[ext_resource type="Texture2D" uid="uid://efhpip0lowbv" path="res://images/patternCustom1.png" id="2_bh8uc"]
 [ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_bh8uc"]
 [ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="4_lbn8v"]
 [ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="5_rw3wl"]
@@ -150,6 +151,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_u5vha")
 stretch_mode = 6
+
+[node name="Pattern" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.0392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -53.0
+offset_right = 16.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bh8uc")
+stretch_mode = 1
 
 [node name="MainContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

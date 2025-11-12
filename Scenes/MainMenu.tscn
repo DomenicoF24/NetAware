@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhononsjqtd5s"]
+[gd_scene load_steps=24 format=3 uid="uid://bhononsjqtd5s"]
 
 [ext_resource type="Script" uid="uid://dw218r8dmlrqq" path="res://Scripts/main_menu.gd" id="1_h7a2f"]
 [ext_resource type="Script" uid="uid://b88mhr0rt7ssv" path="res://Scripts/cuoreUI.gd" id="1_i26rj"]
+[ext_resource type="Texture2D" uid="uid://efhpip0lowbv" path="res://images/patternCustom1.png" id="2_df05h"]
 [ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="3_qoqlk"]
 
@@ -144,6 +145,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_h7a2f")
 stretch_mode = 6
+
+[node name="Pattern" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.0392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -53.0
+offset_right = 16.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_df05h")
+stretch_mode = 1
 
 [node name="Decorazioni" type="Control" parent="."]
 layout_mode = 1

@@ -2,7 +2,7 @@ extends Node
 signal achievement_unlocked(id: String)
 # Catalogo statico
 var _catalog: Dictionary = {
-	"100PC": {
+	"100SC": {
 		"name": "PENSATORE CRITICO",
 		"how": "Raggiungi il 100% di pensiero critico",
 		"reward": "Avatar PENSIERO CRITICO",
@@ -69,3 +69,8 @@ func unlock(id: String) -> void:
 	AchievementsStore.mark_unlocked(id)
 	emit_signal("achievement_unlocked", id)
 	print("[Achievements] UNLOCKED: ", id)
+	
+func get_reward(id: String) -> Variant:
+	if not _catalog.has(id):
+		return null
+	return _catalog[id].get("reward", null)

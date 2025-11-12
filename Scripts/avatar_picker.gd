@@ -9,18 +9,20 @@ func ready():
 
 #costruisce la griglia degli avatar
 func build_grid():
-	if grid ==  null:
+	if grid == null:
 		push_error("GridContainer non trovato nel picker")
 		return
+
 	for child in grid.get_children():
 		child.queue_free()
+
 	for id in GameManager.avatars.keys():
-		var info = GameManager.avatars[id]
+		var info: Dictionary = GameManager.avatars[id]
 		var btn := Button.new()
 		btn.icon = GameManager.get_avatar_texture_thumb(id)
 		btn.text = ""
 		btn.custom_minimum_size = Vector2(48, 48)
-		btn.disabled = not info.unlocked
+		btn.disabled = not info.get("unlocked", false)
 		if btn.disabled:
 			btn.modulate.a = 0.5
 		btn.pressed.connect(func():

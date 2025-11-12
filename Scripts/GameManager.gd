@@ -1,21 +1,24 @@
 extends Node
 
-#Segnali
+# Segnali
 signal indicators_changed(sc, emp, priv, dep)
 signal event_logged(text: String)
 signal player_name_changed(new_name)
 signal avatar_changed(tex_full: Texture2D, id: String)
+signal xp_changed(current: int, max_value: int)
 
-#Valori iniziali
+# Valori iniziali
 var spirito_critico := 50
 var empatia := 50
 var privacy := 50
 var dipendenza := 0
 var player_name: String = "Profilo"
 var avatar_id: String = "default"
+var xp: int = 0
+var xp_max: int = 100
 
-#Array di avatar
-var avatars:= {
+# Array di avatar
+var avatars := {
 	"default": {"thumb": "res://images/profilo.png", "full": "res://images/profilo96.png", "unlocked": true},
 	"girl1": {"thumb": "res://images/avatar/picGirl1-32.png", "full": "res://images//avatar96/picGirl1-96.png", "unlocked": true},
 	"girl2": {"thumb": "res://images/avatar/picGirl2-32.png", "full": "res://images//avatar96/picGirl2-96.png", "unlocked": true},
@@ -35,12 +38,13 @@ var avatars:= {
 	"boy5": {"thumb": "res://images/avatar/picBoy5-32.png", "full": "res://images//avatar96/picBoy5-96.png", "unlocked": true},
 	"boy6": {"thumb": "res://images/avatar/picBoy6-32.png", "full": "res://images//avatar96/picBoy6-96.png", "unlocked": true},
 	"boy7": {"thumb": "res://images/avatar/picBoy7-32.png", "full": "res://images//avatar96/picBoy7-96.png", "unlocked": true},
-	"SC100": {"thumb": "res://images/avatar/picSC100-32.png", "full": "res://images//avatar96/picSC100-96.png", "unlocked": false},
-	"P100": {"thumb": "res://images/avatar/picP100-32.png", "full": "res://images//avatar96/picP100-96.png", "unlocked": false},
-	"D100": {"thumb": "res://images/avatar/picD100-32.png", "full": "res://images//avatar96/picD100-96.png", "unlocked": false},
+	# Avatar sbloccabili con achievement:
+	"100SC": {"thumb": "res://images/avatar/picSC100-32.png", "full": "res://images//avatar96/picSC100-96.png", "unlocked": false},
+	"100P": {"thumb": "res://images/avatar/picP100-32.png", "full": "res://images//avatar96/picP100-96.png", "unlocked": false},
+	"100D": {"thumb": "res://images/avatar/picD100-32.png", "full": "res://images//avatar96/picD100-96.png", "unlocked": false},
 }
 
-#suggerimenti educativi
+# suggerimenti educativi
 var tips_by_category := {
 	"fake_news": [
 		"Verifica sempre la fonte originale.",
@@ -83,9 +87,10 @@ var dep_timer: Timer  # timer per incremento automatico
 func _ready() -> void:
 	print("[GameManager] ready")
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+	emit_signal("xp_changed", xp, xp_max)
 	load_profile()
 
-# Timer automatico che aumenta la dipendenza ogni 10s
+	# Timer automatico che aumenta la dipendenza ogni 8s
 	dep_timer = Timer.new()
 	dep_timer.wait_time = 8.0
 	dep_timer.autostart = true
@@ -93,11 +98,11 @@ func _ready() -> void:
 	add_child(dep_timer)
 	dep_timer.timeout.connect(_on_dep_timer_timeout)
 
-
 func _on_dep_timer_timeout() -> void:
 	if dipendenza < 100:
 		dipendenza = clamp(dipendenza + 1, 0, 100)
 		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+		_check_indicator_achievements()
 
 # Applica effetti agli indicatori. Esempio: {"sc": +5, "dep": -3}
 func apply_effect(effect: Dictionary) -> void:
@@ -115,8 +120,11 @@ func apply_effect(effect: Dictionary) -> void:
 	var cat: String = effect.get("category", "default")
 	emit_signal("event_logged", get_tip(cat))
 
-	if spirito_critico >= 100 and not Achievement.is_unlocked("100PC"):
-		_unlock_and_notify("100PC")
+	_check_indicator_achievements()
+
+func _check_indicator_achievements() -> void:
+	if spirito_critico >= 100 and not Achievement.is_unlocked("100SC"):
+		_unlock_and_notify("100SC")
 	if empatia >= 100 and not Achievement.is_unlocked("100E"):
 		_unlock_and_notify("100E")
 	if privacy >= 100 and not Achievement.is_unlocked("100P"):
@@ -124,26 +132,33 @@ func apply_effect(effect: Dictionary) -> void:
 	if dipendenza >= 100 and not Achievement.is_unlocked("100D"):
 		_unlock_and_notify("100D")
 
-#DA FIXARE
-#func _show_final_achievement(title: String, tex: Texture2D) -> void:
-	#var popup = get_tree().root.get_node("Feed/AchievementPopup")
-	#popup.show_achievement(title, tex)
-	
-	# Effetti visivi
-	#var fireworks = get_tree().root.get_node("Feed/EffectsLayer/Fireworks")
-	#fireworks.emitting = true
-	# Aspetta la durata del popup + effetti
-	#await get_tree().create_timer(5.0).timeout
-	# Stop effetti
-	#fireworks.emitting = false
-	# Torna alla schermata principale
-	# get_tree().change_scene("res://Scenes/MainMenu.tscn")
-
-
-
 func _unlock_and_notify(id: String) -> void:
 	Achievement.unlock(id)
+	_apply_achievement_reward(id)
+	save_profile()
 	_notify_popup(id)
+
+func _apply_achievement_reward(id: String) -> void:
+	# Mappa achievement -> reward
+	match id:
+		"100SC":
+			# Sblocca avatar pensiero critico
+			unlock_avatar("100SC")
+		"100E":
+			# Aggiungi XP (puoi cambiare il valore)
+			add_xp(10)
+		"100P":
+			unlock_avatar("100P")
+		"100D":
+			unlock_avatar("100D")
+		_:
+			pass
+
+func add_xp(amount: int) -> void:
+	xp = clamp(xp + amount, 0, xp_max)
+	emit_signal("xp_changed", xp, xp_max)
+
+# ----------------- POPUP ACHIEVEMENT -----------------
 
 func _notify_popup(id: String) -> void:
 	var data := Achievement.get_data(id)
@@ -167,12 +182,15 @@ func _get_achievement_popup() -> Node:
 	if has_node("AchievementPopup"):
 		return $AchievementPopup
 	var n := get_tree().root.get_node_or_null("Feed/AchievementPopup")
-	if n: return n
+	if n:
+		return n
 	return get_tree().get_first_node_in_group("achievement_popup")
 
 func _load_tex(path: String) -> Texture2D:
 	return load(path) if path != "" and ResourceLoader.exists(path) else null
-	
+
+# ----------------- AVATAR -----------------
+
 func get_avatar_texture_full(id := avatar_id) -> Texture2D:
 	var info: Dictionary = avatars.get(id)
 	if info:
@@ -192,44 +210,65 @@ func get_avatar_texture_thumb(id := avatar_id) -> Texture2D:
 	return null
 
 func set_avatar(id: String) -> void:
-	if not avatars.has(id): return
-	if not avatars[id].unlocked: return
+	if not avatars.has(id):
+		return
+	var info: Dictionary = avatars[id]
+	if not info.get("unlocked", false):
+		return
 	avatar_id = id
 	save_profile()
 	avatar_changed.emit(get_avatar_texture_full(), id)
 
 func unlock_avatar(id: String) -> void:
-	if avatars.has(id):
-		avatars[id].unlocked = true
-		save_profile()
+	if not avatars.has(id):
+		return
+	var info: Dictionary = avatars[id]
+	if info.get("unlocked", false):
+		return
+	info["unlocked"] = true
+	avatars[id] = info
+	save_profile()
 
+# ----------------- ALTRI METODI -----------------
 
 func get_tip(category: String = "default") -> String:
 	var list: Array = tips_by_category.get(category, tips_by_category["default"])
 	return list[randi() % list.size()]
 
-func set_player_name(new_name: String):
+func set_player_name(new_name: String) -> void:
 	player_name = new_name
 	save_profile()
 	player_name_changed.emit(new_name)
 
-#salva il profilo
-func save_profile():
+# salva il profilo
+func save_profile() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("profile", "name", player_name)
 	cfg.set_value("profile", "avatar_id", avatar_id)
-	var unlocked_ids := []
+	cfg.set_value("profile", "xp", xp)
+
+	var unlocked_ids: Array = []
 	for k in avatars.keys():
-		if avatars[k].unlocked:
+		var info: Dictionary = avatars[k]
+		if info.get("unlocked", false):
 			unlocked_ids.append(k)
 	cfg.set_value("profile", "unlocked_avatars", unlocked_ids)
+
 	cfg.save("user://profile.cfg")
-#carica il profilo
-func load_profile():
+
+# carica il profilo
+func load_profile() -> void:
 	var cfg := ConfigFile.new()
 	if cfg.load("user://profile.cfg") == OK:
 		player_name = cfg.get_value("profile", "name", player_name)
 		avatar_id = cfg.get_value("profile", "avatar_id", avatar_id)
-		var unlocked_ids: Array =cfg.get_value("Profile", "unlocked_avatars", [])
+		xp = int(cfg.get_value("profile", "xp", xp))
+
+		var unlocked_ids: Array = cfg.get_value("profile", "unlocked_avatars", [])
 		for k in avatars.keys():
-			avatars[k].unlocked = k in unlocked_ids or avatars[k]. unlocked
+			var info: Dictionary = avatars[k]
+			info["unlocked"] = k in unlocked_ids or info.get("unlocked", false)
+			avatars[k] = info
+
+		emit_signal("xp_changed", xp, xp_max)
+		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)

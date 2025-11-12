@@ -19,6 +19,12 @@ func _ready() -> void:
 
 	time_label.text = GameTime.format_time_hhmmss(GameTime.total_seconds)
 	GameTime.total_time_changed.connect(_on_total_time_changed)
+	
+	# XP bar
+	XP.max_value = GameManager.xp_max
+	XP.value = GameManager.xp
+	if not GameManager.xp_changed.is_connected(_on_xp_changed):
+		GameManager.xp_changed.connect(_on_xp_changed)
 
 	# Avatar picker
 	if not is_instance_valid(picker):
@@ -44,6 +50,9 @@ func _ready() -> void:
 func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
 	
+func _on_xp_changed(current: int, max_value: int) -> void:
+	XP.max_value = max_value
+	XP.value = current
 
 func _on_back_pressed():
 	if return_to == 0:
