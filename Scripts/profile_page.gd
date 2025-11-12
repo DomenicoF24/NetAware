@@ -3,7 +3,7 @@ extends Control
 @onready var back = $Button
 @onready var userName = $VBoxContainer/HBoxContainer/VBoxContainer/LineEdit
 @onready var avatar_button: Button = $VBoxContainer/HBoxContainer/Button
-@onready var picker: Window = preload("res://AvatarPicker.tscn").instantiate()
+@onready var picker: Window = preload("res://Scenes/AvatarPicker.tscn").instantiate()
 @onready var time_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/Label2
 @onready var grid: GridContainer = $VBoxContainer/MarginContainer/ScrollContainer/GridContainer
 @onready var XP:= $VBoxContainer/HBoxContainer/VBoxContainer/XPBar
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 	# Avatar picker
 	if not is_instance_valid(picker):
-		picker = preload("res://AvatarPicker.tscn").instantiate()
+		picker = preload("res://Scenes/AvatarPicker.tscn").instantiate()
 	if picker.get_parent() == null:
 		get_tree().root.add_child(picker)
 	picker.visible = false
@@ -47,9 +47,9 @@ func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 
 func _on_back_pressed():
 	if return_to == 0:
-		get_tree().change_scene_to_file("res://MainMenu.tscn")
+		get_tree().change_scene_to_file("res:///Scenes/MainMenu.tscn")
 	else:
-		get_tree().change_scene_to_file("res://feed.tscn")
+		get_tree().change_scene_to_file("res:///Scenes/feed.tscn")
 
 func _on_name_submitted(new_text: String):
 	GameManager.set_player_name(new_text)
@@ -75,7 +75,7 @@ func _populate_achievements() -> void:
 		child.queue_free()
 	_card_by_id.clear()
 
-	var scene := preload("res://AchievementCard.tscn")
+	var scene := preload("res://Scenes/AchievementCard.tscn")
 	for id in Achievement.all():
 		var data: Dictionary = Achievement.get_data(id)
 		var unlocked: bool = Achievement.is_unlocked(id)

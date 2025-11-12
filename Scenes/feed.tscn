@@ -1,21 +1,21 @@
 [gd_scene load_steps=52 format=3 uid="uid://dr6cpm16uti0a"]
 
-[ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_e81db"]
-[ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="2_0eyb3"]
-[ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="3_8bbnt"]
-[ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="3_ffoa4"]
-[ext_resource type="Texture2D" uid="uid://8gbgabwnt1u1" path="res://images/notification.png" id="4_ogxe3"]
-[ext_resource type="Texture2D" uid="uid://c71ntu4v1208n" path="res://images/settings.png" id="6_tlspd"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="7_g6u5n"]
-[ext_resource type="Texture2D" uid="uid://22bavs02n1so" path="res://images/brain64.png" id="7_tlspd"]
-[ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="8_lryug"]
-[ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_qj288"]
-[ext_resource type="Texture2D" uid="uid://b5c6kkihy1obt" path="res://images/lock64.png" id="9_w50hx"]
-[ext_resource type="Texture2D" uid="uid://cqmwglm3vm840" path="res://images/tempo64.png" id="10_ffoa4"]
-[ext_resource type="Texture2D" uid="uid://bc2v2hk4g5v8e" path="res://images/empatia.png" id="11_g6u5n"]
-[ext_resource type="Texture2D" uid="uid://y634rj4ffbkk" path="res://images/idea (2).png" id="14_g6u5n"]
-[ext_resource type="Script" uid="uid://wuikf1y7i3h2" path="res://effects_layer.gd" id="14_rj8w1"]
-[ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://achievement_popup.gd" id="15_u5vha"]
+[ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_vlf4v"]
+[ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="2_bdj8h"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_bh8uc"]
+[ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="4_lbn8v"]
+[ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="5_rw3wl"]
+[ext_resource type="Texture2D" uid="uid://8gbgabwnt1u1" path="res://images/notification.png" id="6_t7j1k"]
+[ext_resource type="Texture2D" uid="uid://c71ntu4v1208n" path="res://images/settings.png" id="7_et7ox"]
+[ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="8_pvruj"]
+[ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_26a88"]
+[ext_resource type="Texture2D" uid="uid://22bavs02n1so" path="res://images/brain64.png" id="10_mtg2k"]
+[ext_resource type="Texture2D" uid="uid://bc2v2hk4g5v8e" path="res://images/empatia.png" id="11_wp8tk"]
+[ext_resource type="Texture2D" uid="uid://b5c6kkihy1obt" path="res://images/lock64.png" id="12_ffk1g"]
+[ext_resource type="Texture2D" uid="uid://cqmwglm3vm840" path="res://images/tempo64.png" id="13_vkhmq"]
+[ext_resource type="Texture2D" uid="uid://y634rj4ffbkk" path="res://images/idea (2).png" id="14_iqc2e"]
+[ext_resource type="Script" uid="uid://wuikf1y7i3h2" path="res://Scripts/effects_layer.gd" id="15_vwwx2"]
+[ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://Scripts/achievement_popup.gd" id="16_cqpfx"]
 
 [sub_resource type="Gradient" id="Gradient_eiy7p"]
 offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
@@ -25,7 +25,7 @@ colors = PackedColorArray(0.960784, 0.521569, 0.160784, 1, 0.866667, 0.164706, 0
 gradient = SubResource("Gradient_eiy7p")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0eyb3"]
-font = ExtResource("7_g6u5n")
+font = ExtResource("3_bh8uc")
 font_size = 35
 font_color = Color(0.137255, 0.372549, 1, 1)
 
@@ -139,7 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_e81db")
+script = ExtResource("1_vlf4v")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -163,7 +163,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 80
-script = ExtResource("3_ffoa4")
+script = ExtResource("2_bdj8h")
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Title" type="Label" parent="MainContainer/Sidebar"]
@@ -181,14 +181,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/disabled = SubResource("StyleBoxFlat_qj288")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rj8w1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u5vha")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g6u5n")
 text = "Home"
-icon = ExtResource("2_0eyb3")
+icon = ExtResource("4_lbn8v")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -200,14 +200,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/disabled = SubResource("StyleBoxFlat_lryug")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xoqp3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tka1p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p0vxv")
 text = "Messaggi"
-icon = ExtResource("3_8bbnt")
+icon = ExtResource("5_rw3wl")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -220,14 +220,14 @@ size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
 theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pxfre")
 theme_override_styles/hover = SubResource("StyleBoxFlat_535ex")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6b05h")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ovler")
 text = "Notifiche"
-icon = ExtResource("4_ogxe3")
+icon = ExtResource("6_t7j1k")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -239,7 +239,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/disabled = SubResource("StyleBoxFlat_evp1m")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0enty")
@@ -247,7 +247,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3iqlf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p333c")
 text = "Impostazioni
 "
-icon = ExtResource("6_tlspd")
+icon = ExtResource("7_et7ox")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -260,14 +260,14 @@ size_flags_vertical = 4
 theme_override_colors/font_hover_pressed_color = Color(0.819608, 0.898039, 1, 1)
 theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_w3unk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q2u3o")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_idamg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_igd52")
 text = "PROFILO
 "
-icon = ExtResource("8_lryug")
+icon = ExtResource("8_pvruj")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -292,14 +292,14 @@ theme_override_constants/separation = 500
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_constants/separation = 25
-script = ExtResource("9_qj288")
+script = ExtResource("9_26a88")
 bg_color = Color(1, 1, 1, 1)
 
 [node name="INDC" type="Label" parent="MainContainer/Indicators"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 25
 text = "Indicatori di consapevolezza"
 horizontal_alignment = 1
@@ -314,7 +314,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("7_tlspd")
+texture_normal = ExtResource("10_mtg2k")
 stretch_mode = 3
 
 [node name="SC" type="Label" parent="MainContainer/Indicators/HBoxContainer"]
@@ -322,7 +322,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 25
 text = "Spirito Critico"
 horizontal_alignment = 1
@@ -345,7 +345,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("11_g6u5n")
+texture_normal = ExtResource("11_wp8tk")
 stretch_mode = 3
 
 [node name="EM" type="Label" parent="MainContainer/Indicators/HBoxContainer2"]
@@ -353,7 +353,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 25
 text = "Empatia"
 horizontal_alignment = 1
@@ -375,7 +375,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("9_w50hx")
+texture_normal = ExtResource("12_ffk1g")
 stretch_mode = 3
 
 [node name="PR" type="Label" parent="MainContainer/Indicators/HBoxContainer3"]
@@ -383,7 +383,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 25
 text = "Privacy"
 horizontal_alignment = 1
@@ -405,7 +405,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("10_ffoa4")
+texture_normal = ExtResource("13_vkhmq")
 stretch_mode = 3
 
 [node name="DIP" type="Label" parent="MainContainer/Indicators/HBoxContainer4"]
@@ -413,7 +413,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 25
 text = "Dipendenza"
 horizontal_alignment = 1
@@ -436,7 +436,7 @@ alignment = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 disabled = true
-texture_normal = ExtResource("14_g6u5n")
+texture_normal = ExtResource("14_iqc2e")
 stretch_mode = 3
 
 [node name="FeedbackLabel" type="Label" parent="MainContainer/Indicators/HBoxContainer5"]
@@ -446,7 +446,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_g6u5n")
+theme_override_fonts/font = ExtResource("3_bh8uc")
 theme_override_font_sizes/font_size = 15
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -455,7 +455,7 @@ justification_flags = 169
 text_direction = 1
 
 [node name="EffectsLayer" type="CanvasLayer" parent="."]
-script = ExtResource("14_rj8w1")
+script = ExtResource("15_vwwx2")
 
 [node name="Fireworks" type="CPUParticles2D" parent="EffectsLayer"]
 position = Vector2(700, 0)
@@ -478,7 +478,7 @@ scale_amount_max = 1.2
 color_ramp = SubResource("Gradient_u5vha")
 
 [node name="AchievementPopup" type="PopupPanel" parent="." groups=["achievement_popup"]]
-script = ExtResource("15_u5vha")
+script = ExtResource("16_cqpfx")
 
 [node name="TextureRect" type="TextureRect" parent="AchievementPopup"]
 anchors_preset = 8

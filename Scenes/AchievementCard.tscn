@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://djqa722vqenb6"]
 
-[ext_resource type="Script" uid="uid://d2sknbjy43uxm" path="res://achievement_card.gd" id="1_m86qo"]
+[ext_resource type="Script" uid="uid://d2sknbjy43uxm" path="res://Scripts/achievement_card.gd" id="1_8s6kh"]
 
 [node name="PanelContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(140, 160)
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_m86qo")
+script = ExtResource("1_8s6kh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

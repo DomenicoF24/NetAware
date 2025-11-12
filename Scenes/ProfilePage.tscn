@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cmfe6st03r855"]
 
-[ext_resource type="Texture2D" uid="uid://otlk355jovcm" path="res://images/profilo96.png" id="1_1a4lb"]
-[ext_resource type="Script" uid="uid://b0e14pnpchc26" path="res://profile_page.gd" id="1_qjidb"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_ylj54"]
-[ext_resource type="Texture2D" uid="uid://csvubo4pytktv" path="res://images/back_arrow32.png" id="4_qjidb"]
+[ext_resource type="Script" uid="uid://b0e14pnpchc26" path="res://Scripts/profile_page.gd" id="1_tp3lj"]
+[ext_resource type="Texture2D" uid="uid://otlk355jovcm" path="res://images/profilo96.png" id="2_j4ymg"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_lqnqt"]
+[ext_resource type="Texture2D" uid="uid://csvubo4pytktv" path="res://images/back_arrow32.png" id="4_8ktqv"]
 
 [sub_resource type="Gradient" id="Gradient_h7a2f"]
 colors = PackedColorArray(0.196078, 0.737255, 0.462745, 1, 0.258628, 0.559869, 0.786749, 1)
@@ -27,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qjidb")
+script = ExtResource("1_tp3lj")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -58,7 +58,7 @@ custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("1_1a4lb")
+icon = ExtResource("2_j4ymg")
 flat = true
 icon_alignment = 1
 
@@ -71,7 +71,7 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("2_ylj54")
+theme_override_fonts/font = ExtResource("3_lqnqt")
 theme_override_font_sizes/font_size = 20
 placeholder_text = "Nome Utente"
 max_length = 10
@@ -80,14 +80,14 @@ max_length = 10
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
-theme_override_fonts/font = ExtResource("2_ylj54")
+theme_override_fonts/font = ExtResource("3_lqnqt")
 text = "Tempo di gioco"
 
 [node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
-theme_override_fonts/font = ExtResource("2_ylj54")
+theme_override_fonts/font = ExtResource("3_lqnqt")
 text = "00.00.00"
 
 [node name="XPBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -103,7 +103,7 @@ show_percentage = false
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ylj54")
+theme_override_fonts/font = ExtResource("3_lqnqt")
 theme_override_font_sizes/font_size = 40
 text = "Achievements"
 horizontal_alignment = 1
@@ -131,5 +131,5 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
-icon = ExtResource("4_qjidb")
+icon = ExtResource("4_8ktqv")
 flat = true

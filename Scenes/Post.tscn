@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://c3y2n3f1sxr2y"]
 
-[ext_resource type="Script" uid="uid://bdealcrus58dt" path="res://Scripts/Post.gd" id="1_vxnam"]
-[ext_resource type="Texture2D" uid="uid://rgg58mdo5a5h" path="res://images/cuore.png" id="2_bduko"]
-[ext_resource type="Texture2D" uid="uid://dilet6t2ut71i" path="res://images/pic.png" id="2_lfniu"]
-[ext_resource type="Script" uid="uid://blycc4g8cghe" path="res://Scripts/like.gd" id="3_bduko"]
-[ext_resource type="Texture2D" uid="uid://c5f3eqkwv3r3e" path="res://images/verificato.png" id="3_c1vor"]
-[ext_resource type="Texture2D" uid="uid://cu5n2wpyxwgfg" path="res://images/commenta.png" id="3_sjdhe"]
-[ext_resource type="Texture2D" uid="uid://c7omdgcgx4w7n" path="res://images/segnala.png" id="4_bduko"]
-[ext_resource type="Texture2D" uid="uid://ci80cl8n825ca" path="res://images/soldi.png" id="4_c1vor"]
-[ext_resource type="Texture2D" uid="uid://c0jxpp4rrr3lt" path="res://images/condividi.png" id="5_lfniu"]
+[ext_resource type="Script" uid="uid://bdealcrus58dt" path="res://Scripts/Post.gd" id="1_a1b5x"]
+[ext_resource type="Texture2D" uid="uid://dilet6t2ut71i" path="res://images/pic.png" id="2_w6bak"]
+[ext_resource type="Texture2D" uid="uid://c5f3eqkwv3r3e" path="res://images/verificato.png" id="3_wjakq"]
+[ext_resource type="Texture2D" uid="uid://ci80cl8n825ca" path="res://images/soldi.png" id="4_v81mr"]
+[ext_resource type="Texture2D" uid="uid://rgg58mdo5a5h" path="res://images/cuore.png" id="5_lsm4e"]
+[ext_resource type="Script" uid="uid://blycc4g8cghe" path="res://Scripts/like.gd" id="6_e50lx"]
+[ext_resource type="Texture2D" uid="uid://cu5n2wpyxwgfg" path="res://images/commenta.png" id="7_sqigc"]
+[ext_resource type="Texture2D" uid="uid://c7omdgcgx4w7n" path="res://images/segnala.png" id="8_k4ekf"]
+[ext_resource type="Texture2D" uid="uid://c0jxpp4rrr3lt" path="res://images/condividi.png" id="9_ese4h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxnam"]
 content_margin_left = 50.0
@@ -50,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-script = ExtResource("1_vxnam")
+script = ExtResource("1_a1b5x")
 
 [node name="PostPanel" type="Panel" parent="."]
 clip_contents = true
@@ -89,7 +89,7 @@ theme_override_constants/separation = 10
 
 [node name="ProfilePic" type="TextureButton" parent="PostPanel/PostLayout/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_lfniu")
+texture_normal = ExtResource("2_w6bak")
 stretch_mode = 3
 
 [node name="AuthorLabel" type="Label" parent="PostPanel/PostLayout/HBoxContainer"]
@@ -107,7 +107,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 disabled = true
-texture_normal = ExtResource("3_c1vor")
+texture_normal = ExtResource("3_wjakq")
 stretch_mode = 3
 
 [node name="TimeLabel" type="Label" parent="PostPanel/PostLayout/HBoxContainer"]
@@ -121,7 +121,7 @@ custom_minimum_size = Vector2(550, 309)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("4_c1vor")
+texture = ExtResource("4_v81mr")
 expand_mode = 1
 
 [node name="MiPiace" type="Label" parent="PostPanel/PostLayout"]
@@ -174,21 +174,21 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("2_bduko")
+texture_normal = ExtResource("5_lsm4e")
 stretch_mode = 5
-script = ExtResource("3_bduko")
+script = ExtResource("6_e50lx")
 
 [node name="Commenta" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
-texture_normal = ExtResource("3_sjdhe")
-script = ExtResource("3_bduko")
+texture_normal = ExtResource("7_sqigc")
+script = ExtResource("6_e50lx")
 
 [node name="Segnala" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
-texture_normal = ExtResource("4_bduko")
-script = ExtResource("3_bduko")
+texture_normal = ExtResource("8_k4ekf")
+script = ExtResource("6_e50lx")
 
 [node name="Condividi" type="TextureButton" parent="PostPanel/PostLayout/ButtonBg/ButtonsRow"]
 layout_mode = 2
-texture_normal = ExtResource("5_lfniu")
-script = ExtResource("3_bduko")
+texture_normal = ExtResource("9_ese4h")
+script = ExtResource("6_e50lx")

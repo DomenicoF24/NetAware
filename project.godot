@@ -18,11 +18,11 @@ config/icon="res://images/icon.svg"
 [autoload]
 
 GameManager="*res://Scripts/GameManager.gd"
-EffectsManager="*res://effects_layer.gd"
-PopupMessaggio="*res://popup_messaggio.gd"
-GameTime="*res://GameTime.gd"
-Achievement="*res://Achievement.gd"
-AchievementsStore="*res://AchievementsStore.gd"
+EffectsManager="*res://Scripts/effects_layer.gd"
+PopupMessaggio="*res://Scripts/popup_messaggio.gd"
+GameTime="*res://Scripts/GameTime.gd"
+Achievement="*res://Scripts/Achievement.gd"
+AchievementsStore="*res://Scripts/AchievementsStore.gd"
 
 [display]
 

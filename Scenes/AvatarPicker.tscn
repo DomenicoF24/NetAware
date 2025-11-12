@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bynt10e5mdo8a"]
 
-[ext_resource type="Script" uid="uid://bjmgtapir3lt3" path="res://avatar_picker.gd" id="1_3cken"]
+[ext_resource type="Script" uid="uid://bjmgtapir3lt3" path="res://Scripts/avatar_picker.gd" id="1_3cken"]
 
 [node name="Window" type="Window"]
 initial_position = 1

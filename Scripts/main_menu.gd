@@ -35,7 +35,7 @@ func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 func _on_play_pressed() -> void:
 	#click_sound.play()
 	# carica la scena del gioco (Feed o MainScene)
-	get_tree().change_scene_to_file("res://feed.tscn")
+	get_tree().change_scene_to_file("res://Scenes/feed.tscn")
 
 func _on_avatar_changed(tex: Texture2D, _id: String):
 	_apply_avatar(tex)
@@ -61,7 +61,7 @@ func _on_quit_pressed() -> void:
 	$ConfermaUscita.popup_centered()
 
 func _on_profile_pressed():
-	var profile_scene = preload("res://ProfilePage.tscn")
+	var profile_scene = preload("res://Scenes/ProfilePage.tscn")
 	var profile = profile_scene.instantiate()
 	profile.return_to = 0
 

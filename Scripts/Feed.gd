@@ -9,7 +9,7 @@ extends Control
 @onready var feedback_label = $MainContainer/Indicators/HBoxContainer5/FeedbackLabel  # 👈 aggiunta Label
 @onready var profile = $MainContainer/Sidebar/ProfileButton
 
-var post_scene = preload("res://Post.tscn")
+var post_scene = preload("res://Scenes/Post.tscn")
 var tip_timer: Timer
 
 func _ready() -> void:
@@ -53,7 +53,7 @@ func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
 
 func _on_profile_pressed():
-	var profile_scene = preload("res://ProfilePage.tscn")
+	var profile_scene = preload("res://Scenes/ProfilePage.tscn")
 	var profile2 = profile_scene.instantiate()
 	profile2.return_to = 1
 
