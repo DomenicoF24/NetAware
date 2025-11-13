@@ -3,9 +3,12 @@ signal avatar_selected(id: String)
 
 @onready var grid: GridContainer= $MarginContainer/ScrollContainer/GridContainer
 
-func ready():
+func _ready():
 	visible = false
 	build_grid()
+	
+	if not close_requested.is_connected(_on_close_requested):
+		close_requested.connect(_on_close_requested)
 
 #costruisce la griglia degli avatar
 func build_grid():
@@ -27,6 +30,8 @@ func build_grid():
 			btn.modulate.a = 0.5
 		btn.pressed.connect(func():
 			avatar_selected.emit(id)
-			hide()
 		)
 		grid.add_child(btn)
+
+func _on_close_requested() -> void:
+	hide()

@@ -75,7 +75,6 @@ func _on_avatar_selected(id: String):
 	var full_tex = GameManager.get_avatar_texture_full()
 	if full_tex:
 		avatar_button.icon= full_tex
-	picker.hide()
 func _on_total_time_changed(new_total: int) -> void:
 	time_label.text = GameTime.format_time_hhmmss(new_total)
 	

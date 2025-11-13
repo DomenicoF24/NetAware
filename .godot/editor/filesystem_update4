@@ -1,9 +1,9 @@
-res://Scenes/feed.tscn
 res://Scenes/ProfilePage.tscn
 res://Scenes/AchievementCard.tscn
+res://Scenes/feed.tscn
 res://Scenes/Post.tscn
 res://Scenes/MainMenu.tscn
-res://Scripts/Achievement.gd
-res://Scripts/GameManager.gd
-res://Scripts/profile_page.gd
+res://Scripts/achievement_card.gd
+res://Scenes/AvatarPicker.tscn
 res://Scripts/avatar_picker.gd
+res://Scripts/profile_page.gd
