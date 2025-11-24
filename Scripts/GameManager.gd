@@ -82,6 +82,49 @@ var tips_by_category := {
 	]
 }
 
+var messages_catalog: Dictionary = {
+	"msg1": {
+		"sender_name": "Luca",
+		"text": "Ehi, perché non pubblichi quella foto? Tanto non succede nulla.",
+		"avatar_icon": "",              # es. "res://images/avatar_luca.png"
+		"category": "privacy_rischiosa"
+	},
+	"msg2": {
+		"sender_name": "Anonimo",
+		"text": "Questo tuo post fa davvero schifo...",
+		"avatar_icon": "",
+		"category": "hate_speech"
+	},
+	"msg3": {
+		"sender_name": "Giulia",
+		"text": "Ti va di confrontarti su quel commento che hai scritto?",
+		"avatar_icon": "",
+		"category": "confronto_costruttivo"
+	}
+}
+
+func get_random_message_ids(count: int) -> Array[String]:
+	var ids: Array[String] = []
+
+	# raccogli tutte le chiavi del catalogo
+	for key in messages_catalog.keys():
+		ids.append(String(key))
+
+	# mischiale
+	ids.shuffle()
+
+	# limita a 'count' elementi se necessario
+	if count < ids.size():
+		ids.resize(count)
+
+	return ids
+
+# Stato messaggi: "pending" (da gestire) / "handled" (già gestito)
+var messages_state: Dictionary = {}   # { id: "pending"|"handled" }
+
+signal message_added(id: String)
+signal message_handled(id: String, action: String)
+
 var dep_timer: Timer  # timer per incremento automatico
 
 func _ready() -> void:
@@ -89,7 +132,11 @@ func _ready() -> void:
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 	emit_signal("xp_changed", xp, xp_max)
 	load_profile()
-
+	
+	for id in messages_catalog.keys():
+		if not messages_state.has(id):
+			messages_state[id] = "handled"
+	
 	# Timer automatico che aumenta la dipendenza ogni 8s
 	dep_timer = Timer.new()
 	dep_timer.wait_time = 8.0
@@ -272,3 +319,64 @@ func load_profile() -> void:
 
 		emit_signal("xp_changed", xp, xp_max)
 		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+
+func get_message_data(id: String) -> Dictionary:
+	return messages_catalog.get(id, {}) as Dictionary
+
+func get_pending_messages() -> Array:
+	var res: Array = []
+	for id in messages_catalog.keys():
+		if messages_state.get(id, "pending") == "pending":
+			res.append(id)
+	return res
+
+func add_message(id: String) -> void:
+	if not messages_catalog.has(id):
+		push_warning("add_message: id sconosciuto '%s'" % id)
+		return
+	messages_state[id] = "pending"
+	emit_signal("message_added", id)
+
+func handle_message(id: String, action: String) -> void:
+	if not messages_catalog.has(id):
+		return
+	messages_state[id] = "handled"
+	emit_signal("message_handled", id, action)
+	_apply_message_effect(id, action)
+
+func _apply_message_effect(id: String, action: String) -> void:
+	var data: Dictionary = messages_catalog.get(id, {}) as Dictionary
+	var category: String = String(data.get("category", ""))
+
+	var effect: Dictionary = {}  # { "sc": int, "emp": int, "priv": int, "dep": int }
+
+	match category:
+		"privacy_rischiosa":
+			match action:
+				"segnala":
+					effect = {"sc": 10, "priv": 10}
+				"ignora":
+					effect = {"sc": -5, "priv": -10}
+				"rispondi":
+					effect = {"emp": 5, "priv": -5}
+		"hate_speech":
+			match action:
+				"segnala":
+					effect = {"sc": 10, "emp": 5}
+				"ignora":
+					effect = {"emp": -5}
+				"rispondi":
+					effect = {"emp": 10}
+		"confronto_costruttivo":
+			match action:
+				"rispondi":
+					effect = {"emp": 10, "sc": 5}
+				"ignora":
+					effect = {"emp": -5}
+		_:
+			# Categoria sconosciuta: niente effetto, solo debug
+			print("Messaggio senza categoria gestita:", id, "azione:", action, "categoria:", category)
+
+	# Applica se c'è qualcosa da applicare
+	if not effect.is_empty():
+		apply_effect(effect)

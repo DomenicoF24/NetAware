@@ -8,9 +8,15 @@ extends Control
 @onready var ideaButton = $MainContainer/Indicators/HBoxContainer5/IdeaButton 
 @onready var feedback_label = $MainContainer/Indicators/HBoxContainer5/FeedbackLabel  # 👈 aggiunta Label
 @onready var profile = $MainContainer/Sidebar/ProfileButton
+@onready var messages = $MainContainer/Sidebar/Messaggi
+@onready var messages_window: PopupPanel = $MessageWindow
+@onready var toast: NewMessageToast = $NewMessageToast
 
 var post_scene = preload("res://Scenes/Post.tscn")
 var tip_timer: Timer
+
+var _queued_messages: Array[Dictionary] = []
+var _scheduling_messages: bool = false
 
 func _ready() -> void:
 	# Connessione agli indicatori
@@ -31,6 +37,12 @@ func _ready() -> void:
 	tip_timer.autostart = true
 	add_child(tip_timer)
 	tip_timer.timeout.connect(_on_tip_timer_timeout)
+	
+	_setup_messages_for_session()
+	_start_message_schedule()
+	# Notifica toast quando arriva un nuovo messaggio
+	if not GameManager.message_added.is_connected(_on_message_added_for_toast):
+		GameManager.message_added.connect(_on_message_added_for_toast)
 
 	# 👇 Connessione al segnale educativo
 	GameManager.connect("event_logged", _on_event_logged)
@@ -63,6 +75,10 @@ func _on_profile_pressed():
 	tree.current_scene = profile2
 	if old:
 		old.queue_free()
+
+func _on_ButtonMessages_pressed() -> void:
+	if messages_window:
+		messages_window.open_window()
 
 func _apply_avatar(tex: Texture2D):
 	if not tex: return
@@ -99,7 +115,77 @@ func _on_tip_timer_timeout() -> void:
 
 	feedback_label.text = next_text
 	feedback_label.modulate.a = 1.0
+	
+func _start_message_schedule() -> void:
+	if _scheduling_messages:
+		return
+	_scheduling_messages = true
+	call_deferred("_schedule_messages_loop")  # parte dopo che la scena è pronta
 
+func _schedule_messages_loop() -> void:
+	while not _queued_messages.is_empty():
+		var next: Dictionary = _queued_messages[0]
+		_queued_messages.remove_at(0)
+
+		var delay: float = float(next.get("delay", 60.0))
+		var id: String = String(next.get("id", ""))
+
+		if id == "":
+			continue
+
+		# attesa non bloccante
+		await get_tree().create_timer(delay).timeout
+
+		# potrebbe succedere che il feed sia stato cambiato/chiuso, controlla un minimo
+		if not is_inside_tree():
+			return
+
+		GameManager.add_message(id)
+
+	_scheduling_messages = false
+
+func _setup_messages_for_session() -> void:
+	# Pulisci la coda precedente
+	_queued_messages.clear()
+
+	# Quanti messaggi usare in questa sessione
+	var total_messages: int = 5
+	var immediate_count: int = 2
+
+	# Ottieni ID casuali dal GameManager
+	var session_ids: Array[String] = GameManager.get_random_message_ids(total_messages)
+
+	# --- RNG per i delay casuali ---
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+
+	# --- Messaggi immediati (spawnati subito) ---
+	var index: int = 0
+	while index < session_ids.size() and index < immediate_count:
+		var id: String = session_ids[index]
+		GameManager.add_message(id)  # resa immediata
+		index += 1
+
+	# --- Messaggi ritardati ---
+	var remaining_index: int = index
+	while remaining_index < session_ids.size():
+		var id2: String = session_ids[remaining_index]
+
+		# Delay completamente random tra 45s e 150s
+		var delay: float = rng.randf_range(45.0, 150.0)
+
+		var entry: Dictionary = {
+			"id": id2,
+			"delay": delay
+		}
+
+		_queued_messages.append(entry)
+		remaining_index += 1
+
+func _on_message_added_for_toast(id: String) -> void:
+	var data: Dictionary = GameManager.get_message_data(id)
+	var msg: String = "Hai ricevuto un nuovo messaggio!"
+	toast.show_toast(msg)
 
 func spawn_random_posts(count: int = 5) -> void:
 	# Creiamo una copia dei template disponibili

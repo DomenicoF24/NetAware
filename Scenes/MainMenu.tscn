@@ -147,7 +147,6 @@ texture = SubResource("GradientTexture2D_h7a2f")
 stretch_mode = 6
 
 [node name="Pattern" type="TextureRect" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.0392157)
 layout_mode = 1
 anchors_preset = 15

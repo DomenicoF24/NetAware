@@ -1,12 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=50 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_vlf4v"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="2_bdj8h"]
 [ext_resource type="Texture2D" uid="uid://efhpip0lowbv" path="res://images/patternCustom1.png" id="2_bh8uc"]
 [ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_bh8uc"]
 [ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="4_lbn8v"]
-[ext_resource type="Texture2D" uid="uid://dkdrxt2l2gnf8" path="res://images/messages.png" id="5_rw3wl"]
-[ext_resource type="Texture2D" uid="uid://8gbgabwnt1u1" path="res://images/notification.png" id="6_t7j1k"]
+[ext_resource type="Texture2D" uid="uid://dxxtakjxfdbe6" path="res://images/letter.png" id="6_bh8uc"]
 [ext_resource type="Texture2D" uid="uid://c71ntu4v1208n" path="res://images/settings.png" id="7_et7ox"]
 [ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="8_pvruj"]
 [ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_26a88"]
@@ -17,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://y634rj4ffbkk" path="res://images/idea (2).png" id="14_iqc2e"]
 [ext_resource type="Script" uid="uid://wuikf1y7i3h2" path="res://Scripts/effects_layer.gd" id="15_vwwx2"]
 [ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://Scripts/achievement_popup.gd" id="16_cqpfx"]
+[ext_resource type="PackedScene" uid="uid://b8r3u8ifsg3wl" path="res://Scenes/MessageWindow.tscn" id="18_bh8uc"]
+[ext_resource type="PackedScene" uid="uid://ogtv70bp03m1" path="res://Scenes/new_message_toast.tscn" id="19_lbn8v"]
 
 [sub_resource type="Gradient" id="Gradient_eiy7p"]
 offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
@@ -46,15 +47,6 @@ bg_color = Color(0, 0, 0, 0.0980392)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tka1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0vxv"]
-bg_color = Color(0, 0, 0, 0.0980392)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxfre"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_535ex"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6b05h"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovler"]
 bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evp1m"]
@@ -153,7 +145,6 @@ texture = SubResource("GradientTexture2D_u5vha")
 stretch_mode = 6
 
 [node name="Pattern" type="TextureRect" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.0392157)
 layout_mode = 1
 anchors_preset = 15
@@ -179,7 +170,7 @@ grow_vertical = 2
 [node name="Sidebar" type="VBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 120
 script = ExtResource("2_bdj8h")
 bg_color = Color(1, 1, 1, 1)
 
@@ -224,27 +215,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_xoqp3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tka1p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p0vxv")
 text = "Messaggi"
-icon = ExtResource("5_rw3wl")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-
-[node name="Notifiche" type="Button" parent="MainContainer/Sidebar"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
-theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_constants/h_separation = 0
-theme_override_fonts/font = ExtResource("3_bh8uc")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/disabled = SubResource("StyleBoxFlat_pxfre")
-theme_override_styles/hover = SubResource("StyleBoxFlat_535ex")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6b05h")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ovler")
-text = "Notifiche"
-icon = ExtResource("6_t7j1k")
+icon = ExtResource("6_bh8uc")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -523,3 +494,9 @@ offset_bottom = 96.0
 label_settings = SubResource("LabelSettings_u5vha")
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="MessageWindow" parent="." instance=ExtResource("18_bh8uc")]
+
+[node name="NewMessageToast" parent="." instance=ExtResource("19_lbn8v")]
+layout_mode = 1
+anchors_preset = 5

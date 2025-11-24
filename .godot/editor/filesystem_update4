@@ -3,7 +3,13 @@ res://Scenes/AchievementCard.tscn
 res://Scenes/feed.tscn
 res://Scenes/Post.tscn
 res://Scenes/MainMenu.tscn
-res://Scripts/achievement_card.gd
 res://Scenes/AvatarPicker.tscn
-res://Scripts/avatar_picker.gd
-res://Scripts/profile_page.gd
+res://Scenes/MessageCard.tscn
+res://Scripts/MessageCard.gd
+res://Scenes/MessageWindow.tscn
+res://Scripts/MessageWindow.gd
+res://Scripts/GameManager.gd
+res://Scripts/Feed.gd
+res://Scripts/sidebar.gd
+res://Scenes/new_message_toast.tscn
+res://Scripts/NewMessageToast.gd

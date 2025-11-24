@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1762986195
-::res://images/::1762967112
+::res://::1763999336
+::res://images/::1764014099
 ACHIEVEDD100.png::CompressedTexture2D/CompressedTexture2D::3371834811732229958::1762888853::1762888854::1::::<><><>0<>0<>8871529b602baad5757543e024b68a43<>res://.godot/imported/ACHIEVEDD100.png-434fe161dafc47a298762d9e827d24e7.ctex::
 ACHIEVEDE100.png::CompressedTexture2D/CompressedTexture2D::7702330152757990096::1762888853::1762888854::1::::<><><>0<>0<>d001ddd5821715488bcaacef15f77332<>res://.godot/imported/ACHIEVEDE100.png-2ce11ecda533ed0557b5c0aab663c89c.ctex::
 ACHIEVEDP100.png::CompressedTexture2D/CompressedTexture2D::8398579643399923919::1762888853::1762888854::1::::<><><>0<>0<>7aac9b4c39a40d4c72d76de63d466044<>res://.godot/imported/ACHIEVEDP100.png-3a2b1a95bc0be44dbdbc97ad6df284df.ctex::
@@ -39,6 +39,7 @@ idea64.png::CompressedTexture2D/CompressedTexture2D::367576320015019123::1759151
 idea (2).png::CompressedTexture2D/CompressedTexture2D::1750280729634032442::1762902540::1762902540::1::::<><><>0<>0<>400fb066fa8a99c3a33ec913bcd227ba<>res://.godot/imported/idea (2).png-a58bb94616b88a7892303456d843746e.ctex::
 idea.png::CompressedTexture2D/CompressedTexture2D::6389225274232521926::1758984085::1758984086::1::::<><><>0<>0<>6d7d18948e2186e7c23cf8b44c4893bc<>res://.godot/imported/idea.png-b1779c0b5d70753ac141692d77df0af1.ctex::
 iphone.jpg::CompressedTexture2D/CompressedTexture2D::7422353531982366932::1761124044::1761124044::1::::<><><>0<>0<>c94d123fe3c5b631141f0f00c7ceac6e<>res://.godot/imported/iphone.jpg-fe7d40544520369372c4ea8c87487f6e.ctex::
+letter.png::CompressedTexture2D::8822240306148542515::1764014099::1764014100::1::::<><><>0<>0<>5de787546ec7227c09445db78581830c<>res://.godot/imported/letter.png-1eb211748700dfb1c305a48c8390400e.ctex::
 lock64.png::CompressedTexture2D/CompressedTexture2D::4498115371000096413::1758980007::1758980008::1::::<><><>0<>0<>86a9ac92c2f012348a2b2fee87932b3a<>res://.godot/imported/lock64.png-d64ddc196f4d63174e7a50177cb3d351.ctex::
 lock.jpg::CompressedTexture2D/CompressedTexture2D::5553747197592828580::1761126026::1761126027::1::::<><><>0<>0<>5238f90c269bfe93cb5f20bb097db322<>res://.godot/imported/lock.jpg-98dce91bfe62a443f3dae4af4734e618.ctex::
 man1.png::CompressedTexture2D/CompressedTexture2D::9115451032273743306::1759007436::1759007437::1::::<><><>0<>0<>aa35e277c1511c13a41528e95e4147bd<>res://.godot/imported/man1.png-90409bb19eda542cd15fb8902825f060.ctex::
@@ -121,30 +122,34 @@ picGirl10-96.png::CompressedTexture2D/CompressedTexture2D::7786794463932718932::
 picGirl11-96.png::CompressedTexture2D/CompressedTexture2D::1294015700720393517::1762697100::1762697100::1::::<><><>0<>0<>af0a84a00d061a155c333c314ce5c8a1<>res://.godot/imported/picGirl11-96.png-68c8498c97c14dfef6e3a4c07785921c.ctex::
 picP100-96.png::CompressedTexture2D/CompressedTexture2D::8935608810837641931::1762721803::1762721803::1::::<><><>0<>0<>c86df5cef209b9dcf89c94d691cd88cb<>res://.godot/imported/picP100-96.png-92ef805ff08e121f02a272ee5f430590.ctex::
 picSC100-96.png::CompressedTexture2D/CompressedTexture2D::4093236781347328425::1762705434::1762705435::1::::<><><>0<>0<>08d9603e979434fe4ac405ecfb731653<>res://.godot/imported/picSC100-96.png-43ab194bf55af0d9282d5e58ed26b853.ctex::
-::res://Scenes/::1762985407
-AchievementCard.tscn::PackedScene::7824050294107378421::1762984716::0::1::::<><><>0<>0<><>::uid://d2sknbjy43uxm::::res://Scripts/achievement_card.gd
-AvatarPicker.tscn::PackedScene/PackedScene::4098991215954950706::1762905676::0::1::::<><><>0<>0<><>::uid://bjmgtapir3lt3::::res://Scripts/avatar_picker.gd
-feed.tscn::PackedScene::8416616996076911402::1762984716::0::1::::<><><>0<>0<><>::uid://vmi3dp6gjx5r::::res://Scripts/Feed.gd<>uid://bexi2weyp18cf::::res://Scripts/sidebar.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://dhgywxqad8kdv::::res://images/house.png<>uid://dkdrxt2l2gnf8::::res://images/messages.png<>uid://8gbgabwnt1u1::::res://images/notification.png<>uid://c71ntu4v1208n::::res://images/settings.png<>uid://c4ojethx5ylw5::::res://images/profilo.png<>uid://uwe66u3xmxgb::::res://Scripts/indicators.gd<>uid://22bavs02n1so::::res://images/brain64.png<>uid://bc2v2hk4g5v8e::::res://images/empatia.png<>uid://b5c6kkihy1obt::::res://images/lock64.png<>uid://cqmwglm3vm840::::res://images/tempo64.png<>uid://y634rj4ffbkk::::res://images/idea (2).png<>uid://wuikf1y7i3h2::::res://Scripts/effects_layer.gd<>uid://tacvhtv7y51n::::res://Scripts/achievement_popup.gd
-MainMenu.tscn::PackedScene::2907458910777880018::1762985407::0::1::::<><><>0<>0<><>::uid://dw218r8dmlrqq::::res://Scripts/main_menu.gd<>uid://b88mhr0rt7ssv::::res://Scripts/cuoreUI.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://c4ojethx5ylw5::::res://images/profilo.png
-Post.tscn::PackedScene::6789338109058127434::1762984716::0::1::::<><><>0<>0<><>::uid://bdealcrus58dt::::res://Scripts/Post.gd<>uid://dilet6t2ut71i::::res://images/pic.png<>uid://c5f3eqkwv3r3e::::res://images/verificato.png<>uid://ci80cl8n825ca::::res://images/soldi.png<>uid://rgg58mdo5a5h::::res://images/cuore.png<>uid://blycc4g8cghe::::res://Scripts/like.gd<>uid://cu5n2wpyxwgfg::::res://images/commenta.png<>uid://c7omdgcgx4w7n::::res://images/segnala.png<>uid://c0jxpp4rrr3lt::::res://images/condividi.png
-ProfilePage.tscn::PackedScene::5625728583340604102::1762984716::0::1::::<><><>0<>0<><>::uid://b0e14pnpchc26::::res://Scripts/profile_page.gd<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://csvubo4pytktv::::res://images/back_arrow32.png
+::res://Scenes/::1764013751
+AchievementCard.tscn::PackedScene/PackedScene::7824050294107378421::1763992044::0::1::::<><><>0<>0<><>::uid://d2sknbjy43uxm::::res://Scripts/achievement_card.gd<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf
+AvatarPicker.tscn::PackedScene/PackedScene::4098991215954950706::1763992044::0::1::::<><><>0<>0<><>::uid://bjmgtapir3lt3::::res://Scripts/avatar_picker.gd
+feed.tscn::PackedScene::8416616996076911402::1764013751::0::1::::<><><>0<>0<><>::uid://vmi3dp6gjx5r::::res://Scripts/Feed.gd<>uid://bexi2weyp18cf::::res://Scripts/sidebar.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://dhgywxqad8kdv::::res://images/house.png<>uid://dkdrxt2l2gnf8::::res://images/messages.png<>uid://8gbgabwnt1u1::::res://images/notification.png<>uid://c71ntu4v1208n::::res://images/settings.png<>uid://c4ojethx5ylw5::::res://images/profilo.png<>uid://uwe66u3xmxgb::::res://Scripts/indicators.gd<>uid://22bavs02n1so::::res://images/brain64.png<>uid://bc2v2hk4g5v8e::::res://images/empatia.png<>uid://b5c6kkihy1obt::::res://images/lock64.png<>uid://cqmwglm3vm840::::res://images/tempo64.png<>uid://y634rj4ffbkk::::res://images/idea (2).png<>uid://wuikf1y7i3h2::::res://Scripts/effects_layer.gd<>uid://tacvhtv7y51n::::res://Scripts/achievement_popup.gd<>uid://b8r3u8ifsg3wl::::res://Scenes/MessageWindow.tscn
+MainMenu.tscn::PackedScene/PackedScene::2907458910777880018::1763992044::0::1::::<><><>0<>0<><>::uid://dw218r8dmlrqq::::res://Scripts/main_menu.gd<>uid://b88mhr0rt7ssv::::res://Scripts/cuoreUI.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://c4ojethx5ylw5::::res://images/profilo.png
+MessageCard.tscn::PackedScene::5446838727169974776::1763999381::0::1::::<><><>0<>0<><>::uid://dskbnnt13ayhy::::res://Scripts/MessageCard.gd
+Post.tscn::PackedScene/PackedScene::6789338109058127434::1763992044::0::1::::<><><>0<>0<><>::uid://bdealcrus58dt::::res://Scripts/Post.gd<>uid://dilet6t2ut71i::::res://images/pic.png<>uid://c5f3eqkwv3r3e::::res://images/verificato.png<>uid://ci80cl8n825ca::::res://images/soldi.png<>uid://rgg58mdo5a5h::::res://images/cuore.png<>uid://blycc4g8cghe::::res://Scripts/like.gd<>uid://cu5n2wpyxwgfg::::res://images/commenta.png<>uid://c7omdgcgx4w7n::::res://images/segnala.png<>uid://c0jxpp4rrr3lt::::res://images/condividi.png
+ProfilePage.tscn::PackedScene/PackedScene::5625728583340604102::1763992044::0::1::::<><><>0<>0<><>::uid://b0e14pnpchc26::::res://Scripts/profile_page.gd<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://csvubo4pytktv::::res://images/back_arrow32.png
+MessageWindow.tscn::PackedScene::4739484483123235031::1764005520::0::1::::<><><>0<>0<><>::uid://b43pknw80vcmh::::res://Scripts/MessageWindow.gd
 TestGM.tscn::PackedScene/PackedScene::7052957410397439421::1762878691::0::1::::<><><>0<>0<><>::
-::res://Scripts/::1762985407
-Achievement.gd::GDScript::8612203799642601050::1762983983::0::1::::<>Node<><>0<>0<><>::
+::res://Scripts/::1764013751
+Achievement.gd::GDScript/GDScript::8612203799642601050::1762983983::0::1::::<>Node<><>0<>0<><>::
 AchievementsStore.gd::GDScript/GDScript::5636530221198752062::1762884116::0::1::::<>Node<><>0<>0<><>::
-achievement_card.gd::GDScript/GDScript::9092150081684600026::1762884908::0::1::::AchievementCard<>PanelContainer<><>0<>0<><>::
+achievement_card.gd::GDScript/GDScript::9092150081684600026::1762990653::0::1::::AchievementCard<>PanelContainer<><>0<>0<><>::
 achievement_popup.gd::GDScript/GDScript::1333747362792771481::1762887606::0::1::::<>PopupPanel<><>0<>0<><>::
-avatar_picker.gd::GDScript::3043291065084282878::1762982489::0::1::::<>Window<><>0<>0<><>::
+avatar_picker.gd::GDScript/GDScript::3043291065084282878::1762992699::0::1::::<>Window<><>0<>0<><>::
 cuoreUI.gd::GDScript/GDScript::4771519026418808785::1762890704::0::1::::<>TextureRect<><>0<>0<><>::
 effects_layer.gd::GDScript/GDScript::1585946012914314169::1759008289::0::1::::<>CanvasLayer<><>0<>0<><>::
-Feed.gd::GDScript/GDScript::1499274169777880369::1762905884::0::1::::<>Control<><>0<>0<><>::
-GameManager.gd::GDScript::7497321683511517694::1762985407::0::1::::<>Node<><>0<>0<><>::
+Feed.gd::GDScript::1499274169777880369::1764013751::0::1::::<>Control<><>0<>0<><>::
+GameManager.gd::GDScript::7497321683511517694::1764013250::0::1::::<>Node<><>0<>0<><>::
 GameTime.gd::GDScript/GDScript::323940033613625834::1762700209::0::1::::<>Node<><>0<>0<><>::
 indicators.gd::GDScript/GDScript::1449493071355449209::1758982277::0::1::::<>VBoxContainer<><>0<>0<><>::
 like.gd::GDScript/GDScript::94357928509720618::1761117593::0::1::::<>TextureButton<><>0<>0<><>::
 main_container.gd::GDScript/GDScript::839496312906169521::1761121468::0::1::::<>HBoxContainer<><>0<>0<><>::
 main_menu.gd::GDScript/GDScript::8760793327514712236::1762906138::0::1::::<>Control<><>0<>0<><>::
+MessageCard.gd::GDScript::8443389659791616166::1763999381::0::1::::MessageCard<>PanelContainer<><>0<>0<><>::
 popup_messaggio.gd::GDScript/GDScript::1889259115205040429::1761115615::0::1::::<>CanvasLayer<><>0<>0<><>::
 Post.gd::GDScript/GDScript::2605264501598746445::1762905278::0::1::::<>Control<><>0<>0<><>::
-profile_page.gd::GDScript::4151030524112511797::1762982432::0::1::::<>Control<><>0<>0<><>::
-sidebar.gd::GDScript/GDScript::2715191861770645517::1762906078::0::1::::<>VBoxContainer<><>0<>0<><>::
+profile_page.gd::GDScript/GDScript::4151030524112511797::1762992820::0::1::::<>Control<><>0<>0<><>::
+MessageWindow.gd::GDScript::4480629057463114367::1764005520::0::1::::<>PopupPanel<><>0<>0<><>::
+sidebar.gd::GDScript::2715191861770645517::1764011090::0::1::::<>VBoxContainer<><>0<>0<><>::

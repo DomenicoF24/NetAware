@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8r3u8ifsg3wl"]
+
+[ext_resource type="Script" uid="uid://b43pknw80vcmh" path="res://Scripts/MessageWindow.gd" id="1_phwhg"]
+
+[node name="MessageWindow" type="PopupPanel"]
+size = Vector2i(151, 100)
+visible = true
+script = ExtResource("1_phwhg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 147.0
+offset_bottom = 96.0
+
+[node name="VBoxRoot" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxHeader" type="HBoxContainer" parent="MarginContainer/VBoxRoot"]
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="MarginContainer/VBoxRoot/HBoxHeader"]
+layout_mode = 2
+text = "Messaggi"
+
+[node name="ButtonClose" type="Button" parent="MarginContainer/VBoxRoot/HBoxHeader"]
+layout_mode = 2
+text = "X"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxRoot"]
+layout_mode = 2
+
+[node name="VBoxMessages" type="VBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer"]
+layout_mode = 2
+
+[node name="LabelEmpty" type="Label" parent="MarginContainer/VBoxRoot"]
+layout_mode = 2
+text = "Nessun Messaggio"
+horizontal_alignment = 1
+vertical_alignment = 1
