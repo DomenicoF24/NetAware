@@ -1,5 +1,7 @@
 extends Control
 
+const TutorialOverlayScene := preload("res://Scenes/TutorialOverlay.tscn")
+
 @onready var pb_sc = $MainContainer/Indicators/P1
 @onready var pb_emp = $MainContainer/Indicators/P2
 @onready var pb_priv = $MainContainer/Indicators/P3
@@ -11,6 +13,12 @@ extends Control
 @onready var messages = $MainContainer/Sidebar/Messaggi
 @onready var messages_window: PopupPanel = $MessageWindow
 @onready var toast: NewMessageToast = $NewMessageToast
+@onready var indicators = $MainContainer/Indicators
+@onready var Feedback = $MainContainer/Indicators/HBoxContainer5
+@onready var spir = $MainContainer/Indicators/HBoxContainer
+@onready var emp = $MainContainer/Indicators/HBoxContainer2
+@onready var pri = $MainContainer/Indicators/HBoxContainer3
+@onready var dip = $MainContainer/Indicators/HBoxContainer4
 
 var post_scene = preload("res://Scenes/Post.tscn")
 var tip_timer: Timer
@@ -50,6 +58,9 @@ func _ready() -> void:
 
 	# Genera 5 post casuali
 	spawn_random_posts(15)
+	
+	_show_tutorial_if_needed()
+	
 	_connect_button(profile, "_on_profile_pressed")
 	profile.text = GameManager.player_name
 	if not GameManager.player_name_changed.is_connected(_on_player_name_changed):
@@ -231,6 +242,85 @@ func _on_achievement_unlocked(id: String) -> void:
 		elif popup.has_method("show_achievement"):
 			popup.show_achievement("Hai sbloccato: %s" % name, tex)
 
+func _show_tutorial_if_needed() -> void:
+# Se l'utente arriva dal bottone Tutorial, forziamo il tutorial
+	if not GameManager.force_feed_tutorial_once and GameManager.has_seen_feed_tutorial:
+		return
+
+	# Qualsiasi sia il caso, consumiamo il "force" (vale solo una volta)
+	GameManager.force_feed_tutorial_once = false
+
+	var overlay: TutorialOverlay = TutorialOverlayScene.instantiate()
+
+	overlay.slides = [
+		{
+			"title": "BENVENUTO IN NETAWARE",
+			"text": "Questo tutorial ti guiderà attraverso le funzioni principali del gioco. Imparerai a leggere i post, valutare i contenuti e capire come le tue azioni influenzano i tuoi indicatori digitali. Prenditi un momento per orientarti prima di iniziare.",
+			"target": null
+		},
+		{
+			"title": "IL FEED",
+			"text": "Qui vedi i post del social fittizio. Alcuni sono sicuri, altri possono nascondere rischi. Interagisci con i post: valuta cosa faresti, segnala i contenuti problematici e fai scelte consapevoli. Ogni volta che premi il tasto 'GIOCA' i post cambiano.",
+			"target": posts_container
+		},
+		{
+			"title": "I POST",
+			"text": "Hai molte cose a cui fare attenzione. Controlla il nome, l'immagine, i like per capirne di più. Il verificato può aiutarti molto a decifrare se il post è rischioso o meno. Scegli come interagire con il post tramite i bottoni 'like, commenta, segnala, condividi', ogni tua azione si ripercuoterà sulle statistiche",
+			"target": posts_container
+		},
+		{
+			"title": "ATTENTO AI MESSAGGI",
+			"text": "Qui vedi i messaggi che ti arrivano, scegli di ignorare, rispondere o segnalare. Le tue azioni avranno delle conseguenze.",
+			"target": messages
+		},
+		{
+			"title": "PROFILO E ACHIEVEMENT",
+			"text": "Nel profilo puoi modificare il tuo avatar, controllare la barra di esperienza ed il tempo di gioco e cosa più importante vedere gli achievement sbloccati, completali tutti e diventa il re dei social.",
+			"target": profile
+		},
+		{
+			"title": "LE TUE COMPETENZE DIGITALI",
+			"text": "Questa barra mostra Spirito critico, Empatia, Privacy e Dipendenza. Le tue scelte faranno salire o scendere questi valori. Quando raggiungi un obiettivo comparirà un popup a schermo, ogni obiettivo ti fornirà delle ricompense.",
+			"target": indicators
+		},
+		{
+			"title": "SPIRITO CRITICO",
+			"text": "Lo spirito critico rappresenta la tua capacità di analizzare le informazioni prima di reagire. Aumenta quando valuti correttamente un post e riconosci contenuti fuorvianti o rischiosi; diminuisce quando agisci impulsivamente senza verificare fonti, contesto o credibilità.",
+			"target": spir
+		},
+		{
+			"title": "EMPATIA",
+			"text": "L’empatia indica quanto riesci a metterti nei panni degli altri nelle interazioni digitali. Sale quando scegli comportamenti rispettosi.",
+			"target": emp
+		},
+		{
+			"title": "PRIVACY",
+			"text": "La privacy misura quanto proteggi le tue informazioni e quanto riconosci rischi legati alla condivisione online. Cresce quando interagisci con post riguardanti la sicurezza e condividi le informazioni agli altri; cala quando condividi o accetti contenuti che espongono la tua identità o informazioni sensibili.",
+			"target": pri
+		},
+		{
+			"title": "DIPENDENZA",
+			"text": "La dipendenza digitale riflette quanto sei capace di gestire il tempo online e l'uso delle piattaforme social. Aumenta automaticamente col passare del tempo.",
+			"target": dip
+		},
+		{
+			"title": "CONSIGLI UTILI",
+			"text": "Questa sezione ti fornisce consigli utili, buttaci un occhio ogni tanto.",
+			"target": Feedback
+		},
+		{
+			"title": "SEI PRONTO!",
+			"text": "Ora esplora il feed. Puoi rivedere questo tutorial in qualsiasi momento dal menu iniziale.",
+			"target": null
+		}
+	]
+	add_child(overlay)
+	
+	overlay.tutorial_finished.connect(_on_feed_tutorial_finished)
+
+func _on_feed_tutorial_finished() -> void:
+	GameManager.has_seen_feed_tutorial = true
+	GameManager.save_profile()
 
 var post_templates = [
 	{

@@ -16,6 +16,8 @@ var player_name: String = "Profilo"
 var avatar_id: String = "default"
 var xp: int = 0
 var xp_max: int = 100
+var has_seen_feed_tutorial: bool = false
+var force_feed_tutorial_once: bool = false
 
 # Array di avatar
 var avatars := {
@@ -303,6 +305,8 @@ func save_profile() -> void:
 		if info.get("unlocked", false):
 			unlocked_ids.append(k)
 	cfg.set_value("profile", "unlocked_avatars", unlocked_ids)
+	
+	cfg.set_value("profile", "has_seen_feed_tutorial", has_seen_feed_tutorial)
 
 	cfg.save("user://profile.cfg")
 
@@ -319,6 +323,8 @@ func load_profile() -> void:
 			var info: Dictionary = avatars[k]
 			info["unlocked"] = k in unlocked_ids or info.get("unlocked", false)
 			avatars[k] = info
+			
+		has_seen_feed_tutorial = bool(cfg.get_value("profile", "has_seen_feed_tutorial", false))
 
 		emit_signal("xp_changed", xp, xp_max)
 		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)

@@ -1,7 +1,7 @@
 extends Control
 
 @onready var play_btn = $Center/MenuVbox/Play
-@onready var btn_tutorial = $Center/MenuVBox/SmallButtons/Tutorial
+@onready var btn_tutorial = $Center/MenuVbox/SmallButtons/Tutorial
 @onready var btn_options = $Center/MenuVBox/SmallButtons/Impostazioni
 @onready var btn_quit = $Center/MenuVbox/SmallButtons/Esci
 @onready var btn_profile = $ProfileButton
@@ -13,6 +13,7 @@ func _ready() -> void:
 	_connect_button(play_btn, "_on_play_pressed")
 	_connect_button(btn_quit, "_on_quit_pressed")
 	_connect_button(btn_profile, "_on_profile_pressed")
+	_connect_button(btn_tutorial, "_on_tutorial_button_pressed")
 	$ConfermaUscita.confirmed.connect(Callable(self, "_on_exit_confirmed"))
 	#_connect_button(btn_tutorial, "_on_tutorial_pressed")
 	#_connect_button(btn_objectives, "_on_objectives_pressed")
@@ -71,6 +72,10 @@ func _on_profile_pressed():
 	tree.current_scene = profile
 	if old:
 		old.queue_free()
+
+func _on_tutorial_button_pressed() -> void:
+	GameManager.force_feed_tutorial_once = true
+	get_tree().change_scene_to_file("res://Scenes/feed.tscn")
 
 func _on_exit_confirmed():
 	get_tree().quit()

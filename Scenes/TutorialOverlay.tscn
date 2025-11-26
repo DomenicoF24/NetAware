@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://d31lrxad7i8qc"]
+
+[ext_resource type="Script" uid="uid://cxxm2lf4idx3v" path="res://Scenes/tutorial_overlay.gd" id="1_56e46"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="1_r3j72"]
+[ext_resource type="Shader" uid="uid://dkj7ydgft7g37" path="res://TutorialOverlay.gdshader" id="2_cw6jv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jubyj"]
+shader = ExtResource("2_cw6jv")
+shader_parameter/hole_uv_pos = Vector2(0.3, 0.3)
+shader_parameter/hole_uv_size = Vector2(0.3, 0.3)
+shader_parameter/dim_alpha = 0.6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56e46"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 1, 0.00784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cw6jv"]
+
+[node name="TutorialOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_56e46")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jubyj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Highlight" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_56e46")
+
+[node name="InfoPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 220)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -220.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cw6jv")
+
+[node name="Margin" type="MarginContainer" parent="InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="InfoPanel/Margin"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="InfoPanel/Margin/VBox"]
+custom_minimum_size = Vector2(450, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_r3j72")
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BodyLabel" type="Label" parent="InfoPanel/Margin/VBox"]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_r3j72")
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="InfoPanel/Margin/VBox"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BtnPrev" type="Button" parent="InfoPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Indietro
+"
+
+[node name="BtnNext" type="Button" parent="InfoPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Avanti
+"
+
+[node name="BtnSkip" type="Button" parent="InfoPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Salta
+"

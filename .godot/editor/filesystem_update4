@@ -12,3 +12,7 @@ res://Scripts/Feed.gd
 res://Scripts/GameManager.gd
 res://Scripts/MessageCard.gd
 res://Scripts/NewMessageToast.gd
+res://Scenes/TutorialOverlay.tscn
+res://Scenes/tutorial_overlay.gd
+res://Scripts/main_menu.gd
+res://TutorialOverlay.gdshader
