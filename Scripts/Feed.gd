@@ -13,7 +13,7 @@ const TutorialOverlayScene := preload("res://Scenes/TutorialOverlay.tscn")
 @onready var messages = $MainContainer/Sidebar/Messaggi
 @onready var messages_window: PopupPanel = $MessageWindow
 @onready var toast: NewMessageToast = $NewMessageToast
-@onready var indicators = $MainContainer/Indicators
+@onready var indicators = $MainContainer/Indicators/INDC
 @onready var Feedback = $MainContainer/Indicators/HBoxContainer5
 @onready var spir = $MainContainer/Indicators/HBoxContainer
 @onready var emp = $MainContainer/Indicators/HBoxContainer2
@@ -249,6 +249,14 @@ func _show_tutorial_if_needed() -> void:
 
 	# Qualsiasi sia il caso, consumiamo il "force" (vale solo una volta)
 	GameManager.force_feed_tutorial_once = false
+	
+	var example_post: PostCard = null
+	var targets: Dictionary = {}
+
+	if posts_container.get_child_count() > 0:
+		example_post = posts_container.get_child(0) as PostCard
+		if example_post:
+			targets = example_post.get_tutorial_targets()
 
 	var overlay: TutorialOverlay = TutorialOverlayScene.instantiate()
 
@@ -264,9 +272,24 @@ func _show_tutorial_if_needed() -> void:
 			"target": posts_container
 		},
 		{
-			"title": "I POST",
-			"text": "Hai molte cose a cui fare attenzione. Controlla il nome, l'immagine, i like per capirne di più. Il verificato può aiutarti molto a decifrare se il post è rischioso o meno. Scegli come interagire con il post tramite i bottoni 'like, commenta, segnala, condividi', ogni tua azione si ripercuoterà sulle statistiche",
-			"target": posts_container
+			"title": "IL POST",
+			"text": "Hai molte cose a cui fare attenzione.",
+			"target": targets.get("Post", posts_container)
+		},
+				{
+			"title": "INFO PRINCIPALI",
+			"text": "Controlla con attenzione il nome, il verificato può aiutarti molto a decifrare se il post è rischioso o meno.",
+			"target": targets.get("top", posts_container)
+		},
+		{
+			"title": "LIKE",
+			"text": "Il numero dei like ti dice molto: se il numero è basso potrebbe essere un post pericoloso, se è alto potrebbe essere una fonte sicura, ma fai comunque attenzione a tutti i dettagli.",
+			"target": targets.get("like", posts_container)
+		},
+		{
+			"title": "DIDASCALIA",
+			"text": "Le parole usate nella didascalia sono una fonte molto attendibile dell'affidabilità del post. Scegli come interagire con il post tramite i bottoni 'like, commenta, segnala, condividi', ogni tua azione si ripercuoterà sulle statistiche.",
+			"target": targets.get("comments", posts_container)
 		},
 		{
 			"title": "ATTENTO AI MESSAGGI",

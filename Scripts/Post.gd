@@ -1,4 +1,5 @@
 extends Control
+class_name PostCard
 
 @onready var author_label = $PostPanel/PostLayout/HBoxContainer/AuthorLabel
 @onready var profilePic = $PostPanel/PostLayout/HBoxContainer/ProfilePic
@@ -15,6 +16,12 @@ var pressed_buttons := {}  # tiene traccia dei bottoni già premuti
 
 var data = {} # conterrà le info del post (autore, testo, effetti)
 
+@onready var top: Control = $PostPanel/PostLayout/HBoxContainer
+@onready var like: Control = $PostPanel/PostLayout/MiPiace
+@onready var comments: Control = $PostPanel/PostLayout/TextBox
+@onready var bottoni: Control = $PostPanel/PostLayout/ButtonBg
+@onready var Post: Control = $PostPanel
+
 func _ready() -> void:
 	if author_label == null:
 		print("ERROR: author_label è null! Verifica i percorsi")
@@ -23,6 +30,15 @@ func _ready() -> void:
 	btn_report.pressed.connect(_on_report_pressed)
 	btn_share.pressed.connect(_on_share_pressed)
 	btn_comment.pressed.connect(_on_comment_pressed)
+
+func get_tutorial_targets() -> Dictionary:
+	return {
+		"top": top,
+		"like": like,
+		"comments": comments,
+		"bottoni": bottoni,
+		"Post": Post,
+	}
 
 func set_post_data(post_data: Dictionary) -> void:
 	# Inizializza il contenuto del post

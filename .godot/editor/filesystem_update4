@@ -16,3 +16,4 @@ res://Scenes/TutorialOverlay.tscn
 res://Scenes/tutorial_overlay.gd
 res://Scripts/main_menu.gd
 res://TutorialOverlay.gdshader
+res://Scripts/Post.gd

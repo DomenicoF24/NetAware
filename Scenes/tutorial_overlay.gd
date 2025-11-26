@@ -20,6 +20,7 @@ var _current_index: int = 0
 @onready var btn_prev: Button = $InfoPanel/Margin/VBox/Buttons/BtnPrev
 @onready var btn_next: Button = $InfoPanel/Margin/VBox/Buttons/BtnNext
 @onready var btn_skip: Button = $InfoPanel/Margin/VBox/Buttons/BtnSkip
+@onready var infoPanel = $InfoPanel
 
 func _ready() -> void:
 	if slides.is_empty():
@@ -71,6 +72,7 @@ func _update_slide() -> void:
 		if mat:
 			mat.set("shader_parameter/hole_uv_pos", Vector2.ZERO)
 			mat.set("shader_parameter/hole_uv_size", Vector2.ZERO)
+		_position_info_panel_default()
 
 
 
@@ -98,6 +100,50 @@ func _show_highlight_on(target: Control) -> void:
 	if mat:
 		mat.set("shader_parameter/hole_uv_pos", hole_uv_pos)
 		mat.set("shader_parameter/hole_uv_size", hole_uv_size)
+		
+	_position_info_panel()
+
+func _position_info_panel() -> void:
+	# forza il pannello ad adottare almeno le dimensioni minime
+	infoPanel.size = infoPanel.get_combined_minimum_size()
+
+	var overlay_size: Vector2 = get_rect().size
+	var panel_size: Vector2 = infoPanel.size
+	var margin := 16.0
+
+	# rettangolo dell'highlight
+	var h_pos: Vector2 = highlight.position
+	var h_size: Vector2 = highlight.size
+	var h_center_x := h_pos.x + h_size.x * 0.5
+
+	# posizionamento orizzontale: centra rispetto all'highlight, ma non uscire dai bordi
+	var x := h_center_x - panel_size.x * 0.5
+	x = clamp(x, margin, overlay_size.x - panel_size.x - margin)
+
+	# posizionamento verticale: se c'è spazio, mettilo sotto; altrimenti sopra
+	var y: float
+	var spazio_sotto := h_pos.y + h_size.y + panel_size.y + margin
+	if spazio_sotto < overlay_size.y:
+		# c'è spazio sotto l'highlight
+		y = h_pos.y + h_size.y + margin
+	else:
+		# mettilo sopra
+		y = h_pos.y - panel_size.y - margin
+		if y < margin:
+			y = margin
+
+	infoPanel.position = Vector2(x, y)
+
+func _position_info_panel_default() -> void:
+	infoPanel.size = infoPanel.get_combined_minimum_size()
+	var overlay_size: Vector2 = get_rect().size
+	var panel_size: Vector2 = infoPanel.size
+	var margin := 16.0
+
+	var x := (overlay_size.x - panel_size.x) * 0.5
+	var y := overlay_size.y - panel_size.y - margin
+
+	infoPanel.position = Vector2(x, y)
 
 func _on_prev_pressed() -> void:
 	if _current_index > 0:
