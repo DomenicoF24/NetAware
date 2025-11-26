@@ -12,6 +12,7 @@ corner_radius_bottom_left = 12
 
 [node name="NewMessageToast" type="Control"]
 layout_mode = 3
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0

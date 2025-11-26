@@ -86,7 +86,7 @@ var messages_catalog: Dictionary = {
 	"msg1": {
 		"sender_name": "Luca",
 		"text": "Ehi, perché non pubblichi quella foto? Tanto non succede nulla.",
-		"avatar_icon": "",              # es. "res://images/avatar_luca.png"
+		"avatar_icon": "res://images/goal64.png",              # es. "res://images/avatar_luca.png"
 		"category": "privacy_rischiosa"
 	},
 	"msg2": {
@@ -103,17 +103,20 @@ var messages_catalog: Dictionary = {
 	}
 }
 
+func reset_messages_for_session() -> void:
+	# Cancella lo stato dei messaggi della sessione precedente
+	messages_state.clear()
+	
 func get_random_message_ids(count: int) -> Array[String]:
 	var ids: Array[String] = []
 
-	# raccogli tutte le chiavi del catalogo
 	for key in messages_catalog.keys():
-		ids.append(String(key))
+		# Usa SOLO i messaggi che non hanno ancora una entry in messages_state
+		if not messages_state.has(key):
+			ids.append(String(key))
 
-	# mischiale
 	ids.shuffle()
 
-	# limita a 'count' elementi se necessario
 	if count < ids.size():
 		ids.resize(count)
 
@@ -323,17 +326,22 @@ func load_profile() -> void:
 func get_message_data(id: String) -> Dictionary:
 	return messages_catalog.get(id, {}) as Dictionary
 
-func get_pending_messages() -> Array:
-	var res: Array = []
+func get_pending_messages() -> Array[String]:
+	var res: Array[String] = []
 	for id in messages_catalog.keys():
-		if messages_state.get(id, "pending") == "pending":
-			res.append(id)
+		if messages_state.get(id, "handled") == "pending":
+			res.append(id as String)
 	return res
 
 func add_message(id: String) -> void:
 	if not messages_catalog.has(id):
 		push_warning("add_message: id sconosciuto '%s'" % id)
 		return
+
+	# Se è già pending in questa sessione, non lo ri-aggiungo
+	if messages_state.get(id, "none") == "pending":
+		return
+
 	messages_state[id] = "pending"
 	emit_signal("message_added", id)
 

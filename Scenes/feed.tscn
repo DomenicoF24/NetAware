@@ -499,4 +499,6 @@ autowrap_mode = 2
 
 [node name="NewMessageToast" parent="." instance=ExtResource("19_lbn8v")]
 layout_mode = 1
-anchors_preset = 5
+offset_top = 0.0
+offset_bottom = 50.0
+grow_horizontal = 2

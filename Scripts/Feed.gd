@@ -38,6 +38,7 @@ func _ready() -> void:
 	add_child(tip_timer)
 	tip_timer.timeout.connect(_on_tip_timer_timeout)
 	
+	GameManager.reset_messages_for_session()
 	_setup_messages_for_session()
 	_start_message_schedule()
 	# Notifica toast quando arriva un nuovo messaggio
@@ -60,6 +61,8 @@ func _ready() -> void:
 
 	if not Achievement.achievement_unlocked.is_connected(_on_achievement_unlocked):
 		Achievement.achievement_unlocked.connect(_on_achievement_unlocked)
+	
+	_connect_button(messages, "_on_ButtonMessages_pressed")
 
 func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))

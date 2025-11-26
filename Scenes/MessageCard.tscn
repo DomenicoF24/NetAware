@@ -1,41 +1,116 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjuqvxtwmbx33"]
+[gd_scene load_steps=8 format=3 uid="uid://cjuqvxtwmbx33"]
 
 [ext_resource type="Script" uid="uid://dskbnnt13ayhy" path="res://Scripts/MessageCard.gd" id="1_oni06"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_00jr5"]
+[ext_resource type="Texture2D" uid="uid://d24ue8ut4foyk" path="res://images/man1.png" id="2_2a3rn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a3rn"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6cb5"]
+bg_color = Color(0.137255, 0.372549, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uba4"]
+bg_color = Color(0.137255, 0.372549, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_daw0l"]
+bg_color = Color(0.137255, 0.372549, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="MessageCard" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(0, 110)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -55.0
+offset_right = 160.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_2a3rn")
 script = ExtResource("1_oni06")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="ProfilePic" type="TextureRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-
 [node name="VBoxText" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 
-[node name="LabelName" type="Label" parent="HBoxContainer/VBoxText"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxText"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ProfilePic" type="TextureRect" parent="HBoxContainer/VBoxText/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_2a3rn")
+expand_mode = 1
+
+[node name="LabelName" type="Label" parent="HBoxContainer/VBoxText/HBoxContainer"]
 layout_mode = 2
 
 [node name="LabelText" type="Label" parent="HBoxContainer/VBoxText"]
-custom_minimum_size = Vector2(50, 20)
+custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_00jr5")
 autowrap_mode = 2
 
 [node name="VBoxButtons" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="ButtonIgnore" type="Button" parent="HBoxContainer/VBoxButtons"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_00jr5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_p6cb5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0uba4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_daw0l")
 text = "ignora"
 
 [node name="ButtonReply" type="Button" parent="HBoxContainer/VBoxButtons"]
 layout_mode = 2
-text = "rispondi"
+theme_override_fonts/font = ExtResource("2_00jr5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_p6cb5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0uba4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_daw0l")
+text = "rispondi
+"
 
 [node name="ButtonReport" type="Button" parent="HBoxContainer/VBoxButtons"]
 layout_mode = 2
-text = "segnala"
+theme_override_fonts/font = ExtResource("2_00jr5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = SubResource("StyleBoxFlat_p6cb5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0uba4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_daw0l")
+text = "segnala
+"

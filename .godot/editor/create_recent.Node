@@ -1,3 +1,5 @@
+MarginContainer
+HBoxContainer
 Label
 Panel
 Control
@@ -5,8 +7,6 @@ Timer
 VBoxContainer
 ScrollContainer
 Button
-HBoxContainer
-MarginContainer
 PopupPanel
 TextureRect
 PanelContainer

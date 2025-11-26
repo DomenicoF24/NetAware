@@ -6,8 +6,8 @@ signal action_chosen(message_id: String, action: String)
 
 @export var message_id: String = ""
 
-@onready var profile_pic: TextureRect = $HBoxContainer/ProfilePic
-@onready var name_label: Label = $HBoxContainer/VBoxText/LabelName
+@onready var profile_pic: TextureRect = $HBoxContainer/VBoxText/HBoxContainer/ProfilePic
+@onready var name_label: Label = $HBoxContainer/VBoxText/HBoxContainer/LabelName
 @onready var text_label: Label = $HBoxContainer/VBoxText/LabelText
 @onready var btn_ignore: Button = $HBoxContainer/VBoxButtons/ButtonIgnore
 @onready var btn_reply: Button = $HBoxContainer/VBoxButtons/ButtonReply
@@ -33,9 +33,6 @@ func setup_from_data(id: String, data: Dictionary) -> void:
 	if avatar_path != "" and ResourceLoader.exists(avatar_path):
 		tex = load(avatar_path)
 	profile_pic.texture = tex
-
-	# Tooltip con info riassuntiva
-	tooltip_text = "%s:\n%s" % [sender_name, text]
 
 func _emit_action(action: String) -> void:
 	if message_id == "":

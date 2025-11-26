@@ -1,12 +1,13 @@
 extends PopupPanel
 
-@onready var vbox_messages: VBoxContainer = $MarginContainer/VBoxRoot/ScrollContainer/VBoxMessages
+@onready var vbox_messages: VBoxContainer = $MarginContainer/VBoxRoot/ScrollContainer/MessagesMargin/VBoxMessages
 @onready var label_empty: Label = $MarginContainer/VBoxRoot/LabelEmpty
-@onready var btn_close: Button = $MarginContainer/VBoxRoot/HBoxHeader/ButtonClose
+@onready var btn_close: Button = $MarginContainer/ButtonClose
 
 var _card_scene := preload("res://Scenes/MessageCard.tscn")
 
 func _ready() -> void:
+	hide()
 	btn_close.pressed.connect(hide)
 
 	# ascolta i messaggi aggiunti/gestiti
@@ -23,14 +24,18 @@ func open_window() -> void:
 	move_to_foreground()
 
 func _refresh_list() -> void:
+	# Pulisce la lista
 	for child in vbox_messages.get_children():
 		child.queue_free()
 
-	var ids: Array = GameManager.get_pending_messages()
+	# Ottieni messaggi pending
+	var ids: Array[String] = GameManager.get_pending_messages()
 	ids.sort()
 
+	# Mostra label "vuoto" solo se non ci sono messaggi
 	label_empty.visible = ids.is_empty()
 
+	# Crea card per ogni messaggio
 	for id in ids:
 		var data: Dictionary = GameManager.get_message_data(id)
 		var card := _card_scene.instantiate() as MessageCard

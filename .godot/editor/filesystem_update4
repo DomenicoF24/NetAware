@@ -5,11 +5,10 @@ res://Scenes/Post.tscn
 res://Scenes/MainMenu.tscn
 res://Scenes/AvatarPicker.tscn
 res://Scenes/MessageCard.tscn
-res://Scripts/MessageCard.gd
 res://Scenes/MessageWindow.tscn
-res://Scripts/MessageWindow.gd
-res://Scripts/GameManager.gd
-res://Scripts/Feed.gd
-res://Scripts/sidebar.gd
 res://Scenes/new_message_toast.tscn
+res://Scripts/MessageWindow.gd
+res://Scripts/Feed.gd
+res://Scripts/GameManager.gd
+res://Scripts/MessageCard.gd
 res://Scripts/NewMessageToast.gd

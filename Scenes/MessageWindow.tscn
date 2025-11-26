@@ -1,40 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8r3u8ifsg3wl"]
+[gd_scene load_steps=5 format=3 uid="uid://b8r3u8ifsg3wl"]
 
 [ext_resource type="Script" uid="uid://b43pknw80vcmh" path="res://Scripts/MessageWindow.gd" id="1_phwhg"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_ie8ss"]
+[ext_resource type="Texture2D" uid="uid://bya446gqominu" path="res://images/back.png" id="2_u8o3t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8o3t"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_size = 10
 
 [node name="MessageWindow" type="PopupPanel"]
-size = Vector2i(151, 100)
+initial_position = 1
+size = Vector2i(450, 500)
 visible = true
+min_size = Vector2i(450, 500)
+theme_override_styles/panel = SubResource("StyleBoxFlat_u8o3t")
 script = ExtResource("1_phwhg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 147.0
-offset_bottom = 96.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 440.0
+offset_bottom = 490.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonClose" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("2_u8o3t")
+flat = true
+icon_alignment = 1
 
 [node name="VBoxRoot" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="HBoxHeader" type="HBoxContainer" parent="MarginContainer/VBoxRoot"]
 layout_mode = 2
 
 [node name="LabelTitle" type="Label" parent="MarginContainer/VBoxRoot/HBoxHeader"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ie8ss")
 text = "Messaggi"
-
-[node name="ButtonClose" type="Button" parent="MarginContainer/VBoxRoot/HBoxHeader"]
-layout_mode = 2
-text = "X"
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxRoot"]
+custom_minimum_size = Vector2(0, 380)
 layout_mode = 2
+horizontal_scroll_mode = 0
 
-[node name="VBoxMessages" type="VBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer"]
+[node name="MessagesMargin" type="MarginContainer" parent="MarginContainer/VBoxRoot/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxMessages" type="VBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer/MessagesMargin"]
+custom_minimum_size = Vector2(360, 330)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
 
 [node name="LabelEmpty" type="Label" parent="MarginContainer/VBoxRoot"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ie8ss")
 text = "Nessun Messaggio"
-horizontal_alignment = 1
 vertical_alignment = 1
