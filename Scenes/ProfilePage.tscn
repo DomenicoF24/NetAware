@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://csvubo4pytktv" path="res://images/back_arrow32.png" id="4_8ktqv"]
 
 [sub_resource type="Gradient" id="Gradient_h7a2f"]
-colors = PackedColorArray(0.196078, 0.737255, 0.462745, 1, 0.258628, 0.559869, 0.786749, 1)
+offsets = PackedFloat32Array(0, 0.363636, 0.668831, 1)
+colors = PackedColorArray(0.196078, 0.737255, 0.462745, 1, 0.222479, 0.662384, 0.5995, 1, 0.239132, 0.615158, 0.685761, 1, 0.258628, 0.559869, 0.786749, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qjidb"]
 gradient = SubResource("Gradient_h7a2f")

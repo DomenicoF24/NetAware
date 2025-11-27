@@ -14,6 +14,7 @@ const TutorialOverlayScene := preload("res://Scenes/TutorialOverlay.tscn")
 @onready var messages_window: PopupPanel = $MessageWindow
 @onready var toast: NewMessageToast = $NewMessageToast
 @onready var indicators = $MainContainer/Indicators/INDC
+@onready var gradient := ($Background.texture as GradientTexture2D).gradient
 @onready var Feedback = $MainContainer/Indicators/HBoxContainer5
 @onready var spir = $MainContainer/Indicators/HBoxContainer
 @onready var emp = $MainContainer/Indicators/HBoxContainer2
@@ -45,6 +46,11 @@ func _ready() -> void:
 	tip_timer.autostart = true
 	add_child(tip_timer)
 	tip_timer.timeout.connect(_on_tip_timer_timeout)
+	
+	_apply_theme(GameManager.get_setting("theme", "light"))
+
+	if not GameManager.theme_changed.is_connected(_on_theme_changed):
+		GameManager.theme_changed.connect(_on_theme_changed)
 	
 	GameManager.reset_messages_for_session()
 	_setup_messages_for_session()
@@ -95,6 +101,20 @@ func _on_ButtonMessages_pressed() -> void:
 		messages_window.open_window()
 		
 
+func _on_theme_changed(theme: String) -> void:
+	_apply_theme(theme)
+
+func _apply_theme(theme: String) -> void:
+	if theme == "dark":
+		gradient.set_color(0, Color8(0x10, 0x10, 0x10)) # #101010
+		gradient.set_color(1, Color8(0x18, 0x18, 0x18)) # #181818
+		gradient.set_color(2, Color8(0x20, 0x20, 0x20)) # #202020
+		gradient.set_color(3, Color8(0x28, 0x28, 0x28)) # #282828
+	else:
+		gradient.set_color(0, Color8(0xF5, 0x85, 0x29))
+		gradient.set_color(1, Color8(0xDD, 0x2A, 0x7B))
+		gradient.set_color(2, Color8(0x81, 0x34, 0xAF))
+		gradient.set_color(3, Color8(0x51, 0x5B, 0xD4))
 
 func _apply_avatar(tex: Texture2D):
 	if not tex: return

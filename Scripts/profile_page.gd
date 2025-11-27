@@ -7,6 +7,7 @@ extends Control
 @onready var time_label: Label = $VBoxContainer/HBoxContainer/VBoxContainer/Label2
 @onready var grid: GridContainer = $VBoxContainer/MarginContainer/ScrollContainer/GridContainer
 @onready var XP:= $VBoxContainer/HBoxContainer/VBoxContainer/XPBar
+@onready var gradient := ($Background.texture as GradientTexture2D).gradient
 @export var return_to: int = 0
 var _card_by_id: Dictionary = {}
 
@@ -19,6 +20,11 @@ func _ready() -> void:
 
 	time_label.text = GameTime.format_time_hhmmss(GameTime.total_seconds)
 	GameTime.total_time_changed.connect(_on_total_time_changed)
+	
+	_apply_theme(GameManager.get_setting("theme", "light"))
+
+	if not GameManager.theme_changed.is_connected(_on_theme_changed):
+		GameManager.theme_changed.connect(_on_theme_changed)
 	
 	# XP bar
 	XP.max_value = GameManager.xp_max
@@ -100,3 +106,20 @@ func _on_achievement_unlocked(id: String) -> void:
 	else:
 		# se la card non è presente, ricostruisci la griglia
 		_populate_achievements()
+
+func _on_theme_changed(theme: String) -> void:
+	_apply_theme(theme)
+
+func _apply_theme(theme: String) -> void:
+	if theme == "dark":
+		# Gradiente scuro, verde → blu scuro
+		gradient.set_color(0, Color8(0x55, 0x3C, 0x7C)) # #553C7C viola medio, parte più chiara
+		gradient.set_color(1, Color8(0x46, 0x30, 0x6A)) # #46306A viola scuro morbido
+		gradient.set_color(2, Color8(0x37, 0x25, 0x58)) # #372558 viola-notte profondo
+		gradient.set_color(3, Color8(0x28, 0x1A, 0x46)) # #281A46 viola scurissimo # #251C31 viola-notte più acceso
+	else:
+		# Gradiente chiaro, basato sui tuoi colori
+		gradient.set_color(0, Color8(0x32, 0xBC, 0x76)) # 32bc76
+		gradient.set_color(1, Color8(0x2F, 0xAE, 0x87)) # 2fae87
+		gradient.set_color(2, Color8(0x33, 0x98, 0xA9)) # 3398a9
+		gradient.set_color(3, Color8(0x42, 0x8F, 0xC9)) # 428fc9

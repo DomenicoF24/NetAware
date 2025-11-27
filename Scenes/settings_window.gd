@@ -11,6 +11,7 @@ var theme_option: OptionButton
 var reset_button: Button
 var menu_checkbox: CheckBox
 @onready var close := $MarginContainer/ButtonClose
+@onready var reset_dialog: AcceptDialog = $ResetDialog
 
 func _ready() -> void:
 	# Risolvi i nodi dalle path esportate
@@ -37,6 +38,8 @@ func _ready() -> void:
 
 	# Collega segnali
 	close.pressed.connect(_on_close_button_pressed)
+	reset_button.pressed.connect(_on_reset_button_pressed)
+	reset_dialog.confirmed.connect(_on_reset_dialog_confirmed)
 	_connect_signals()
 
 
@@ -94,6 +97,8 @@ func _on_theme_item_selected(index: int) -> void:
 
 
 func _on_reset_button_pressed() -> void:
-	# Per ora placeholder, così non crasha
-	# TODO: chiamare GameManager.reset_game_data() quando lo implementi
-	pass
+	reset_dialog.popup_centered()
+
+	
+func _on_reset_dialog_confirmed() -> void:
+	GameManager.wipe_all_save_files()

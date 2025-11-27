@@ -21,6 +21,7 @@ var xp_max: int = 100
 var has_seen_feed_tutorial: bool = false
 var force_feed_tutorial_once: bool = false
 const SETTINGS_PATH := "user://settings.cfg"
+const PROFILE_SAVE_PATH := "user://profile.cfg"
 
 var settings := {
 	"sound_on": true,
@@ -388,6 +389,25 @@ func load_profile() -> void:
 
 		emit_signal("xp_changed", xp, xp_max)
 		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+
+func wipe_all_save_files() -> void:
+	var da := DirAccess.open("user://")
+	if da == null:
+		push_warning("Impossibile aprire la cartella user:// per il reset dei dati.")
+		return
+
+	# Reset achiev e tempo (loro si cancellano il file da soli)
+	AchievementsStore.reset_all()
+	GameTime.reset_time()
+
+	# Cancella solo il profilo qui
+	if FileAccess.file_exists(PROFILE_SAVE_PATH):
+		var file_name : String = PROFILE_SAVE_PATH.get_file()
+		var err := da.remove(file_name)
+		if err != OK:
+			push_warning("Impossibile eliminare il file: %s" % PROFILE_SAVE_PATH)
+
+	get_tree().quit()
 
 func get_message_data(id: String) -> Dictionary:
 	return messages_catalog.get(id, {}) as Dictionary

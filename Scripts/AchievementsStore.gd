@@ -38,3 +38,15 @@ func merge_into(catalog: Dictionary) -> void:
 	for id in catalog.keys():
 		if is_unlocked(id):
 			catalog[id]["unlocked"] = true
+
+func reset_all() -> void:
+	# 1) Svuota completamente lo stato in memoria
+	state.clear()
+
+	# 2) Elimina il file JSON dal disco
+	if FileAccess.file_exists(SAVE_PATH):
+		var da := DirAccess.open("user://")
+		if da:
+			var err := da.remove(SAVE_PATH)
+			if err != OK:
+				push_warning("Impossibile eliminare il file degli achievement: %s" % SAVE_PATH)

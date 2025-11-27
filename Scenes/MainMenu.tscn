@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="3_qoqlk"]
 
 [sub_resource type="Gradient" id="Gradient_qoqlk"]
-offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
+offsets = PackedFloat32Array(0, 0.311688, 0.662338, 0.993506)
 colors = PackedColorArray(0.960784, 0.521569, 0.160784, 1, 0.866667, 0.164706, 0.482353, 1, 0.505882, 0.203922, 0.686275, 1, 0.317647, 0.356863, 0.831373, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h7a2f"]
