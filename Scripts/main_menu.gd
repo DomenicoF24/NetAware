@@ -2,7 +2,7 @@ extends Control
 
 @onready var play_btn = $Center/MenuVbox/Play
 @onready var btn_tutorial = $Center/MenuVbox/SmallButtons/Tutorial
-@onready var btn_options = $Center/MenuVBox/SmallButtons/Impostazioni
+@onready var btn_options = $Center/MenuVbox/SmallButtons/Impostazioni
 @onready var btn_quit = $Center/MenuVbox/SmallButtons/Esci
 @onready var btn_profile = $ProfileButton
 #@onready var click_sound = $UI_Audio
@@ -14,10 +14,9 @@ func _ready() -> void:
 	_connect_button(btn_quit, "_on_quit_pressed")
 	_connect_button(btn_profile, "_on_profile_pressed")
 	_connect_button(btn_tutorial, "_on_tutorial_button_pressed")
+	_connect_button(btn_options, "_on_options_pressed")
 	$ConfermaUscita.confirmed.connect(Callable(self, "_on_exit_confirmed"))
-	#_connect_button(btn_tutorial, "_on_tutorial_pressed")
-	#_connect_button(btn_objectives, "_on_objectives_pressed")
-	#_connect_button(btn_options, "_on_options_pressed")
+	
 	btn_profile.text = GameManager.player_name
 	if not GameManager.player_name_changed.is_connected(_on_player_name_changed):
 		GameManager.player_name_changed.connect(_on_player_name_changed)
@@ -76,6 +75,12 @@ func _on_profile_pressed():
 func _on_tutorial_button_pressed() -> void:
 	GameManager.force_feed_tutorial_once = true
 	get_tree().change_scene_to_file("res://Scenes/feed.tscn")
+	
+func _on_options_pressed() -> void:
+	var settings_scene := preload("res://Scenes/SettingsWindow.tscn").instantiate()
+	add_child(settings_scene)
+	settings_scene.popup_centered()
+
 
 func _on_exit_confirmed():
 	get_tree().quit()

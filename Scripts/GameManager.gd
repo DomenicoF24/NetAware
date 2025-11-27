@@ -6,6 +6,8 @@ signal event_logged(text: String)
 signal player_name_changed(new_name)
 signal avatar_changed(tex_full: Texture2D, id: String)
 signal xp_changed(current: int, max_value: int)
+signal settings_changed()
+signal theme_changed(theme: String)
 
 # Valori iniziali
 var spirito_critico := 50
@@ -18,6 +20,12 @@ var xp: int = 0
 var xp_max: int = 100
 var has_seen_feed_tutorial: bool = false
 var force_feed_tutorial_once: bool = false
+const SETTINGS_PATH := "user://settings.cfg"
+
+var settings := {
+	"sound_on": true,
+	"theme": "light" # oppure "dark"
+}
 
 # Array di avatar
 var avatars := {
@@ -137,6 +145,7 @@ func _ready() -> void:
 	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 	emit_signal("xp_changed", xp, xp_max)
 	load_profile()
+	load_settings()
 	
 	for id in messages_catalog.keys():
 		if not messages_state.has(id):
@@ -209,6 +218,57 @@ func _apply_achievement_reward(id: String) -> void:
 func add_xp(amount: int) -> void:
 	xp = clamp(xp + amount, 0, xp_max)
 	emit_signal("xp_changed", xp, xp_max)
+
+func get_setting(key: String, default_value = null):
+	if settings.has(key):
+		return settings[key]
+	return default_value
+
+func set_setting(key: String, value) -> void:
+	settings[key] = value
+	_save_settings()
+	if key == "theme":
+		theme_changed.emit(value)
+	settings_changed.emit()
+	
+func load_settings() -> void:
+	var cfg := ConfigFile.new()
+	var err := cfg.load(SETTINGS_PATH)
+	if err != OK:
+		return
+
+	for key in settings.keys():
+		if cfg.has_section_key("settings", key):
+			settings[key] = cfg.get_value("settings", key, settings[key])
+
+	# Applica subito i valori (es. tema o suono)
+	_apply_settings_on_startup()
+
+
+func _save_settings() -> void:
+	var cfg := ConfigFile.new()
+	for key in settings.keys():
+		cfg.set_value("settings", key, settings[key])
+	cfg.save(SETTINGS_PATH)
+
+
+func _apply_settings_on_startup() -> void:
+	# Tema
+	theme_changed.emit(settings["theme"])
+	# Suono
+	#_apply_sound_state()
+	
+#func toggle_sound(on: bool) -> void:
+	#set_setting("sound_on", on)
+	#_apply_sound_state()
+
+
+#func _apply_sound_state() -> void:
+	#var on := settings["sound_on"]
+
+	# Se usi i bus audio di Godot:
+	# var idx = AudioServer.get_bus_index("Master")
+	# AudioServer.set_bus_mute(idx, not on)
 
 # ----------------- POPUP ACHIEVEMENT -----------------
 

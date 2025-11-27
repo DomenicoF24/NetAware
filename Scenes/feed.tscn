@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=45 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_vlf4v"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="2_bdj8h"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_bh8uc"]
 [ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="4_lbn8v"]
 [ext_resource type="Texture2D" uid="uid://dxxtakjxfdbe6" path="res://images/letter.png" id="6_bh8uc"]
-[ext_resource type="Texture2D" uid="uid://c71ntu4v1208n" path="res://images/settings.png" id="7_et7ox"]
 [ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="8_pvruj"]
 [ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_26a88"]
 [ext_resource type="Texture2D" uid="uid://22bavs02n1so" path="res://images/brain64.png" id="10_mtg2k"]
@@ -47,15 +46,6 @@ bg_color = Color(0, 0, 0, 0.0980392)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tka1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0vxv"]
-bg_color = Color(0, 0, 0, 0.0980392)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evp1m"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0enty"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iqlf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p333c"]
 bg_color = Color(0, 0, 0, 0.0980392)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3unk"]
@@ -170,7 +160,7 @@ grow_vertical = 2
 [node name="Sidebar" type="VBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_constants/separation = 120
+theme_override_constants/separation = 180
 script = ExtResource("2_bdj8h")
 bg_color = Color(1, 1, 1, 1)
 
@@ -216,26 +206,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_tka1p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p0vxv")
 text = "Messaggi"
 icon = ExtResource("6_bh8uc")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-
-[node name="Impostazioni" type="Button" parent="MainContainer/Sidebar"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
-theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
-theme_override_fonts/font = ExtResource("3_bh8uc")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/disabled = SubResource("StyleBoxFlat_evp1m")
-theme_override_styles/hover = SubResource("StyleBoxFlat_0enty")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3iqlf")
-theme_override_styles/normal = SubResource("StyleBoxFlat_p333c")
-text = "Impostazioni
-"
-icon = ExtResource("7_et7ox")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0

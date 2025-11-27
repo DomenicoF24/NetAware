@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvdkq1a74d7oa"]
+
+[ext_resource type="Script" uid="uid://vskw7evcynox" path="res://Scenes/settings_window.gd" id="1_w8q4c"]
+[ext_resource type="Texture2D" uid="uid://bya446gqominu" path="res://images/back.png" id="2_sohj4"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_f5cgl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8o3t"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_size = 10
+
+[node name="SettingsWindow" type="PopupPanel"]
+initial_position = 1
+size = Vector2i(450, 500)
+visible = true
+min_size = Vector2i(450, 500)
+theme_override_styles/panel = SubResource("StyleBoxFlat_u8o3t")
+script = ExtResource("1_w8q4c")
+menu_checkbox_path = NodePath("MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer/menu2")
+sound_checkbox_path = NodePath("MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer2/puls2")
+theme_option_path = NodePath("MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer3/OptionButton")
+reset_button_path = NodePath("MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer4/Reset")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 440.0
+offset_bottom = 490.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonClose" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("2_sohj4")
+flat = true
+icon_alignment = 1
+
+[node name="VBoxRoot" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HBoxHeader" type="HBoxContainer" parent="MarginContainer/VBoxRoot"]
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="MarginContainer/VBoxRoot/HBoxHeader"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f5cgl")
+text = "Impostazioni"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxRoot"]
+custom_minimum_size = Vector2(0, 380)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="MarginContainer/VBoxRoot/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxButtons" type="VBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin"]
+custom_minimum_size = Vector2(360, 380)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="menu1" type="Label" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f5cgl")
+theme_override_font_sizes/font_size = 24
+text = "Musica menù"
+
+[node name="menu2" type="CheckBox" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="puls1" type="Label" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f5cgl")
+theme_override_font_sizes/font_size = 24
+text = "Suoni pulsanti"
+
+[node name="puls2" type="CheckBox" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="tema" type="Label" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f5cgl")
+theme_override_font_sizes/font_size = 24
+text = "Colore tema"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_f5cgl")
+item_count = 2
+popup/item_0/text = "Chiaro"
+popup/item_0/id = 0
+popup/item_1/text = "Scuro"
+popup/item_1/id = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons"]
+layout_mode = 2
+
+[node name="Reset" type="Button" parent="MarginContainer/VBoxRoot/ScrollContainer/Margin/VBoxButtons/HBoxContainer4"]
+layout_mode = 2
+text = "Cancella i file di salvataggio
+"

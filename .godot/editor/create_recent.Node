@@ -1,5 +1,7 @@
 Button
 HBoxContainer
+OptionButton
+CheckBox
 Label
 VBoxContainer
 MarginContainer
@@ -10,5 +12,3 @@ Timer
 ScrollContainer
 PopupPanel
 TextureRect
-PanelContainer
-GridContainer

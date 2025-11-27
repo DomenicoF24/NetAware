@@ -93,6 +93,8 @@ func _on_profile_pressed():
 func _on_ButtonMessages_pressed() -> void:
 	if messages_window:
 		messages_window.open_window()
+		
+
 
 func _apply_avatar(tex: Texture2D):
 	if not tex: return
