@@ -9,6 +9,7 @@ signal xp_changed(current: int, max_value: int)
 signal settings_changed()
 signal theme_changed(theme: String)
 
+
 # Valori iniziali
 var spirito_critico := 50
 var empatia := 50

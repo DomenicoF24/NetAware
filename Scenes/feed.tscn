@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=52 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_vlf4v"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="2_bdj8h"]
@@ -102,6 +102,27 @@ corner_detail = 1
 bg_color = Color(0.909804, 0.184314, 0.211765, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbn8v"]
+bg_color = Color(0.819608, 0.898039, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw3wl"]
+bg_color = Color(0.819608, 0.898039, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7j1k"]
+bg_color = Color(0.137255, 0.372549, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u5vha"]
 load_path = "res://.godot/imported/fireworks.png-4b25ed33383db03930ae88fbc4120681.ctex"
 
@@ -116,6 +137,12 @@ variation_embolden = 0.5
 font = SubResource("FontVariation_ovler")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et7ox"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvruj"]
+bg_color = Color(0.2484, 0.2484, 0.2484, 1)
 
 [node name="Feed" type="Control"]
 layout_mode = 3
@@ -433,6 +460,17 @@ autowrap_mode = 2
 justification_flags = 169
 text_direction = 1
 
+[node name="endButton" type="Button" parent="MainContainer/Indicators"]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_bh8uc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lbn8v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rw3wl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_t7j1k")
+text = "Fine round"
+
 [node name="EffectsLayer" type="CanvasLayer" parent="."]
 script = ExtResource("15_vwwx2")
 
@@ -495,3 +533,71 @@ offset_bottom = 50.0
 grow_horizontal = 2
 
 [node name="NoteLog" parent="." instance=ExtResource("19_rw3wl")]
+
+[node name="RoundSummaryPopup" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_et7ox")
+
+[node name="Backgrounds" type="TextureRect" parent="RoundSummaryPopup"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_u5vha")
+stretch_mode = 6
+
+[node name="Patterns" type="TextureRect" parent="RoundSummaryPopup"]
+modulate = Color(1, 1, 1, 0.0392157)
+layout_mode = 2
+texture = ExtResource("2_bh8uc")
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundSummaryPopup"]
+layout_mode = 2
+
+[node name="Label_title" type="Label" parent="RoundSummaryPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh8uc")
+theme_override_font_sizes/font_size = 30
+text = "Riepilogo"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="RoundSummaryPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvruj")
+
+[node name="MarginContainer" type="MarginContainer" parent="RoundSummaryPopup/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label_body" type="Label" parent="RoundSummaryPopup/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh8uc")
+theme_override_font_sizes/font_size = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RoundSummaryPopup/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button_Notes" type="Button" parent="RoundSummaryPopup/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bh8uc")
+text = "Appunti"
+
+[node name="Button_NewRound" type="Button" parent="RoundSummaryPopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_bh8uc")
+text = "Nuovo round"

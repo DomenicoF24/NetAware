@@ -15,13 +15,24 @@ const TutorialOverlayScene := preload("res://Scenes/TutorialOverlay.tscn")
 @onready var NoteLog : PopupPanel = $NoteLog
 @onready var messages_window: PopupPanel = $MessageWindow
 @onready var toast: NewMessageToast = $NewMessageToast
-@onready var indicators = $MainContainer/Indicators/INDC
+@onready var indicators = $MainContainer/Indicators
 @onready var gradient := ($Background.texture as GradientTexture2D).gradient
 @onready var Feedback = $MainContainer/Indicators/HBoxContainer5
 @onready var spir = $MainContainer/Indicators/HBoxContainer
 @onready var emp = $MainContainer/Indicators/HBoxContainer2
 @onready var pri = $MainContainer/Indicators/HBoxContainer3
 @onready var dip = $MainContainer/Indicators/HBoxContainer4
+@onready var btn_end_round: Button = $MainContainer/Indicators/endButton
+@onready var round_popup: PanelContainer = $RoundSummaryPopup
+@onready var lbl_round_title: Label = $RoundSummaryPopup/VBoxContainer/Label_title
+@onready var lbl_round_body: Label = $RoundSummaryPopup/VBoxContainer/PanelContainer/MarginContainer/Label_body
+@onready var stats_grid: GridContainer = $RoundSummaryPopup/VBoxContainer/PanelContainer/MarginContainer/StatsGrid
+@onready var btn_round_notes: Button = $RoundSummaryPopup/VBoxContainer/HBoxContainer/Button_Notes
+@onready var btn_round_new: Button = $RoundSummaryPopup/VBoxContainer/HBoxContainer/Button_NewRound
+var round_start_sc: int = 50
+var round_start_emp: int = 50
+var round_start_priv: int = 50
+var round_start_dep: int = 0
 
 var post_scene = preload("res://Scenes/Post.tscn")
 var tip_timer: Timer
@@ -63,11 +74,25 @@ func _ready() -> void:
 
 	# 👇 Connessione al segnale educativo
 	GameManager.connect("event_logged", _on_event_logged)
-
-	# Genera 5 post casuali
-	spawn_random_posts(15)
+	
+	_start_new_round()
 	
 	_show_tutorial_if_needed()
+	
+	if btn_end_round:
+		btn_end_round.pressed.connect(_on_end_round_button_pressed)
+		
+	if round_popup:
+		round_popup.hide()
+
+	# connessioni bottoni popup
+	if btn_round_notes and not btn_round_notes.pressed.is_connected(_on_round_notes_pressed):
+		btn_round_notes.pressed.connect(_on_round_notes_pressed)
+
+	if btn_round_new and not btn_round_new.pressed.is_connected(_on_round_new_round_pressed):
+		btn_round_new.pressed.connect(_on_round_new_round_pressed)
+	print("btn_round_notes =", btn_round_notes)
+	print("btn_round_new =", btn_round_new)
 	
 	_connect_button(profile, "_on_profile_pressed")
 	_connect_button(appunti, "_on_appunti_pressed")
@@ -121,6 +146,209 @@ func _apply_theme(theme: String) -> void:
 		gradient.set_color(1, Color8(0xDD, 0x2A, 0x7B))
 		gradient.set_color(2, Color8(0x81, 0x34, 0xAF))
 		gradient.set_color(3, Color8(0x51, 0x5B, 0xD4))
+
+func _start_new_round() -> void:
+# Salva i valori GLOBALI all'inizio del round
+	round_start_sc = GameManager.spirito_critico
+	round_start_emp = GameManager.empatia
+	round_start_priv = GameManager.privacy
+	round_start_dep = GameManager.dipendenza
+
+	# Svuota i post precedenti
+	_clear_feed_posts()
+
+	spawn_random_posts(15)
+
+	_reset_round_progress_bars()
+
+	if round_popup:
+		round_popup.hide()
+
+func _clear_feed_posts() -> void:
+	for child in posts_container.get_children():
+		child.queue_free()
+
+func _reset_round_progress_bars() -> void:
+	_on_indicators_changed(
+		GameManager.spirito_critico,
+		GameManager.empatia,
+		GameManager.privacy,
+		GameManager.dipendenza
+	)
+
+func _on_end_round_button_pressed() -> void:
+	round_popup.visible = true
+
+	var delta_sc := GameManager.spirito_critico - round_start_sc
+	var delta_emp := GameManager.empatia - round_start_emp
+	var delta_priv := GameManager.privacy - round_start_priv
+	var delta_dep := GameManager.dipendenza - round_start_dep
+
+	if lbl_round_title:
+		lbl_round_title.text = "Riepilogo del round"
+
+	if lbl_round_body:
+		var body := ""
+
+		# Blocco 1: variazioni
+		body += "COME SONO CAMBIATE LE TUE COMPETENZE\n"
+		body += "- Spirito critico: %+d\n" % int(delta_sc)
+		body += "- Empatia:        %+d\n" % int(delta_emp)
+		body += "- Privacy:        %+d\n" % int(delta_priv)
+		body += "- Dipendenza:     %+d\n\n" % int(delta_dep)
+
+		# Blocco 2: focus del round
+		body += _build_round_focus_section(delta_sc, delta_emp, delta_priv, delta_dep)
+		body += "\n"
+
+		# Blocco 3: attenzione / consigli (con frasi random)
+		body += _build_round_attention_section(delta_sc, delta_emp, delta_priv, delta_dep)
+
+		lbl_round_body.text = body
+
+
+func _build_round_focus_section(delta_sc: int, delta_emp: int, delta_priv: int, delta_dep: int) -> String:
+	var focus_text := "QUESTO ROUND TI HA FATTO LAVORARE SOPRATTUTTO SU:\n"
+
+	var max_delta : int = max(delta_sc, delta_emp, delta_priv)
+	if max_delta <= 0:
+		focus_text += "- Nessuna competenza in particolare: le variazioni sono state minime.\n"
+		return focus_text
+
+	if max_delta == delta_sc:
+		focus_text += "- Spirito critico\n"
+	elif max_delta == delta_emp:
+		focus_text += "- Empatia digitale\n"
+	else:
+		focus_text += "- Protezione della privacy\n"
+
+	return focus_text
+
+
+func _build_round_attention_section(delta_sc: int, delta_emp: int, delta_priv: int, delta_dep: int) -> String:
+	var txt := "CONSIDERAZIONE SULLE TUE AZIONI:\n"
+	var has_warning := false
+
+	# --- LISTE DI FRASI RANDOM ----
+
+	var attention_dep_phrases := [
+		"La tua dipendenza digitale è salita: prova a limitare le interazioni impulsive nei prossimi round.",
+		"Hai interagito un po' troppo rapidamente: prenditi qualche secondo in più prima di scegliere.",
+		"La dipendenza digitale sta aumentando. Fai attenzione ai contenuti che ti attirano senza motivo.",
+		"Attenzione: molte interazioni sono state automatiche. Nel prossimo round prova a essere più selettivo.",
+		"Il tempo speso sui contenuti rischiosi è stato elevato. Scegli con più calma.",
+		"Stai sviluppando una tendenza all’uso compulsivo. Focalizzati solo sui post davvero rilevanti.",
+		"In questo round alcuni contenuti hanno catturato troppo la tua attenzione. Mantieni il controllo.",
+		"La crescita della dipendenza segnala interazioni ripetitive. Sperimenta azioni diverse.",
+		"La dipendenza è aumentata: è un buon momento per rileggere gli appunti e comprendere i pattern.",
+		"Stai cliccando troppo spesso senza valutare: cerca di bilanciare velocità e consapevolezza."
+	]
+
+	var attention_sc_phrases := [
+		"Lo spirito critico è sceso: alcuni post ti hanno tratto in inganno.",
+		"Hai reagito a contenuti fuorvianti: controlla le fonti con più attenzione.",
+		"Attenzione: hai dato fiducia a post poco affidabili.",
+		"Alcune decisioni sono state affrettate. Verifica meglio la credibilità del contenuto.",
+		"Lo spirito critico ha avuto un calo. Nel prossimo round, osserva prima di cliccare.",
+		"Alcuni post rischiosi non sono stati riconosciuti: rivedi gli indizi nei tuoi appunti.",
+		"Sei stato un po’ impulsivo nel giudicare: prova a leggere con più calma.",
+		"La valutazione dei contenuti non è stata precisa. Rallenta un secondo prima di reagire.",
+		"Alcuni segnali di pericolo non sono stati notati: guarda meglio i dettagli grafici.",
+		"Torna sui post in cui hai avuto un calo: ti aiuteranno a capire gli errori di percezione."
+	]
+
+	var attention_emp_phrases := [
+		"L’empatia è diminuita: alcune risposte sono state un po’ troppo dirette.",
+		"Hai interagito senza considerare come potevano sentirsi gli altri utenti.",
+		"I commenti impulsivi hanno ridotto la tua empatia digitale.",
+		"Attenzione: alcune reazioni sono state interpretate come poco sensibili.",
+		"Un paio di scelte non hanno mostrato attenzione agli altri utenti.",
+		"L'empatia è calata: fermati un attimo prima di commentare.",
+		"Rilegge i post dove hai perso empatia: ti faranno capire come migliorare.",
+		"Attento al tono: anche un piccolo errore può sembrare aggressivo.",
+		"Hai sottovalutato il contesto emotivo di alcuni contenuti.",
+		"Prova a immedesimarti un po’ di più negli altri nei prossimi round."
+	]
+
+	var attention_priv_phrases := [
+		"La tua privacy ha subìto un calo: alcuni contenuti nascondevano rischi.",
+		"Hai condiviso o accettato informazioni troppo sensibili.",
+		"Alcuni link sospetti non sono stati riconosciuti. Presta più attenzione.",
+		"Attenzione: hai sottovalutato contenuti che potevano esporre dati personali.",
+		"La privacy è scesa: controlla meglio la credibilità delle fonti.",
+		"Alcune interazioni rischiose hanno compromesso la sicurezza.",
+		"Rivedi i post in cui hai perso privacy: c’erano segnali importanti da notare.",
+		"Occhio alle richieste strane: non tutto è quello che sembra.",
+		"Hai mostrato un po’ troppa fiducia in contenuti dubbi.",
+		"La protezione dei dati è stata trascurata: fai più attenzione ai dettagli sospetti."
+	]
+
+	var attention_neutral_phrases := [
+		"Non sono emerse criticità: hai mantenuto un buon equilibrio.",
+		"Le tue scelte sono state costanti e ponderate.",
+		"Nessun calo significativo: prosegui così.",
+		"Il tuo comportamento digitale è stato stabile e consapevole.",
+		"Hai gestito bene i contenuti senza errori evidenti.",
+		"Buon round: hai mostrato attenzione nei punti chiave.",
+		"Le tue valutazioni sono state equilibrate.",
+		"Continua così: stai sviluppando buone abitudini digitali.",
+		"Round pulito, senza particolari problemi.",
+		"Hai mantenuto un comportamento maturo e responsabile."
+	]
+
+	# --- LOGICA DI SCELTA DELLE FRASI ----
+
+	if delta_dep > 40:
+		txt += "- " + attention_dep_phrases.pick_random() + "\n"
+		has_warning = true
+
+	if delta_sc < 0:
+		txt += "- " + attention_sc_phrases.pick_random() + "\n"
+		has_warning = true
+
+	if delta_emp < 0:
+		txt += "- " + attention_emp_phrases.pick_random() + "\n"
+		has_warning = true
+
+	if delta_priv < 0:
+		txt += "- " + attention_priv_phrases.pick_random() + "\n"
+		has_warning = true
+
+	if not has_warning:
+		txt += "- " + attention_neutral_phrases.pick_random() + "\n"
+
+	return txt
+
+
+
+func _on_round_notes_pressed() -> void:
+# Apri gli appunti
+	if NoteLog:
+		NoteLog.show()
+
+func _on_round_new_round_pressed() -> void:
+	if round_popup:
+		round_popup.hide()
+	_start_new_round()
+	
+func _get_round_feedback_phrase(delta_sc: int, delta_emp: int, delta_priv: int, delta_dep: int) -> String:
+	var positive_sum : int = max(delta_sc, 0) + max(delta_emp, 0) + max(delta_priv, 0)
+	var negative_sum : int = max(-delta_sc, 0) + max(-delta_emp, 0) + max(-delta_priv, 0) + max(delta_dep, 0)
+
+	if positive_sum == 0 and negative_sum == 0:
+		return "In questo round hai avuto poche variazioni: prova a sperimentare di più con le tue scelte."
+
+	if positive_sum > negative_sum * 2:
+		return "Ottimo lavoro: in questo round le tue decisioni hanno rafforzato molto le tue competenze digitali."
+
+	if delta_dep > 0 and positive_sum <= negative_sum:
+		return "Attenzione: la tua dipendenza digitale è cresciuta più dei benefici ottenuti. Riguarda gli appunti e valuta dove hai esagerato."
+
+	if negative_sum > positive_sum:
+		return "Hai commesso diversi errori: usa gli appunti per capire quali scelte hanno abbassato le tue competenze."
+
+	return "Hai fatto sia scelte buone che qualche errore: riflettere su questo round ti aiuterà a migliorare nei prossimi."
+
 
 func _apply_avatar(tex: Texture2D):
 	if not tex: return
@@ -336,7 +564,7 @@ func _show_tutorial_if_needed() -> void:
 		},
 		{
 			"title": "LE TUE COMPETENZE DIGITALI",
-			"text": "Questa barra mostra Spirito critico, Empatia, Privacy e Dipendenza. Le tue scelte faranno salire o scendere questi valori. Quando raggiungi un obiettivo comparirà un popup a schermo, ogni obiettivo ti fornirà delle ricompense.",
+			"text": "Questa barra mostra gli INDICATORI DI CONSAPEVOLEZZA. Le tue scelte faranno salire o scendere questi valori. Quando raggiungi un obiettivo comparirà un popup a schermo, ogni obiettivo ti fornirà delle ricompense.",
 			"target": indicators
 		},
 		{
@@ -363,6 +591,11 @@ func _show_tutorial_if_needed() -> void:
 			"title": "CONSIGLI UTILI",
 			"text": "Questa sezione ti fornisce consigli utili, buttaci un occhio ogni tanto.",
 			"target": Feedback
+		},
+		{
+			"title": "CONCLUDI IL ROUND",
+			"text": "Premendo questo bottone concluderai il round. Ti verrà mostrata una pagina di riepilogo con le azioni compiute nel round e potrai iniziarne un altro.",
+			"target": btn_end_round
 		},
 		{
 			"title": "SEI PRONTO!",
