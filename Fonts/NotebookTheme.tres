@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://nco37hdpt2wk"]
+
+[ext_resource type="FontFile" uid="uid://4hto7b0p0k71" path="res://Fonts/Letters for Learners.ttf" id="1_7b51u"]
+
+[resource]
+default_font = ExtResource("1_7b51u")
+default_font_size = 24
+Label/colors/font_color = Color(0.168627, 0.168627, 0.168627, 1)
+Label/colors/font_outline_color = Color(0.168627, 0.168627, 0.168627, 1)
+Label/colors/font_shadow_color = Color(0.168627, 0.168627, 0.168627, 1)
+Label/constants/line_spacing = 0
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_7b51u")
+Label/styles/normal = null
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/fonts/bold_font = ExtResource("1_7b51u")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_7b51u")
+RichTextLabel/fonts/italics_font = ExtResource("1_7b51u")
+RichTextLabel/fonts/normal_font = ExtResource("1_7b51u")
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null

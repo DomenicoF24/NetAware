@@ -1,7 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1764258279
-TutorialOverlay.gdshader::Shader::7881715857161119424::1764251342::0::1::::<><><>0<>0<><>::
-::res://images/::1764014337
+::res://::1764349171
+TutorialOverlay.gdshader::Shader::7881715857161119424::1764349171::0::1::::<><><>0<>0<><>::
+::res://Fonts/::1764346732
+Letters for Learners.ttf::FontFile::2051107417207523866::1764341393::1764341393::1::::<><><>0<>0<>c62e992cc73f9bb0720ee78b36a0b9a2<>res://.godot/imported/Letters for Learners.ttf-d227149e4f44451e4b0aec3f14b48167.fontdata::
+Poppins-Bold.ttf::FontFile::5249801589654418784::1760116081::1764338792::1::::<><><>0<>0<>6137da85afec2e4965c93ee9804a466d<>res://.godot/imported/Poppins-Bold.ttf-8b35d4f9bfe042760b0e802b3d72c619.fontdata::
+NotebookTheme.tres::Theme::917485454648573706::1764346732::0::1::::<><><>0<>0<><>::uid://4hto7b0p0k71::::res://Fonts/Letters for Learners.ttf
+::res://images/::1764349909
 ACHIEVEDD100.png::CompressedTexture2D/CompressedTexture2D::3371834811732229958::1762888853::1762888854::1::::<><><>0<>0<>8871529b602baad5757543e024b68a43<>res://.godot/imported/ACHIEVEDD100.png-434fe161dafc47a298762d9e827d24e7.ctex::
 ACHIEVEDE100.png::CompressedTexture2D/CompressedTexture2D::7702330152757990096::1762888853::1762888854::1::::<><><>0<>0<>d001ddd5821715488bcaacef15f77332<>res://.godot/imported/ACHIEVEDE100.png-2ce11ecda533ed0557b5c0aab663c89c.ctex::
 ACHIEVEDP100.png::CompressedTexture2D/CompressedTexture2D::8398579643399923919::1762888853::1762888854::1::::<><><>0<>0<>7aac9b4c39a40d4c72d76de63d466044<>res://.godot/imported/ACHIEVEDP100.png-3a2b1a95bc0be44dbdbc97ad6df284df.ctex::
@@ -27,6 +31,8 @@ cuoreUI.png::CompressedTexture2D/CompressedTexture2D::7288416351843962647::17628
 cuori64.png::CompressedTexture2D/CompressedTexture2D::690847814811388818::1758979803::1758979803::1::::<><><>0<>0<>ac2acd59633ae2cec39525896ab08c3e<>res://.godot/imported/cuori64.png-6858ece91d23615619f1159cfbd042d6.ctex::
 cuori.png::CompressedTexture2D/CompressedTexture2D::7555028330836825440::1759008115::1759008116::1::::<><><>0<>0<>4b803738463884617932a9801597d13c<>res://.godot/imported/cuori.png-768fe27d84cad1e1cef50a9b1b5a16cd.ctex::
 empatia.png::CompressedTexture2D/CompressedTexture2D::2583860228050652714::1762902223::1762902224::1::::<><><>0<>0<>2eb653fe0f8e1be8b2e985fe4140af6e<>res://.godot/imported/empatia.png-f56f7826b9353f9d56798f1710dfef56.ctex::
+feather-pen (1).png::CompressedTexture2D::4291229809650942433::1764349160::1764349161::1::::<><><>0<>0<>7baf15b38cbb272a80d74183465d59d2<>res://.godot/imported/feather-pen (1).png-1b7d0819512ec673288a0d94f08f8a90.ctex::
+feather-pen.png::CompressedTexture2D/CompressedTexture2D::4465305533010084393::1764336634::1764336635::1::::<><><>0<>0<>ad2445e0e75741f7686b0fd22de7746e<>res://.godot/imported/feather-pen.png-38e41462bbbac789db5618b135bf6672.ctex::
 fireworks.png::CompressedTexture2D/CompressedTexture2D::4428665364033772316::1759013364::1759013365::1::::<><><>0<>0<>fce4d2a92b363cf59d30596f9735f8b2<>res://.godot/imported/fireworks.png-4b25ed33383db03930ae88fbc4120681.ctex::
 game64.png::CompressedTexture2D/CompressedTexture2D::6873396870482485939::1759152787::1759152787::1::::<><><>0<>0<>1157ef5cf37708326ffeadf3572f8965<>res://.godot/imported/game64.png-74de14a2d694491b6cacb3ad188d0009.ctex::
 game.jpg::CompressedTexture2D/CompressedTexture2D::3101574515478738146::1761125873::1761125874::1::::<><><>0<>0<>d8da778a6cf2974fc5bd3217d909c02e<>res://.godot/imported/game.jpg-85c231737bf2fbcef8827d6eacafd208.ctex::
@@ -34,12 +40,14 @@ goal64.png::CompressedTexture2D/CompressedTexture2D::4696477033298078044::175915
 gym64.png::CompressedTexture2D/CompressedTexture2D::7253784596704075114::1759152787::1759152787::1::::<><><>0<>0<>8d6afecc75b60736d2e821f3654b1c2f<>res://.godot/imported/gym64.png-ab2dd3df68f3e14b5499d9f06109cb81.ctex::
 gym.jpg::CompressedTexture2D/CompressedTexture2D::6778914401551779747::1761125992::1761125993::1::::<><><>0<>0<>a9d96931162ceb927480fa4bd605898d<>res://.godot/imported/gym.jpg-8ca407f00049ec222a70ae0d56ca4508.ctex::
 hashtagUI.png::CompressedTexture2D/CompressedTexture2D::2679595404789978037::1762890238::1762890238::1::::<><><>0<>0<>ffe512857b8845195855eb016db4ceb8<>res://.godot/imported/hashtagUI.png-c6826de658aea9341f97e5d0e7455ff3.ctex::
+home (1).png::CompressedTexture2D::3864106841205138842::1764349909::1764349909::1::::<><><>0<>0<>a2ebb79736ad1cda8b1f534f51ad0a09<>res://.godot/imported/home (1).png-8e024518d8783e1440ecc4041dcf75a2.ctex::
 house.png::CompressedTexture2D/CompressedTexture2D::7664467951121433051::1758976506::1758976506::1::::<><><>0<>0<>a311a4f4479d32df97312e1e57558f8d<>res://.godot/imported/house.png-30a31b916d20e4a587faf8422cf78fa6.ctex::
 icon.svg::CompressedTexture2D/CompressedTexture2D::5844895910590870083::1755960717::1758983431::1::::<><><>0<>0<>944334cfcd3f7b79492050f420bafb18<>res://.godot/imported/icon.svg-40d11009b022ae281956dc38e8f8d85e.ctex::
 idea64.png::CompressedTexture2D/CompressedTexture2D::367576320015019123::1759151634::1759151634::1::::<><><>0<>0<>16367393b5907f5c2c0a3a358ee36b23<>res://.godot/imported/idea64.png-fdd6179cbb8fbd320c0f2c95867ddbab.ctex::
 idea (2).png::CompressedTexture2D/CompressedTexture2D::1750280729634032442::1762902540::1762902540::1::::<><><>0<>0<>400fb066fa8a99c3a33ec913bcd227ba<>res://.godot/imported/idea (2).png-a58bb94616b88a7892303456d843746e.ctex::
 idea.png::CompressedTexture2D/CompressedTexture2D::6389225274232521926::1758984085::1758984086::1::::<><><>0<>0<>6d7d18948e2186e7c23cf8b44c4893bc<>res://.godot/imported/idea.png-b1779c0b5d70753ac141692d77df0af1.ctex::
 iphone.jpg::CompressedTexture2D/CompressedTexture2D::7422353531982366932::1761124044::1761124044::1::::<><><>0<>0<>c94d123fe3c5b631141f0f00c7ceac6e<>res://.godot/imported/iphone.jpg-fe7d40544520369372c4ea8c87487f6e.ctex::
+letter (1).png::CompressedTexture2D::2337000896687444212::1764349888::1764349889::1::::<><><>0<>0<>af7bf91dcc57b2017175584430bc347d<>res://.godot/imported/letter (1).png-a73280d8ad9f3b21f14cacb5ccbc8ead.ctex::
 letter.png::CompressedTexture2D/CompressedTexture2D::8822240306148542515::1764014099::1764014100::1::::<><><>0<>0<>5de787546ec7227c09445db78581830c<>res://.godot/imported/letter.png-1eb211748700dfb1c305a48c8390400e.ctex::
 lock64.png::CompressedTexture2D/CompressedTexture2D::4498115371000096413::1758980007::1758980008::1::::<><><>0<>0<>86a9ac92c2f012348a2b2fee87932b3a<>res://.godot/imported/lock64.png-d64ddc196f4d63174e7a50177cb3d351.ctex::
 lock.jpg::CompressedTexture2D/CompressedTexture2D::5553747197592828580::1761126026::1761126027::1::::<><><>0<>0<>5238f90c269bfe93cb5f20bb097db322<>res://.godot/imported/lock.jpg-98dce91bfe62a443f3dae4af4734e618.ctex::
@@ -58,7 +66,6 @@ NY.jpg::CompressedTexture2D/CompressedTexture2D::3143048277101647384::1761123533
 password.jpg::CompressedTexture2D/CompressedTexture2D::1109014630163869826::1761126153::1761126154::1::::<><><>0<>0<>e26bf4f14f2fd1e90c91afd9b727d163<>res://.godot/imported/password.jpg-09775d35565f033885addce5dcac34b7.ctex::
 patternCustom1.png::CompressedTexture2D/CompressedTexture2D::291529513690395535::1762967015::1762967016::1::::<><><>0<>0<>84cce47410d8ab16f26181536a344897<>res://.godot/imported/patternCustom1.png-53b16e722352173417bf987f41312f95.ctex::
 pic.png::CompressedTexture2D/CompressedTexture2D::7743759412362884852::1758985130::1758985130::1::::<><><>0<>0<>5151150d5d5e46b4311667de50dd154c<>res://.godot/imported/pic.png-5beb1bfebb1cee988d0f764b44b4ee89.ctex::
-Poppins-Bold.ttf::FontFile/FontFile::5249801589654418784::1760116081::1760116081::1::::<><><>0<>0<>737ad39c616284487eeb6455e52b39ea<>res://.godot/imported/Poppins-Bold.ttf-6f81a665f41d93fcd9cc42b0b0f614d9.fontdata::
 privacy.jpg::CompressedTexture2D/CompressedTexture2D::6553064294134910361::1761126195::1761126196::1::::<><><>0<>0<>e2d04589120667301dcd5b19fe120972<>res://.godot/imported/privacy.jpg-6638b06b362421ef0fb4c85d0da431b5.ctex::
 profilo96.png::CompressedTexture2D/CompressedTexture2D::1022554251492670052::1761770075::1761770075::1::::<><><>0<>0<>7990cda4f36d23c15556b03daff93774<>res://.godot/imported/profilo96.png-3f89a02bf52793a1a35801940e299217.ctex::
 profilo.png::CompressedTexture2D/CompressedTexture2D::6837773727399841142::1761755686::1761755686::1::::<><><>0<>0<>8583559d150d44ee05cc0ffbc409670d<>res://.godot/imported/profilo.png-0ed1ca2709a78875984582ae0f23368a.ctex::
@@ -122,40 +129,43 @@ picGirl10-96.png::CompressedTexture2D/CompressedTexture2D::7786794463932718932::
 picGirl11-96.png::CompressedTexture2D/CompressedTexture2D::1294015700720393517::1762697100::1762697100::1::::<><><>0<>0<>af0a84a00d061a155c333c314ce5c8a1<>res://.godot/imported/picGirl11-96.png-68c8498c97c14dfef6e3a4c07785921c.ctex::
 picP100-96.png::CompressedTexture2D/CompressedTexture2D::8935608810837641931::1762721803::1762721803::1::::<><><>0<>0<>c86df5cef209b9dcf89c94d691cd88cb<>res://.godot/imported/picP100-96.png-92ef805ff08e121f02a272ee5f430590.ctex::
 picSC100-96.png::CompressedTexture2D/CompressedTexture2D::4093236781347328425::1762705434::1762705435::1::::<><><>0<>0<>08d9603e979434fe4ac405ecfb731653<>res://.godot/imported/picSC100-96.png-43ab194bf55af0d9282d5e58ed26b853.ctex::
-::res://Scenes/::1764251143
-AchievementCard.tscn::PackedScene::7824050294107378421::1764251143::0::1::::<><><>0<>0<><>::uid://d2sknbjy43uxm::::res://Scripts/achievement_card.gd<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf
+::res://Scenes/::1764349171
+AchievementCard.tscn::PackedScene::7824050294107378421::1764349171::0::1::::<><><>0<>0<><>::uid://d2sknbjy43uxm::::res://Scripts/achievement_card.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf
 AvatarPicker.tscn::PackedScene/PackedScene::4098991215954950706::1764191527::0::1::::<><><>0<>0<><>::uid://bjmgtapir3lt3::::res://Scripts/avatar_picker.gd
-feed.tscn::PackedScene::8416616996076911402::1764251143::0::1::::<><><>0<>0<><>::uid://vmi3dp6gjx5r::::res://Scripts/Feed.gd<>uid://bexi2weyp18cf::::res://Scripts/sidebar.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://dhgywxqad8kdv::::res://images/house.png<>uid://dxxtakjxfdbe6::::res://images/letter.png<>uid://c4ojethx5ylw5::::res://images/profilo.png<>uid://uwe66u3xmxgb::::res://Scripts/indicators.gd<>uid://22bavs02n1so::::res://images/brain64.png<>uid://bc2v2hk4g5v8e::::res://images/empatia.png<>uid://b5c6kkihy1obt::::res://images/lock64.png<>uid://cqmwglm3vm840::::res://images/tempo64.png<>uid://y634rj4ffbkk::::res://images/idea (2).png<>uid://wuikf1y7i3h2::::res://Scripts/effects_layer.gd<>uid://tacvhtv7y51n::::res://Scripts/achievement_popup.gd<>uid://b8r3u8ifsg3wl::::res://Scenes/MessageWindow.tscn<>uid://ogtv70bp03m1::::res://Scenes/new_message_toast.tscn
-MainMenu.tscn::PackedScene::2907458910777880018::1764251143::0::1::::<><><>0<>0<><>::uid://dw218r8dmlrqq::::res://Scripts/main_menu.gd<>uid://b88mhr0rt7ssv::::res://Scripts/cuoreUI.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://c4ojethx5ylw5::::res://images/profilo.png
-MessageCard.tscn::PackedScene/PackedScene::5446838727169974776::1764191527::0::1::::<><><>0<>0<><>::uid://dskbnnt13ayhy::::res://Scripts/MessageCard.gd<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://d24ue8ut4foyk::::res://images/man1.png
-MessageWindow.tscn::PackedScene::4739484483123235031::1764251143::0::1::::<><><>0<>0<><>::uid://b43pknw80vcmh::::res://Scripts/MessageWindow.gd<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://bya446gqominu::::res://images/back.png
-new_message_toast.tscn::PackedScene/PackedScene::996222921425188538::1764191527::0::1::::<><><>0<>0<><>::uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://dlpwyj3a6763l::::res://Scripts/NewMessageToast.gd
-Post.tscn::PackedScene::6789338109058127434::1764251143::0::1::::<><><>0<>0<><>::uid://bdealcrus58dt::::res://Scripts/Post.gd<>uid://dilet6t2ut71i::::res://images/pic.png<>uid://c5f3eqkwv3r3e::::res://images/verificato.png<>uid://ci80cl8n825ca::::res://images/soldi.png<>uid://rgg58mdo5a5h::::res://images/cuore.png<>uid://blycc4g8cghe::::res://Scripts/like.gd<>uid://cu5n2wpyxwgfg::::res://images/commenta.png<>uid://c7omdgcgx4w7n::::res://images/segnala.png<>uid://c0jxpp4rrr3lt::::res://images/condividi.png
-ProfilePage.tscn::PackedScene::5625728583340604102::1764251142::0::1::::<><><>0<>0<><>::uid://b0e14pnpchc26::::res://Scripts/profile_page.gd<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://csvubo4pytktv::::res://images/back_arrow32.png
-SettingsWindow.tscn::PackedScene::6253637326777150916::1764251143::0::1::::<><><>0<>0<><>::uid://vskw7evcynox::::res://Scenes/settings_window.gd<>uid://bya446gqominu::::res://images/back.png<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf
-settings_window.gd::GDScript::1511772661249526055::1764250804::0::1::::<>PopupPanel<><>0<>0<><>::
+feed.tscn::PackedScene::8416616996076911402::1764349171::0::1::::<><><>0<>0<><>::uid://vmi3dp6gjx5r::::res://Scripts/Feed.gd<>uid://bexi2weyp18cf::::res://Scripts/sidebar.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://dhgywxqad8kdv::::res://images/house.png<>uid://dxxtakjxfdbe6::::res://images/letter.png<>uid://b2ex6s1pcp6sj::::res://images/feather-pen (1).png<>uid://c4ojethx5ylw5::::res://images/profilo.png<>uid://uwe66u3xmxgb::::res://Scripts/indicators.gd<>uid://22bavs02n1so::::res://images/brain64.png<>uid://bc2v2hk4g5v8e::::res://images/empatia.png<>uid://b5c6kkihy1obt::::res://images/lock64.png<>uid://cqmwglm3vm840::::res://images/tempo64.png<>uid://y634rj4ffbkk::::res://images/idea (2).png<>uid://wuikf1y7i3h2::::res://Scripts/effects_layer.gd<>uid://tacvhtv7y51n::::res://Scripts/achievement_popup.gd<>uid://b8r3u8ifsg3wl::::res://Scenes/MessageWindow.tscn<>uid://ogtv70bp03m1::::res://Scenes/new_message_toast.tscn<>uid://4anf57voc6xs::::res://Scenes/NoteLog.tscn
+MainMenu.tscn::PackedScene::2907458910777880018::1764349171::0::1::::<><><>0<>0<><>::uid://dw218r8dmlrqq::::res://Scripts/main_menu.gd<>uid://b88mhr0rt7ssv::::res://Scripts/cuoreUI.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://c4ojethx5ylw5::::res://images/profilo.png
+MessageCard.tscn::PackedScene::5446838727169974776::1764349171::0::1::::<><><>0<>0<><>::uid://dskbnnt13ayhy::::res://Scripts/MessageCard.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://d24ue8ut4foyk::::res://images/man1.png
+MessageWindow.tscn::PackedScene::4739484483123235031::1764349171::0::1::::<><><>0<>0<><>::uid://b43pknw80vcmh::::res://Scripts/MessageWindow.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://bya446gqominu::::res://images/back.png
+new_message_toast.tscn::PackedScene::996222921425188538::1764338792::0::1::::<><><>0<>0<><>::uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://dlpwyj3a6763l::::res://Scripts/NewMessageToast.gd
+NoteLog.tscn::PackedScene::2036276341485641132::1764349171::0::1::::<><><>0<>0<><>::uid://bya446gqominu::::res://images/back.png<>uid://bbn480qiqnma0::::res://Scripts/NoteLog.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://do0ay8brkavdr::::res://Scripts/NotePage.gd<>uid://nco37hdpt2wk::::res://Fonts/NotebookTheme.tres
+Post.tscn::PackedScene::6789338109058127434::1764349171::0::1::::<><><>0<>0<><>::uid://bdealcrus58dt::::res://Scripts/Post.gd<>uid://dilet6t2ut71i::::res://images/pic.png<>uid://c5f3eqkwv3r3e::::res://images/verificato.png<>uid://ci80cl8n825ca::::res://images/soldi.png<>uid://rgg58mdo5a5h::::res://images/cuore.png<>uid://blycc4g8cghe::::res://Scripts/like.gd<>uid://cu5n2wpyxwgfg::::res://images/commenta.png<>uid://c7omdgcgx4w7n::::res://images/segnala.png<>uid://c0jxpp4rrr3lt::::res://images/condividi.png
+ProfilePage.tscn::PackedScene::5625728583340604102::1764349171::0::1::::<><><>0<>0<><>::uid://b0e14pnpchc26::::res://Scripts/profile_page.gd<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://csvubo4pytktv::::res://images/back_arrow32.png
+SettingsWindow.tscn::PackedScene::6253637326777150916::1764349171::0::1::::<><><>0<>0<><>::uid://vskw7evcynox::::res://Scenes/settings_window.gd<>uid://bya446gqominu::::res://images/back.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf
+settings_window.gd::GDScript/GDScript::1511772661249526055::1764264566::0::1::::<>PopupPanel<><>0<>0<><>::
 TestGM.tscn::PackedScene/PackedScene::7052957410397439421::1762878691::0::1::::<><><>0<>0<><>::
-TutorialOverlay.tscn::PackedScene/PackedScene::9178922948183053894::1764191527::0::1::::<><><>0<>0<><>::uid://cxxm2lf4idx3v::::res://Scenes/tutorial_overlay.gd<>uid://cg2bp20jowkno::::res://images/Poppins-Bold.ttf<>uid://dkj7ydgft7g37::::res://TutorialOverlay.gdshader
+TutorialOverlay.tscn::PackedScene::9178922948183053894::1764338792::0::1::::<><><>0<>0<><>::uid://cxxm2lf4idx3v::::res://Scenes/tutorial_overlay.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://dkj7ydgft7g37::::res://TutorialOverlay.gdshader
 tutorial_overlay.gd::GDScript/GDScript::6435442866562288673::1764188786::0::1::::TutorialOverlay<>Control<><>0<>0<><>::
-::res://Scripts/::1764251116
+::res://Scripts/::1764348989
 Achievement.gd::GDScript/GDScript::8612203799642601050::1762983983::0::1::::<>Node<><>0<>0<><>::
-AchievementsStore.gd::GDScript/GDScript::5636530221198752062::1762884116::0::1::::<>Node<><>0<>0<><>::
+AchievementsStore.gd::GDScript/GDScript::5636530221198752062::1764262866::0::1::::<>Node<><>0<>0<><>::
 achievement_card.gd::GDScript/GDScript::9092150081684600026::1762990653::0::1::::AchievementCard<>PanelContainer<><>0<>0<><>::
 achievement_popup.gd::GDScript/GDScript::1333747362792771481::1762887606::0::1::::<>PopupPanel<><>0<>0<><>::
 avatar_picker.gd::GDScript/GDScript::3043291065084282878::1762992699::0::1::::<>Window<><>0<>0<><>::
 cuoreUI.gd::GDScript/GDScript::4771519026418808785::1762890704::0::1::::<>TextureRect<><>0<>0<><>::
 effects_layer.gd::GDScript/GDScript::1585946012914314169::1759008289::0::1::::<>CanvasLayer<><>0<>0<><>::
-Feed.gd::GDScript::1499274169777880369::1764251116::0::1::::<>Control<><>0<>0<><>::
-GameManager.gd::GDScript::7497321683511517694::1764248765::0::1::::<>Node<><>0<>0<><>::
-GameTime.gd::GDScript/GDScript::323940033613625834::1762700209::0::1::::<>Node<><>0<>0<><>::
+Feed.gd::GDScript::1499274169777880369::1764339788::0::1::::<>Control<><>0<>0<><>::
+GameManager.gd::GDScript/GDScript::7497321683511517694::1764265033::0::1::::<>Node<><>0<>0<><>::
+GameTime.gd::GDScript/GDScript::323940033613625834::1764264985::0::1::::<>Node<><>0<>0<><>::
 indicators.gd::GDScript/GDScript::1449493071355449209::1758982277::0::1::::<>VBoxContainer<><>0<>0<><>::
 like.gd::GDScript/GDScript::94357928509720618::1761117593::0::1::::<>TextureButton<><>0<>0<><>::
 main_container.gd::GDScript/GDScript::839496312906169521::1761121468::0::1::::<>HBoxContainer<><>0<>0<><>::
-main_menu.gd::GDScript::8760793327514712236::1764250400::0::1::::<>Control<><>0<>0<><>::
+main_menu.gd::GDScript/GDScript::8760793327514712236::1764275343::0::1::::<>Control<><>0<>0<><>::
 MessageCard.gd::GDScript/GDScript::8443389659791616166::1764172319::0::1::::MessageCard<>PanelContainer<><>0<>0<><>::
-MessageWindow.gd::GDScript::4480629057463114367::1764250908::0::1::::<>PopupPanel<><>0<>0<><>::
+MessageWindow.gd::GDScript/GDScript::4480629057463114367::1764250908::0::1::::<>PopupPanel<><>0<>0<><>::
 NewMessageToast.gd::GDScript/GDScript::7963684146310531631::1764171697::0::1::::NewMessageToast<>Control<><>0<>0<><>::
+NoteLog.gd::GDScript::2485267500309013425::1764348989::0::1::::<>PopupPanel<><>0<>0<><>::
+NotePage.gd::GDScript::8193559900518117579::1764348800::0::1::::<>Control<><>0<>0<><>::
 popup_messaggio.gd::GDScript/GDScript::1889259115205040429::1761115615::0::1::::<>CanvasLayer<><>0<>0<><>::
-Post.gd::GDScript/GDScript::2605264501598746445::1764190570::0::1::::PostCard<>Control<><>0<>0<><>::
-profile_page.gd::GDScript/GDScript::4151030524112511797::1762992820::0::1::::<>Control<><>0<>0<><>::
-sidebar.gd::GDScript/GDScript::2715191861770645517::1764011090::0::1::::<>VBoxContainer<><>0<>0<><>::
+Post.gd::GDScript/GDScript::2605264501598746445::1764261388::0::1::::PostCard<>Control<><>0<>0<><>::
+profile_page.gd::GDScript/GDScript::4151030524112511797::1764275608::0::1::::<>Control<><>0<>0<><>::
+sidebar.gd::GDScript/GDScript::2715191861770645517::1764336683::0::1::::<>VBoxContainer<><>0<>0<><>::

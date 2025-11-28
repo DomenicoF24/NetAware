@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjuqvxtwmbx33"]
 
 [ext_resource type="Script" uid="uid://dskbnnt13ayhy" path="res://Scripts/MessageCard.gd" id="1_oni06"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_00jr5"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="2_00jr5"]
 [ext_resource type="Texture2D" uid="uid://d24ue8ut4foyk" path="res://images/man1.png" id="2_2a3rn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a3rn"]
@@ -73,6 +73,7 @@ expand_mode = 1
 
 [node name="LabelName" type="Label" parent="HBoxContainer/VBoxText/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_00jr5")
 
 [node name="LabelText" type="Label" parent="HBoxContainer/VBoxText"]
 custom_minimum_size = Vector2(250, 60)

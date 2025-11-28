@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d31lrxad7i8qc"]
 
 [ext_resource type="Script" uid="uid://cxxm2lf4idx3v" path="res://Scenes/tutorial_overlay.gd" id="1_56e46"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="1_r3j72"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="1_r3j72"]
 [ext_resource type="Shader" uid="uid://dkj7ydgft7g37" path="res://TutorialOverlay.gdshader" id="2_cw6jv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jubyj"]

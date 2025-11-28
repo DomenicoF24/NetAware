@@ -1,12 +1,13 @@
-[gd_scene load_steps=45 format=3 uid="uid://dr6cpm16uti0a"]
+[gd_scene load_steps=47 format=3 uid="uid://dr6cpm16uti0a"]
 
 [ext_resource type="Script" uid="uid://vmi3dp6gjx5r" path="res://Scripts/Feed.gd" id="1_vlf4v"]
 [ext_resource type="Script" uid="uid://bexi2weyp18cf" path="res://Scripts/sidebar.gd" id="2_bdj8h"]
 [ext_resource type="Texture2D" uid="uid://efhpip0lowbv" path="res://images/patternCustom1.png" id="2_bh8uc"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_bh8uc"]
-[ext_resource type="Texture2D" uid="uid://dhgywxqad8kdv" path="res://images/house.png" id="4_lbn8v"]
-[ext_resource type="Texture2D" uid="uid://dxxtakjxfdbe6" path="res://images/letter.png" id="6_bh8uc"]
-[ext_resource type="Texture2D" uid="uid://c4ojethx5ylw5" path="res://images/profilo.png" id="8_pvruj"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="3_bh8uc"]
+[ext_resource type="Texture2D" uid="uid://bvb2jmbm4mcmk" path="res://images/home (1).png" id="5_lbn8v"]
+[ext_resource type="Texture2D" uid="uid://8kccfhb65k1y" path="res://images/letter (1).png" id="6_rw3wl"]
+[ext_resource type="Texture2D" uid="uid://b2ex6s1pcp6sj" path="res://images/feather-pen (1).png" id="7_lbn8v"]
+[ext_resource type="Texture2D" uid="uid://otlk355jovcm" path="res://images/profilo96.png" id="8_t7j1k"]
 [ext_resource type="Script" uid="uid://uwe66u3xmxgb" path="res://Scripts/indicators.gd" id="9_26a88"]
 [ext_resource type="Texture2D" uid="uid://22bavs02n1so" path="res://images/brain64.png" id="10_mtg2k"]
 [ext_resource type="Texture2D" uid="uid://bc2v2hk4g5v8e" path="res://images/empatia.png" id="11_wp8tk"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" uid="uid://tacvhtv7y51n" path="res://Scripts/achievement_popup.gd" id="16_cqpfx"]
 [ext_resource type="PackedScene" uid="uid://b8r3u8ifsg3wl" path="res://Scenes/MessageWindow.tscn" id="18_bh8uc"]
 [ext_resource type="PackedScene" uid="uid://ogtv70bp03m1" path="res://Scenes/new_message_toast.tscn" id="19_lbn8v"]
+[ext_resource type="PackedScene" uid="uid://4anf57voc6xs" path="res://Scenes/NoteLog.tscn" id="19_rw3wl"]
 
 [sub_resource type="Gradient" id="Gradient_eiy7p"]
 offsets = PackedFloat32Array(0, 0.311688, 0.681818, 1)
@@ -158,9 +160,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sidebar" type="VBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-theme_override_constants/separation = 180
+theme_override_constants/separation = 105
 script = ExtResource("2_bdj8h")
 bg_color = Color(1, 1, 1, 1)
 
@@ -186,7 +188,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_rj8w1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u5vha")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g6u5n")
 text = "Home"
-icon = ExtResource("4_lbn8v")
+icon = ExtResource("5_lbn8v")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -205,7 +207,27 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_xoqp3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_tka1p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p0vxv")
 text = "Messaggi"
-icon = ExtResource("6_bh8uc")
+icon = ExtResource("6_rw3wl")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Appunti" type="Button" parent="MainContainer/Sidebar"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.819608, 0.898039, 1, 1)
+theme_override_colors/font_color = Color(0.137255, 0.372549, 1, 1)
+theme_override_fonts/font = ExtResource("3_bh8uc")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lryug")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xoqp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tka1p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p0vxv")
+text = "Appunti
+"
+icon = ExtResource("7_lbn8v")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -225,7 +247,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_idamg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_igd52")
 text = "PROFILO
 "
-icon = ExtResource("8_pvruj")
+icon = ExtResource("8_t7j1k")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -234,7 +256,6 @@ vertical_icon_alignment = 0
 custom_minimum_size = Vector2(0, 900)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 scroll_deadzone = 100
@@ -472,3 +493,5 @@ layout_mode = 1
 offset_top = 0.0
 offset_bottom = 50.0
 grow_horizontal = 2
+
+[node name="NoteLog" parent="." instance=ExtResource("19_rw3wl")]

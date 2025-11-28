@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djqa722vqenb6"]
 
 [ext_resource type="Script" uid="uid://d2sknbjy43uxm" path="res://Scripts/achievement_card.gd" id="1_8s6kh"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_ph5mv"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="2_ph5mv"]
 
 [node name="PanelContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(140, 160)

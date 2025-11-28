@@ -69,7 +69,6 @@ func _on_back_pressed():
 func _on_name_submitted(new_text: String):
 	GameManager.set_player_name(new_text)
 	
-#non funziona
 func _on_avatar_Button_pressed():
 	if picker.has_method("build_grid"):
 		picker.build_grid()

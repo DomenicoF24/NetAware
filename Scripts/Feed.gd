@@ -11,6 +11,8 @@ const TutorialOverlayScene := preload("res://Scenes/TutorialOverlay.tscn")
 @onready var feedback_label = $MainContainer/Indicators/HBoxContainer5/FeedbackLabel  # 👈 aggiunta Label
 @onready var profile = $MainContainer/Sidebar/ProfileButton
 @onready var messages = $MainContainer/Sidebar/Messaggi
+@onready var appunti = $MainContainer/Sidebar/Appunti
+@onready var NoteLog : PopupPanel = $NoteLog
 @onready var messages_window: PopupPanel = $MessageWindow
 @onready var toast: NewMessageToast = $NewMessageToast
 @onready var indicators = $MainContainer/Indicators/INDC
@@ -68,11 +70,12 @@ func _ready() -> void:
 	_show_tutorial_if_needed()
 	
 	_connect_button(profile, "_on_profile_pressed")
+	_connect_button(appunti, "_on_appunti_pressed")
 	profile.text = GameManager.player_name
 	if not GameManager.player_name_changed.is_connected(_on_player_name_changed):
 		GameManager.player_name_changed.connect(_on_player_name_changed)
 	
-	_apply_avatar(GameManager.get_avatar_texture_thumb())
+	_apply_avatar(GameManager.get_avatar_texture_full())
 	if not GameManager.avatar_changed.is_connected(_on_avatar_changed):
 		GameManager.avatar_changed.connect(_on_avatar_changed)
 
@@ -99,7 +102,10 @@ func _on_profile_pressed():
 func _on_ButtonMessages_pressed() -> void:
 	if messages_window:
 		messages_window.open_window()
-		
+
+func _on_appunti_pressed() -> void:
+	if NoteLog:
+		NoteLog.show()
 
 func _on_theme_changed(theme: String) -> void:
 	_apply_theme(theme)
@@ -298,7 +304,7 @@ func _show_tutorial_if_needed() -> void:
 			"text": "Hai molte cose a cui fare attenzione.",
 			"target": targets.get("Post", posts_container)
 		},
-				{
+		{
 			"title": "INFO PRINCIPALI",
 			"text": "Controlla con attenzione il nome, il verificato può aiutarti molto a decifrare se il post è rischioso o meno.",
 			"target": targets.get("top", posts_container)
@@ -317,6 +323,11 @@ func _show_tutorial_if_needed() -> void:
 			"title": "ATTENTO AI MESSAGGI",
 			"text": "Qui vedi i messaggi che ti arrivano, scegli di ignorare, rispondere o segnalare. Le tue azioni avranno delle conseguenze.",
 			"target": messages
+		},
+				{
+			"title": "PRENDI NOTA",
+			"text": "Qui avrai contrassegnate tutte le azioni eseguite durante il periodo di gioco. Le informazioni sono nel formato '#post, azione eseguita, corretto/errore, impatto sui progressi'. Avrai modo di riflettere sulle tue azioni, in maniera tale da imparare dai tuoi errori e non commetterli di nuovo.",
+			"target": appunti
 		},
 		{
 			"title": "PROFILO E ACHIEVEMENT",

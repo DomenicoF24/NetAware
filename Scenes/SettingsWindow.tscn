@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vskw7evcynox" path="res://Scenes/settings_window.gd" id="1_w8q4c"]
 [ext_resource type="Texture2D" uid="uid://bya446gqominu" path="res://images/back.png" id="2_sohj4"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_f5cgl"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="3_f5cgl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8o3t"]
 corner_radius_top_left = 12
@@ -30,8 +30,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_right = 440.0
+offset_bottom = 490.0
 grow_horizontal = 2
 grow_vertical = 2
 

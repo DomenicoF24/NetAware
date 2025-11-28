@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ogtv70bp03m1"]
 
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="1_fq4ch"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="1_fq4ch"]
 [ext_resource type="Script" uid="uid://dlpwyj3a6763l" path="res://Scripts/NewMessageToast.gd" id="1_sqcs6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqcs6"]

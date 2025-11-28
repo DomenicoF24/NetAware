@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8r3u8ifsg3wl"]
 
 [ext_resource type="Script" uid="uid://b43pknw80vcmh" path="res://Scripts/MessageWindow.gd" id="1_phwhg"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="2_ie8ss"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="2_ie8ss"]
 [ext_resource type="Texture2D" uid="uid://bya446gqominu" path="res://images/back.png" id="2_u8o3t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8o3t"]

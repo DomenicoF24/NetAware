@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b0e14pnpchc26" path="res://Scripts/profile_page.gd" id="1_tp3lj"]
 [ext_resource type="Texture2D" uid="uid://otlk355jovcm" path="res://images/profilo96.png" id="2_j4ymg"]
 [ext_resource type="Texture2D" uid="uid://efhpip0lowbv" path="res://images/patternCustom1.png" id="2_lqnqt"]
-[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://images/Poppins-Bold.ttf" id="3_lqnqt"]
+[ext_resource type="FontFile" uid="uid://cg2bp20jowkno" path="res://Fonts/Poppins-Bold.ttf" id="3_lqnqt"]
 [ext_resource type="Texture2D" uid="uid://csvubo4pytktv" path="res://images/back_arrow32.png" id="4_8ktqv"]
 
 [sub_resource type="Gradient" id="Gradient_h7a2f"]
