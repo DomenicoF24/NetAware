@@ -533,6 +533,7 @@ offset_bottom = 50.0
 grow_horizontal = 2
 
 [node name="NoteLog" parent="." instance=ExtResource("19_rw3wl")]
+visible = false
 
 [node name="RoundSummaryPopup" type="PanelContainer" parent="."]
 layout_mode = 1

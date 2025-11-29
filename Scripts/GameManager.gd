@@ -23,6 +23,11 @@ var has_seen_feed_tutorial: bool = false
 var force_feed_tutorial_once: bool = false
 const SETTINGS_PATH := "user://settings.cfg"
 const PROFILE_SAVE_PATH := "user://profile.cfg"
+var round_has_started: bool = false
+var round_start_sc: int = 50
+var round_start_emp: int = 50
+var round_start_priv: int = 50
+var round_start_dep: int = 0
 
 var settings := {
 	"sound_on": true,
@@ -167,6 +172,14 @@ func _on_dep_timer_timeout() -> void:
 		emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
 		_check_indicator_achievements()
 
+func reset_indicators_for_new_round() -> void:
+	spirito_critico = 50
+	empatia = 50
+	privacy = 50
+	dipendenza = 0
+
+	emit_signal("indicators_changed", spirito_critico, empatia, privacy, dipendenza)
+
 # Applica effetti agli indicatori. Esempio: {"sc": +5, "dep": -3}
 func apply_effect(effect: Dictionary) -> void:
 	if effect.has("sc"):
@@ -220,6 +233,16 @@ func _apply_achievement_reward(id: String) -> void:
 func add_xp(amount: int) -> void:
 	xp = clamp(xp + amount, 0, xp_max)
 	emit_signal("xp_changed", xp, xp_max)
+
+func begin_round(reset_stats: bool) -> void:
+	if reset_stats:
+		reset_indicators_for_new_round()  # usa la funzione che hai già
+
+	round_start_sc = spirito_critico
+	round_start_emp = empatia
+	round_start_priv = privacy
+	round_start_dep = dipendenza
+	round_has_started = true
 
 func get_setting(key: String, default_value = null):
 	if settings.has(key):

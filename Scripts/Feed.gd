@@ -29,10 +29,6 @@ const TutorialOverlayScene := preload("res://Scenes/TutorialOverlay.tscn")
 @onready var stats_grid: GridContainer = $RoundSummaryPopup/VBoxContainer/PanelContainer/MarginContainer/StatsGrid
 @onready var btn_round_notes: Button = $RoundSummaryPopup/VBoxContainer/HBoxContainer/Button_Notes
 @onready var btn_round_new: Button = $RoundSummaryPopup/VBoxContainer/HBoxContainer/Button_NewRound
-var round_start_sc: int = 50
-var round_start_emp: int = 50
-var round_start_priv: int = 50
-var round_start_dep: int = 0
 
 var post_scene = preload("res://Scenes/Post.tscn")
 var tip_timer: Timer
@@ -49,6 +45,7 @@ func _ready() -> void:
 		GameManager.privacy,
 		GameManager.dipendenza
 	)
+
 	feedback_label.visible = true
 	feedback_label.modulate.a = 1.0
 	feedback_label.text = GameManager.get_tip("default")
@@ -61,22 +58,40 @@ func _ready() -> void:
 	tip_timer.timeout.connect(_on_tip_timer_timeout)
 	
 	_apply_theme(GameManager.get_setting("theme", "light"))
-
 	if not GameManager.theme_changed.is_connected(_on_theme_changed):
 		GameManager.theme_changed.connect(_on_theme_changed)
 	
 	GameManager.reset_messages_for_session()
 	_setup_messages_for_session()
 	_start_message_schedule()
+
 	# Notifica toast quando arriva un nuovo messaggio
 	if not GameManager.message_added.is_connected(_on_message_added_for_toast):
 		GameManager.message_added.connect(_on_message_added_for_toast)
 
-	# 👇 Connessione al segnale educativo
+	# Connessione al segnale educativo
 	GameManager.connect("event_logged", _on_event_logged)
-	
-	_start_new_round()
-	
+
+	# --- GESTIONE ROUND / RE-INGRESSO NEL FEED ---
+
+	if not GameManager.round_has_started:
+		# Primo ingresso nel feed: nuovo round (senza reset extra se già hai settato gli indicatori iniziali)
+		_start_new_round(false)
+	else:
+		# Stai tornando nel feed con un round già in corso:
+		# NON tocchiamo round_start_* in GameManager, rigeneriamo solo i post e riallineiamo la UI.
+		_clear_feed_posts()
+		spawn_random_posts(15)
+		_on_indicators_changed(
+			GameManager.spirito_critico,
+			GameManager.empatia,
+			GameManager.privacy,
+			GameManager.dipendenza
+		)
+		if round_popup:
+			round_popup.hide()
+
+	# Tutorial dopo che il feed è pronto
 	_show_tutorial_if_needed()
 	
 	if btn_end_round:
@@ -91,6 +106,7 @@ func _ready() -> void:
 
 	if btn_round_new and not btn_round_new.pressed.is_connected(_on_round_new_round_pressed):
 		btn_round_new.pressed.connect(_on_round_new_round_pressed)
+
 	print("btn_round_notes =", btn_round_notes)
 	print("btn_round_new =", btn_round_new)
 	
@@ -108,6 +124,7 @@ func _ready() -> void:
 		Achievement.achievement_unlocked.connect(_on_achievement_unlocked)
 	
 	_connect_button(messages, "_on_ButtonMessages_pressed")
+
 
 func _connect_button(btn: Button, pressed_callback_name: String) -> void:
 	btn.pressed.connect(Callable(self, pressed_callback_name))
@@ -147,28 +164,16 @@ func _apply_theme(theme: String) -> void:
 		gradient.set_color(2, Color8(0x81, 0x34, 0xAF))
 		gradient.set_color(3, Color8(0x51, 0x5B, 0xD4))
 
-func _start_new_round() -> void:
-# Salva i valori GLOBALI all'inizio del round
-	round_start_sc = GameManager.spirito_critico
-	round_start_emp = GameManager.empatia
-	round_start_priv = GameManager.privacy
-	round_start_dep = GameManager.dipendenza
+func _start_new_round(reset_stats: bool) -> void:
+	# Chiedo al GameManager di iniziare un round.
+	# Se reset_stats è true, resetta anche gli indicatori a 50/50/50/0.
+	GameManager.begin_round(reset_stats)
 
-	# Svuota i post precedenti
+	# Rigenera i post per il nuovo round
 	_clear_feed_posts()
-
 	spawn_random_posts(15)
 
-	_reset_round_progress_bars()
-
-	if round_popup:
-		round_popup.hide()
-
-func _clear_feed_posts() -> void:
-	for child in posts_container.get_children():
-		child.queue_free()
-
-func _reset_round_progress_bars() -> void:
+	# Riallinea le progress bar ai valori attuali del GameManager
 	_on_indicators_changed(
 		GameManager.spirito_critico,
 		GameManager.empatia,
@@ -176,13 +181,22 @@ func _reset_round_progress_bars() -> void:
 		GameManager.dipendenza
 	)
 
+	# Assicurati che il popup sia chiuso
+	if round_popup:
+		round_popup.visible = false
+
+func _clear_feed_posts() -> void:
+	for child in posts_container.get_children():
+		child.queue_free()
+
 func _on_end_round_button_pressed() -> void:
 	round_popup.visible = true
 
-	var delta_sc := GameManager.spirito_critico - round_start_sc
-	var delta_emp := GameManager.empatia - round_start_emp
-	var delta_priv := GameManager.privacy - round_start_priv
-	var delta_dep := GameManager.dipendenza - round_start_dep
+
+	var delta_sc := GameManager.spirito_critico - GameManager.round_start_sc
+	var delta_emp := GameManager.empatia         - GameManager.round_start_emp
+	var delta_priv := GameManager.privacy        - GameManager.round_start_priv
+	var delta_dep := GameManager.dipendenza      - GameManager.round_start_dep
 
 	if lbl_round_title:
 		lbl_round_title.text = "Riepilogo del round"
@@ -327,9 +341,8 @@ func _on_round_notes_pressed() -> void:
 		NoteLog.show()
 
 func _on_round_new_round_pressed() -> void:
-	if round_popup:
-		round_popup.hide()
-	_start_new_round()
+	# Nuovo round *vero* → reset stats + nuovo round
+	_start_new_round(true)
 	
 func _get_round_feedback_phrase(delta_sc: int, delta_emp: int, delta_priv: int, delta_dep: int) -> String:
 	var positive_sum : int = max(delta_sc, 0) + max(delta_emp, 0) + max(delta_priv, 0)
