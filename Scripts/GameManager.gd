@@ -8,6 +8,7 @@ signal avatar_changed(tex_full: Texture2D, id: String)
 signal xp_changed(current: int, max_value: int)
 signal settings_changed()
 signal theme_changed(theme: String)
+signal feed_action_logged(entry: Dictionary)
 
 
 # Valori iniziali
@@ -23,6 +24,7 @@ var has_seen_feed_tutorial: bool = false
 var force_feed_tutorial_once: bool = false
 const SETTINGS_PATH := "user://settings.cfg"
 const PROFILE_SAVE_PATH := "user://profile.cfg"
+var feed_session_log: Array[Dictionary] = []
 var round_has_started: bool = false
 var round_start_sc: int = 50
 var round_start_emp: int = 50
@@ -233,6 +235,47 @@ func _apply_achievement_reward(id: String) -> void:
 func add_xp(amount: int) -> void:
 	xp = clamp(xp + amount, 0, xp_max)
 	emit_signal("xp_changed", xp, xp_max)
+	
+func log_feed_action(post_label: String, action: String, effect: Dictionary, category: String = "") -> void:
+	var deltas: Dictionary = {}
+
+	if effect.has("sc"):
+		var sc_delta := int(effect["sc"])
+		if sc_delta != 0:
+			deltas["SC"] = sc_delta
+	if effect.has("emp"):
+		var emp_delta := int(effect["emp"])
+		if emp_delta != 0:
+			deltas["EM"] = emp_delta
+	if effect.has("priv"):
+		var priv_delta := int(effect["priv"])
+		if priv_delta != 0:
+			deltas["PR"] = priv_delta
+	if effect.has("dep"):
+		var dep_delta := int(effect["dep"])
+		if dep_delta != 0:
+			deltas["DP"] = dep_delta
+
+	var sum := 0
+	for v in deltas.values():
+		sum += int(v)
+
+	var result := "Neutro"
+	if sum > 0:
+		result = "Corretto"
+	elif sum < 0:
+		result = "Errore"
+
+	var entry := {
+		"post_label": post_label,
+		"action": action,
+		"result": result,
+		"deltas": deltas,
+		"category": category
+	}
+
+	feed_session_log.append(entry)
+	feed_action_logged.emit(entry)
 
 func begin_round(reset_stats: bool) -> void:
 	if reset_stats:
@@ -433,6 +476,9 @@ func wipe_all_save_files() -> void:
 
 	get_tree().quit()
 
+func reset_feed_session_log() -> void:
+	feed_session_log.clear()
+
 func get_message_data(id: String) -> Dictionary:
 	return messages_catalog.get(id, {}) as Dictionary
 
@@ -495,6 +541,25 @@ func _apply_message_effect(id: String, action: String) -> void:
 			# Categoria sconosciuta: niente effetto, solo debug
 			print("Messaggio senza categoria gestita:", id, "azione:", action, "categoria:", category)
 
-	# Applica se c'è qualcosa da applicare
+	# Etichetta per il blocco note
+	var sender_name := String(data.get("sender_name", "Utente"))
+	var label := "Msg: %s" % sender_name
+
+	# Nome azione "pulito" per il log
+	var pretty_action := ""
+	match action:
+		"ignora":
+			pretty_action = "Ignora"
+		"rispondi":
+			pretty_action = "Rispondi"
+		"segnala":
+			pretty_action = "Segnala"
+		_:
+			pretty_action = action.capitalize()
+
+	# Logga SEMPRE l'azione (anche se effect è vuoto → Neutro)
+	log_feed_action(label, pretty_action, effect, category)
+
+	# Applica l'effetto solo se c'è qualcosa da applicare
 	if not effect.is_empty():
 		apply_effect(effect)

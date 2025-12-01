@@ -1,9 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1764416529
-TutorialOverlay.gdshader::Shader::7881715857161119424::1764374183::0::1::::<><><>0<>0<><>::
-::res://Fonts/::1764346732
+::res://::1764611413
+TutorialOverlay.gdshader::Shader::7881715857161119424::1764422010::0::1::::<><><>0<>0<><>::
+::res://Fonts/::1764419615
 Letters for Learners.ttf::FontFile/FontFile::2051107417207523866::1764341393::1764341393::1::::<><><>0<>0<>c62e992cc73f9bb0720ee78b36a0b9a2<>res://.godot/imported/Letters for Learners.ttf-d227149e4f44451e4b0aec3f14b48167.fontdata::
-NotebookTheme.tres::Theme::917485454648573706::1764346732::0::1::::<><><>0<>0<><>::uid://4hto7b0p0k71::::res://Fonts/Letters for Learners.ttf
+NotebookTheme.tres::Theme::917485454648573706::1764419615::0::1::::<><><>0<>0<><>::uid://4hto7b0p0k71::::res://Fonts/Letters for Learners.ttf
 Poppins-Bold.ttf::FontFile/FontFile::5249801589654418784::1760116081::1764338792::1::::<><><>0<>0<>6137da85afec2e4965c93ee9804a466d<>res://.godot/imported/Poppins-Bold.ttf-8b35d4f9bfe042760b0e802b3d72c619.fontdata::
 ::res://images/::1764349909
 ACHIEVEDD100.png::CompressedTexture2D/CompressedTexture2D::3371834811732229958::1762888853::1762888854::1::::<><><>0<>0<>8871529b602baad5757543e024b68a43<>res://.godot/imported/ACHIEVEDD100.png-434fe161dafc47a298762d9e827d24e7.ctex::
@@ -129,23 +129,23 @@ picGirl10-96.png::CompressedTexture2D/CompressedTexture2D::7786794463932718932::
 picGirl11-96.png::CompressedTexture2D/CompressedTexture2D::1294015700720393517::1762697100::1762697100::1::::<><><>0<>0<>af0a84a00d061a155c333c314ce5c8a1<>res://.godot/imported/picGirl11-96.png-68c8498c97c14dfef6e3a4c07785921c.ctex::
 picP100-96.png::CompressedTexture2D/CompressedTexture2D::8935608810837641931::1762721803::1762721803::1::::<><><>0<>0<>c86df5cef209b9dcf89c94d691cd88cb<>res://.godot/imported/picP100-96.png-92ef805ff08e121f02a272ee5f430590.ctex::
 picSC100-96.png::CompressedTexture2D/CompressedTexture2D::4093236781347328425::1762705434::1762705435::1::::<><><>0<>0<>08d9603e979434fe4ac405ecfb731653<>res://.godot/imported/picSC100-96.png-43ab194bf55af0d9282d5e58ed26b853.ctex::
-::res://Scenes/::1764374099
-AchievementCard.tscn::PackedScene::7824050294107378421::1764374098::0::1::::<><><>0<>0<><>::uid://d2sknbjy43uxm::::res://Scripts/achievement_card.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf
+::res://Scenes/::1764421920
+AchievementCard.tscn::PackedScene/PackedScene::7824050294107378421::1764374098::0::1::::<><><>0<>0<><>::uid://d2sknbjy43uxm::::res://Scripts/achievement_card.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf
 AvatarPicker.tscn::PackedScene/PackedScene::4098991215954950706::1764191527::0::1::::<><><>0<>0<><>::uid://bjmgtapir3lt3::::res://Scripts/avatar_picker.gd
-feed.tscn::PackedScene::8416616996076911402::1764374099::0::1::::<><><>0<>0<><>::uid://vmi3dp6gjx5r::::res://Scripts/Feed.gd<>uid://bexi2weyp18cf::::res://Scripts/sidebar.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://bvb2jmbm4mcmk::::res://images/home (1).png<>uid://8kccfhb65k1y::::res://images/letter (1).png<>uid://b2ex6s1pcp6sj::::res://images/feather-pen (1).png<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://uwe66u3xmxgb::::res://Scripts/indicators.gd<>uid://22bavs02n1so::::res://images/brain64.png<>uid://bc2v2hk4g5v8e::::res://images/empatia.png<>uid://b5c6kkihy1obt::::res://images/lock64.png<>uid://cqmwglm3vm840::::res://images/tempo64.png<>uid://y634rj4ffbkk::::res://images/idea (2).png<>uid://wuikf1y7i3h2::::res://Scripts/effects_layer.gd<>uid://tacvhtv7y51n::::res://Scripts/achievement_popup.gd<>uid://b8r3u8ifsg3wl::::res://Scenes/MessageWindow.tscn<>uid://ogtv70bp03m1::::res://Scenes/new_message_toast.tscn<>uid://4anf57voc6xs::::res://Scenes/NoteLog.tscn
-MainMenu.tscn::PackedScene::2907458910777880018::1764374099::0::1::::<><><>0<>0<><>::uid://dw218r8dmlrqq::::res://Scripts/main_menu.gd<>uid://b88mhr0rt7ssv::::res://Scripts/cuoreUI.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://c4ojethx5ylw5::::res://images/profilo.png
-MessageCard.tscn::PackedScene::5446838727169974776::1764374099::0::1::::<><><>0<>0<><>::uid://dskbnnt13ayhy::::res://Scripts/MessageCard.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://d24ue8ut4foyk::::res://images/man1.png
-MessageWindow.tscn::PackedScene::4739484483123235031::1764374099::0::1::::<><><>0<>0<><>::uid://b43pknw80vcmh::::res://Scripts/MessageWindow.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://bya446gqominu::::res://images/back.png
+feed.tscn::PackedScene::8416616996076911402::1764421919::0::1::::<><><>0<>0<><>::uid://vmi3dp6gjx5r::::res://Scripts/Feed.gd<>uid://bexi2weyp18cf::::res://Scripts/sidebar.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://bvb2jmbm4mcmk::::res://images/home (1).png<>uid://8kccfhb65k1y::::res://images/letter (1).png<>uid://b2ex6s1pcp6sj::::res://images/feather-pen (1).png<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://uwe66u3xmxgb::::res://Scripts/indicators.gd<>uid://22bavs02n1so::::res://images/brain64.png<>uid://bc2v2hk4g5v8e::::res://images/empatia.png<>uid://b5c6kkihy1obt::::res://images/lock64.png<>uid://cqmwglm3vm840::::res://images/tempo64.png<>uid://y634rj4ffbkk::::res://images/idea (2).png<>uid://wuikf1y7i3h2::::res://Scripts/effects_layer.gd<>uid://tacvhtv7y51n::::res://Scripts/achievement_popup.gd<>uid://b8r3u8ifsg3wl::::res://Scenes/MessageWindow.tscn<>uid://ogtv70bp03m1::::res://Scenes/new_message_toast.tscn<>uid://4anf57voc6xs::::res://Scenes/NoteLog.tscn
+MainMenu.tscn::PackedScene::2907458910777880018::1764421920::0::1::::<><><>0<>0<><>::uid://dw218r8dmlrqq::::res://Scripts/main_menu.gd<>uid://b88mhr0rt7ssv::::res://Scripts/cuoreUI.gd<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://c4ojethx5ylw5::::res://images/profilo.png
+MessageCard.tscn::PackedScene/PackedScene::5446838727169974776::1764374099::0::1::::<><><>0<>0<><>::uid://dskbnnt13ayhy::::res://Scripts/MessageCard.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://d24ue8ut4foyk::::res://images/man1.png
+MessageWindow.tscn::PackedScene/PackedScene::4739484483123235031::1764374099::0::1::::<><><>0<>0<><>::uid://b43pknw80vcmh::::res://Scripts/MessageWindow.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://bya446gqominu::::res://images/back.png
 new_message_toast.tscn::PackedScene/PackedScene::996222921425188538::1764338792::0::1::::<><><>0<>0<><>::uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://dlpwyj3a6763l::::res://Scripts/NewMessageToast.gd
-NoteLog.tscn::PackedScene::2036276341485641132::1764374099::0::1::::<><><>0<>0<><>::uid://bya446gqominu::::res://images/back.png<>uid://bbn480qiqnma0::::res://Scripts/NoteLog.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://do0ay8brkavdr::::res://Scripts/NotePage.gd<>uid://nco37hdpt2wk::::res://Fonts/NotebookTheme.tres
-Post.tscn::PackedScene::6789338109058127434::1764374099::0::1::::<><><>0<>0<><>::uid://bdealcrus58dt::::res://Scripts/Post.gd<>uid://dilet6t2ut71i::::res://images/pic.png<>uid://c5f3eqkwv3r3e::::res://images/verificato.png<>uid://ci80cl8n825ca::::res://images/soldi.png<>uid://rgg58mdo5a5h::::res://images/cuore.png<>uid://blycc4g8cghe::::res://Scripts/like.gd<>uid://cu5n2wpyxwgfg::::res://images/commenta.png<>uid://c7omdgcgx4w7n::::res://images/segnala.png<>uid://c0jxpp4rrr3lt::::res://images/condividi.png
-ProfilePage.tscn::PackedScene::5625728583340604102::1764374098::0::1::::<><><>0<>0<><>::uid://b0e14pnpchc26::::res://Scripts/profile_page.gd<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://csvubo4pytktv::::res://images/back_arrow32.png
-SettingsWindow.tscn::PackedScene::6253637326777150916::1764374099::0::1::::<><><>0<>0<><>::uid://vskw7evcynox::::res://Scenes/settings_window.gd<>uid://bya446gqominu::::res://images/back.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf
+NoteLog.tscn::PackedScene::2036276341485641132::1764421920::0::1::::<><><>0<>0<><>::uid://bya446gqominu::::res://images/back.png<>uid://bbn480qiqnma0::::res://Scripts/NoteLog.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://do0ay8brkavdr::::res://Scripts/NotePage.gd<>uid://nco37hdpt2wk::::res://Fonts/NotebookTheme.tres
+Post.tscn::PackedScene/PackedScene::6789338109058127434::1764374099::0::1::::<><><>0<>0<><>::uid://bdealcrus58dt::::res://Scripts/Post.gd<>uid://dilet6t2ut71i::::res://images/pic.png<>uid://c5f3eqkwv3r3e::::res://images/verificato.png<>uid://ci80cl8n825ca::::res://images/soldi.png<>uid://rgg58mdo5a5h::::res://images/cuore.png<>uid://blycc4g8cghe::::res://Scripts/like.gd<>uid://cu5n2wpyxwgfg::::res://images/commenta.png<>uid://c7omdgcgx4w7n::::res://images/segnala.png<>uid://c0jxpp4rrr3lt::::res://images/condividi.png
+ProfilePage.tscn::PackedScene/PackedScene::5625728583340604102::1764374098::0::1::::<><><>0<>0<><>::uid://b0e14pnpchc26::::res://Scripts/profile_page.gd<>uid://otlk355jovcm::::res://images/profilo96.png<>uid://efhpip0lowbv::::res://images/patternCustom1.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://csvubo4pytktv::::res://images/back_arrow32.png
+SettingsWindow.tscn::PackedScene/PackedScene::6253637326777150916::1764374099::0::1::::<><><>0<>0<><>::uid://vskw7evcynox::::res://Scenes/settings_window.gd<>uid://bya446gqominu::::res://images/back.png<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf
 settings_window.gd::GDScript/GDScript::1511772661249526055::1764264566::0::1::::<>PopupPanel<><>0<>0<><>::
 TestGM.tscn::PackedScene/PackedScene::7052957410397439421::1762878691::0::1::::<><><>0<>0<><>::
 TutorialOverlay.tscn::PackedScene/PackedScene::9178922948183053894::1764338792::0::1::::<><><>0<>0<><>::uid://cxxm2lf4idx3v::::res://Scenes/tutorial_overlay.gd<>uid://cg2bp20jowkno::::res://Fonts/Poppins-Bold.ttf<>uid://dkj7ydgft7g37::::res://TutorialOverlay.gdshader
 tutorial_overlay.gd::GDScript/GDScript::6435442866562288673::1764188786::0::1::::TutorialOverlay<>Control<><>0<>0<><>::
-::res://Scripts/::1764373812
+::res://Scripts/::1764421860
 Achievement.gd::GDScript/GDScript::8612203799642601050::1762983983::0::1::::<>Node<><>0<>0<><>::
 AchievementsStore.gd::GDScript/GDScript::5636530221198752062::1764262866::0::1::::<>Node<><>0<>0<><>::
 achievement_card.gd::GDScript/GDScript::9092150081684600026::1762990653::0::1::::AchievementCard<>PanelContainer<><>0<>0<><>::
@@ -153,8 +153,8 @@ achievement_popup.gd::GDScript/GDScript::1333747362792771481::1762887606::0::1::
 avatar_picker.gd::GDScript/GDScript::3043291065084282878::1762992699::0::1::::<>Window<><>0<>0<><>::
 cuoreUI.gd::GDScript/GDScript::4771519026418808785::1762890704::0::1::::<>TextureRect<><>0<>0<><>::
 effects_layer.gd::GDScript/GDScript::1585946012914314169::1759008289::0::1::::<>CanvasLayer<><>0<>0<><>::
-Feed.gd::GDScript::1499274169777880369::1764373812::0::1::::<>Control<><>0<>0<><>::
-GameManager.gd::GDScript::7497321683511517694::1764358464::0::1::::<>Node<><>0<>0<><>::
+Feed.gd::GDScript::1499274169777880369::1764421860::0::1::::<>Control<><>0<>0<><>::
+GameManager.gd::GDScript::7497321683511517694::1764421266::0::1::::<>Node<><>0<>0<><>::
 GameTime.gd::GDScript/GDScript::323940033613625834::1764264985::0::1::::<>Node<><>0<>0<><>::
 indicators.gd::GDScript/GDScript::1449493071355449209::1758982277::0::1::::<>VBoxContainer<><>0<>0<><>::
 like.gd::GDScript/GDScript::94357928509720618::1761117593::0::1::::<>TextureButton<><>0<>0<><>::
@@ -163,9 +163,9 @@ main_menu.gd::GDScript/GDScript::8760793327514712236::1764275343::0::1::::<>Cont
 MessageCard.gd::GDScript/GDScript::8443389659791616166::1764172319::0::1::::MessageCard<>PanelContainer<><>0<>0<><>::
 MessageWindow.gd::GDScript/GDScript::4480629057463114367::1764250908::0::1::::<>PopupPanel<><>0<>0<><>::
 NewMessageToast.gd::GDScript/GDScript::7963684146310531631::1764171697::0::1::::NewMessageToast<>Control<><>0<>0<><>::
-NoteLog.gd::GDScript::2485267500309013425::1764348989::0::1::::<>PopupPanel<><>0<>0<><>::
-NotePage.gd::GDScript::8193559900518117579::1764348800::0::1::::<>Control<><>0<>0<><>::
+NoteLog.gd::GDScript/GDScript::2485267500309013425::1764348989::0::1::::<>PopupPanel<><>0<>0<><>::
+NotePage.gd::GDScript/GDScript::8193559900518117579::1764348800::0::1::::<>Control<><>0<>0<><>::
 popup_messaggio.gd::GDScript/GDScript::1889259115205040429::1761115615::0::1::::<>CanvasLayer<><>0<>0<><>::
 Post.gd::GDScript/GDScript::2605264501598746445::1764261388::0::1::::PostCard<>Control<><>0<>0<><>::
-profile_page.gd::GDScript::4151030524112511797::1764350393::0::1::::<>Control<><>0<>0<><>::
-sidebar.gd::GDScript::2715191861770645517::1764336683::0::1::::<>VBoxContainer<><>0<>0<><>::
+profile_page.gd::GDScript/GDScript::4151030524112511797::1764350393::0::1::::<>Control<><>0<>0<><>::
+sidebar.gd::GDScript/GDScript::2715191861770645517::1764336683::0::1::::<>VBoxContainer<><>0<>0<><>::

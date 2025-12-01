@@ -1,7 +1,9 @@
-res://Scenes/NoteLog.tscn
+res://Scenes/feed.tscn
 res://TutorialOverlay.gdshader
 res://Fonts/NotebookTheme.tres
-res://Scripts/GameManager.gd
-res://Scenes/feed.tscn
 res://Scripts/Feed.gd
+res://Scripts/GameManager.gd
+res://Scripts/Post.gd
+res://Scripts/NoteLog.gd
 res://Scenes/MainMenu.tscn
+res://Scenes/NoteLog.tscn

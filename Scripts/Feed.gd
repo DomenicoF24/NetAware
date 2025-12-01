@@ -341,6 +341,9 @@ func _on_round_notes_pressed() -> void:
 		NoteLog.show()
 
 func _on_round_new_round_pressed() -> void:
+	GameManager.reset_feed_session_log()
+	if has_node("NoteLog"):
+		$NoteLog.clear_log()
 	# Nuovo round *vero* → reset stats + nuovo round
 	_start_new_round(true)
 	
@@ -480,16 +483,22 @@ func spawn_random_posts(count: int = 5) -> void:
 
 		# Scegliamo un post casuale dalla lista disponibile
 		var index = randi() % available_posts.size()
-		var template = available_posts[index]
-		
+		var template: Dictionary = available_posts[index]
+
+		# Duplichiamo il dizionario per non modificare il template originale
+		var post_data: Dictionary = template.duplicate()
+
+		# Etichetta per il log: "Post 1", "Post 2", ...
+		post_data["label"] = "Post %d" % (i + 1)
+
 		# Istanzio il post e lo aggiungo al container
-		var p = post_scene.instantiate()
+		var p: PostCard = post_scene.instantiate()
 		posts_container.add_child(p)
-		p.set_post_data(template)
+		p.set_post_data(post_data)
 		
 		# Rimuovo il template appena usato per evitare duplicati
 		available_posts.remove_at(index)
-		
+
 func _on_avatar_changed(tex: Texture2D, _id: String):
 	_apply_avatar(tex)
 
@@ -777,7 +786,7 @@ var post_templates = [
 		"category": "privacy_advice",
 		"verified": true
 	},
-			{
+	{
 		"pic": preload("res://images/news64.png"),
 		"author": "@NetNews",
 		"content": "Proteste di oggi per il diritto allo studio",

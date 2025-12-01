@@ -22,6 +22,9 @@ var data = {} # conterrà le info del post (autore, testo, effetti)
 @onready var bottoni: Control = $PostPanel/PostLayout/ButtonBg
 @onready var Post: Control = $PostPanel
 
+var post_label: String = ""
+var post_category: String = "default"
+
 func _ready() -> void:
 	if author_label == null:
 		print("ERROR: author_label è null! Verifica i percorsi")
@@ -49,6 +52,8 @@ func set_post_data(post_data: Dictionary) -> void:
 	time_label.text = data.get("time", "X ore fa")
 	likes.text = data.get("likes", "Piace a 20mila persone")
 	foto.texture = data.get("foto", null)
+	post_label = data.get("label", data.get("author", "Post"))
+	post_category = data.get("category", "default")
 	# Controllo se mostrare il badge verificato
 	if data.has("verified") and verified != null:
 		verified.visible = data["verified"]
@@ -56,171 +61,236 @@ func set_post_data(post_data: Dictionary) -> void:
 		verified.visible = false
 
 func _on_like_pressed() -> void:
-	# Controlla se è già stato premuto
 	if pressed_buttons.has("like"):
 		return
+
+	var effect: Dictionary = {}
 	if data.has("effects_like"):
-		GameManager.apply_effect(
-			data["effects_like"])
-		pressed_buttons["like"] = true
-		btn_like.texture_normal = preload("res://images/cuore2.png")
-		btn_like.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		EffectsManager.spawn_effect(
+		effect = data["effects_like"]
+
+	if not effect.is_empty():
+		GameManager.apply_effect(effect)
+
+	GameManager.log_feed_action(post_label, "Like", effect, post_category)
+
+	pressed_buttons["like"] = true
+	btn_like.texture_normal = preload("res://images/cuore2.png")
+	btn_like.disabled = true  # opzionale: impedisce di premere di nuovo
+
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/cuori.png"),
-		Vector2(randi_range(0, 1000), randi_range(0, 1000)))
+		Vector2(randi_range(0, 1000), randi_range(0, 1000))
+	)
+
 
 func _on_report_pressed() -> void:
 	if pressed_buttons.has("report"):
 		return
-		
+
+	var effect: Dictionary = {}
 	if data.has("effects_report"):
-		GameManager.apply_effect(
-			data["effects_report"])
-		pressed_buttons["report"] = true
-		btn_report.texture_normal = preload("res://images/segnala2.png")
-		btn_report.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		EffectsManager.spawn_effect(
+		effect = data["effects_report"]
+
+	if not effect.is_empty():
+		GameManager.apply_effect(effect)
+
+	GameManager.log_feed_action(post_label, "Segnala", effect, post_category)
+
+	pressed_buttons["report"] = true
+	btn_report.texture_normal = preload("res://images/segnala2.png")
+	btn_report.disabled = true
+
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/alarm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+
 
 func _on_share_pressed() -> void:
 	if pressed_buttons.has("share"):
 		return
-		
+
+	var effect: Dictionary = {}
 	if data.has("effects_share"):
-		GameManager.apply_effect(
-			data["effects_share"])
-			
-		pressed_buttons["share"] = true
-		btn_share.texture_normal = preload("res://images/condividi3.png")
-		btn_share.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		EffectsManager.spawn_effect(
+		effect = data["effects_share"]
+
+	if not effect.is_empty():
+		GameManager.apply_effect(effect)
+
+	GameManager.log_feed_action(post_label, "Condividi", effect, post_category)
+
+	pressed_buttons["share"] = true
+	btn_share.texture_normal = preload("res://images/condividi3.png")
+	btn_share.disabled = true
+
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/share.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+
 
 func _on_comment_pressed() -> void:
 	if pressed_buttons.has("comment"):
 		return
-		
+
+	var effect: Dictionary = {}
 	if data.has("effects_comment"):
-		GameManager.apply_effect(
-			data["effects_comment"])
-			
-		pressed_buttons["comment"] = true
-		btn_comment.texture_normal = preload("res://images/commenta2.png")
-		btn_comment.disabled = true  # opzionale: impedisce di premere di nuovo
-			
-		EffectsManager.spawn_effect(
+		effect = data["effects_comment"]
+
+	if not effect.is_empty():
+		GameManager.apply_effect(effect)
+
+	GameManager.log_feed_action(post_label, "Commento", effect, post_category)
+
+	pressed_buttons["comment"] = true
+	btn_comment.texture_normal = preload("res://images/commenta2.png")
+	btn_comment.disabled = true  # opzionale: impedisce di premere di nuovo
+
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000))) # posizione di partenza, es. centro-basso schermo)
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
-		EffectsManager.spawn_effect(
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
+	EffectsManager.spawn_effect(
 		preload("res://images/comm.png"),
-		Vector2(randi_range(0, 1400), randi_range(0, 1000)))
+		Vector2(randi_range(0, 1400), randi_range(0, 1000))
+	)
